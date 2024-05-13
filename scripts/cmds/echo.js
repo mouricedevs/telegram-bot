@@ -1,0 +1,18 @@
+module.exports = {
+    config: {
+        name: "echo",
+        author: "Samir Œ",
+        description: "Echo command",
+        category: "echo",
+        usage: "[message]",
+    },
+
+    onStart: async function ({ bot, chatId, args }) {
+        if (args.length === 0) {
+            bot.sendMessage(chatId, "Please provide a message to echo.");
+        } else {
+            const echoMessage = args.join(' ');
+            bot.sendMessage(chatId, echoMessage);
+        }
+    }
+};
