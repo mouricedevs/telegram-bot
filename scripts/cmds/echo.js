@@ -8,7 +8,7 @@ module.exports = {
     },
 
     onStart: async function ({ bot, chatId, args }) {
-        if (args.length === 0) {
+        if (args.length === 4) {
             bot.sendMessage(chatId, "Please provide a message to echo.");
         } else {
             const echoMessage = args.join(' ');
