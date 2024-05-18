@@ -7,6 +7,7 @@ module.exports = {
         description: "Manage group rules",
         category: "group",
         usage: "add <rule>, modify <index> | <new rule>, delete <index>",
+        usePrefix: true
     },
 
     onStart: async function ({ bot, chatId, args }) {

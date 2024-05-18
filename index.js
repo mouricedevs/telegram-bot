@@ -5,11 +5,15 @@ const fs = require('fs');
 const bot = new TelegramBot(config.token, { polling: true });
 
 const commands = [];
+let adminOnlyMode = false;
 
 fs.readdirSync('./scripts/cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
             const command = require(`./scripts/cmds/${file}`);
+            if (typeof command.config.role === 'undefined') {
+                command.config.role = 0; // Default role is 0 (everyone can use it)
+            }
             commands.push(command);
             registerCommand(bot, command);
         } catch (error) {
@@ -19,20 +23,42 @@ fs.readdirSync('./scripts/cmds').forEach((file) => {
 });
 
 function registerCommand(bot, command) {
-    bot.onText(new RegExp(`^${config.prefix}${command.config.name}\\b(.*)$`), (msg, match) => {
-        try {
-            const chatId = msg.chat.id;
-            const args = match[1].trim().split(/\s+/);
-            command.onStart({ bot, chatId, args });
-        } catch (error) {
-            console.error(`Error executing command ${command.config.name}: ${error}`);
-            bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
-        }
+    const prefixPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
+    bot.onText(new RegExp(prefixPattern), (msg, match) => {
+        executeCommand(bot, command, msg, match);
     });
 }
 
+function executeCommand(bot, command, msg, match) {
+    try {
+        const chatId = msg.chat.id;
+        const userId = msg.from.id;
+        const username = msg.from.username;
+        const firstName = msg.from.first_name;
+        const lastName = msg.from.last_name || '';
+        const args = match[1].trim().split(/\s+/);
+        const adminId = config.owner_id;
+        const messageReply = msg.reply_to_message;
+        const messageReply_username = messageReply ? messageReply.from.username : null;
+        const messageReply_id = messageReply ? messageReply.from.id : null;
+
+        if (adminOnlyMode && userId !== config.owner_id) {
+            return bot.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
+        }
+
+        if (command.config.role === 1 && userId !== config.owner_id) {
+            return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
+        }
+
+        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg, adminId });
+    } catch (error) {
+        console.error(`Error executing command ${command.config.name}: ${error}`);
+        bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
+    }
+}
+
 bot.onText(new RegExp(`^${config.prefix}help$`), (msg) => {
-    let helpMessage = "𝙱𝚘𝚝 𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜";
+    let helpMessage = "";
     const categories = {};
 
     commands.forEach((command) => {
@@ -53,7 +79,7 @@ bot.onText(new RegExp(`^${config.prefix}help$`), (msg) => {
 });
 
 bot.onText(new RegExp(`^${config.prefix}help (.+)$`), (msg, match) => {
-    const commandName = match[1];
+    const commandName = match[1].trim();
     const command = commands.find((cmd) => cmd.config.name === commandName);
 
     if (command) {
@@ -84,56 +110,44 @@ bot.on('polling_started', () => {
     console.log('Bot polling started');
 });
 
-
-
-
 const gradient = require('gradient-string');
 
 function createGradientLogger() {
-  const colors = [
-    
-  
-    'blue',
-    'cyan'
-    
-    
-  ];
-
-  return (message) => {
-    const colorIndex = Math.floor(Math.random() * colors.length);
-    const color1 = colors[colorIndex];
-    const color2 = colors[(colorIndex + 1) % colors.length];
-
-    const gradientMessage = gradient(color1, color2)(message);
-    console.log(gradientMessage);
-  };
+    const colors = ['blue', 'cyan'];
+    return (message) => {
+        const colorIndex = Math.floor(Math.random() * colors.length);
+        const color1 = colors[colorIndex];
+        const color2 = colors[(colorIndex + 1) % colors.length];
+        const gradientMessage = gradient(color1, color2)(message);
+        console.log(gradientMessage);
+    };
 }
 
 const logger = createGradientLogger();
-    function loadingAnimation(message) {
-      const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
-      let frameIndex = 0;
-      let timer;
-      let percentage = 0;
 
-      function animate() {
+function loadingAnimation(message) {
+    const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+    let frameIndex = 0;
+    let timer;
+    let percentage = 0;
+
+    function animate() {
         process.stdout.clearLine(0);
         process.stdout.cursorTo(0);
         logger(`\n[ ${frames[frameIndex]} ${message} ${percentage}% ]`);
         frameIndex = (frameIndex + 1) % frames.length;
         percentage += 10;
         if (percentage > 100) {
-          percentage = 100;
+            percentage = 100;
         }
-      }
+    }
 
-
-  timer = setInterval(animate, 250);
-  return timer;
+    timer = setInterval(animate, 250);
+    return timer;
 }
 
 function logBotName() {
-  const botName = `  
+    const botName = `  
 ██   ██  █████  ██████  ██    ██ ██████  
  ██ ██  ██   ██ ██   ██ ██    ██      ██ 
   ███   ███████ ██████  ██    ██  █████  
@@ -141,17 +155,15 @@ function logBotName() {
 ██   ██ ██   ██ ██   ██   ████   ███████ 
 `;
 
-  logger(botName);
-  logger('[ Made by Samir Œ ]');
+    logger(botName);
+    logger('[ Made by Samir Œ ]');
 }
 
-const loadingTimer = loadingAnimation(`XarV2 loaded:`);
+const loadingTimer = loadingAnimation('XarV2 loaded:');
 
 setTimeout(() => {
-  clearInterval(loadingTimer);
-  logBotName();
+    clearInterval(loadingTimer);
+    logBotName();
 }, 3000);
-
-
 
 module.exports = bot;

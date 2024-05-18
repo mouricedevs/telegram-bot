@@ -5,6 +5,7 @@ module.exports = {
     description: "Promote a member to an admin",
     category: "admin",
     usage: "/promote [username]",
+    usePrefix: true
   },
   onStart: async function ({ bot, chatId, args, message }) {
     let userId;

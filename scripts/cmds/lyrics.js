@@ -7,12 +7,13 @@ module.exports = {
         description: "Get lyrics of a song",
         category: "music",
         usage: "<song_name>",
+        usePrefix: true
     },
     onStart: async function ({ bot, chatId, args }) {
         const query = args.join(" ");
 
         if (!query) {
-            return bot.sendMessage(chatId, `Please provide a song name. Usage: ${global.config.prefix}lyrics [song_name]`);
+            return bot.sendMessage(chatId, `Please provide a song name. Usage: /lyrics [song_name]`);
         }
 
         const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for lyrics: ${query}`);

@@ -7,6 +7,7 @@ module.exports = {
         description: "Send an image using the XL API",
         category: "image",
         usage: "<prompt>",
+        usePrefix: true
     },
 
     onStart: async function ({ bot, chatId, args }) {

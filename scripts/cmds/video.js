@@ -12,12 +12,13 @@ module.exports = {
     description: "Search and download video from YouTube",
     category: "video",
     usage: "video [title]",
+    usePrefix: true
   },
   onStart: async ({ bot, chatId, args }) => {
     const searchTerm = args.join(" ");
 
     if (!searchTerm) {
-      return bot.sendMessage(chatId, `Please provide a search query. Usage: ${global.config.prefix}video [title]`);
+      return bot.sendMessage(chatId, `Please provide a search query. Usage: /video [title]`);
     }
 
     const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for video: ${searchTerm}`);

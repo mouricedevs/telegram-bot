@@ -5,6 +5,7 @@ module.exports = {
         description: "Echo command",
         category: "echo",
         usage: "[message]",
+        usePrefix: true
     },
 
     onStart: async function ({ bot, chatId, args }) {
