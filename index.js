@@ -1,6 +1,3 @@
-//Allah always helps me
-//Allah is great 
-
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
 const fs = require('fs');
@@ -178,7 +175,7 @@ async function checkLatestCommit() {
         if (latestCommit.sha !== lastCommitSha) {
             lastCommitSha = latestCommit.sha;
             console.log(`New commit detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
-            syncRepo();
+            await syncRepo();
         }
     } catch (error) {
         console.error('Error checking latest commit:', error);
@@ -189,10 +186,23 @@ async function syncRepo() {
     try {
         const git = simpleGit(path.join(__dirname));
         const remoteUrl = `https://${GITHUB_ACCESS_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git`;
-        
+
         await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
+
+        
+        const stashResult = await git.stash();
+        if (stashResult.indexOf('No local changes to save') === -1) {
+            console.log('Local changes stashed');
+        }
+
         await git.fetch('authenticated-origin', 'main');
         await git.pull('authenticated-origin', 'main');
+
+        
+        const stashApplyResult = await git.stash(['pop']);
+        if (stashApplyResult.indexOf('No stash found.') === -1) {
+            console.log('Local changes reapplied');
+        }
 
         console.log('Repository synchronized with the latest commit.');
     } catch (error) {
@@ -203,4 +213,3 @@ async function syncRepo() {
 cron.schedule('* * * * *', checkLatestCommit);
 
 module.exports = bot;
-            
