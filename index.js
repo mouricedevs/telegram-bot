@@ -1,20 +1,17 @@
-
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
 const fs = require('fs');
+const axios = require('axios');
+const cron = require('node-cron');
 
 const bot = new TelegramBot(config.token, { polling: true });
 
 const commands = [];
-let adminOnlyMode = false;
 
 fs.readdirSync('./scripts/cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
             const command = require(`./scripts/cmds/${file}`);
-            if (typeof command.config.role === 'undefined') {
-                command.config.role = 0;
-            }
             commands.push(command);
             registerCommand(bot, command);
         } catch (error) {
@@ -43,15 +40,7 @@ function executeCommand(bot, command, msg, match) {
         const messageReply_username = messageReply ? messageReply.from.username : null;
         const messageReply_id = messageReply ? messageReply.from.id : null;
 
-        if (adminOnlyMode && userId !== config.owner_id) {
-            return bot.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
-        }
-
-        if (command.config.role === 1 && userId !== config.owner_id) {
-            return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
-        }
-
-        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
+        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id , msg });
     } catch (error) {
         console.error(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
@@ -167,4 +156,30 @@ setTimeout(() => {
     logBotName();
 }, 3000);
 
+const GITHUB_ACCESS_TOKEN = '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';
+const REPO_OWNER = 'samirxpikachuio';
+const REPO_NAME = 'XaR-V2';
+
+let lastCommitSha = null;
+
+async function checkLatestCommit() {
+    try {
+        const response = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`, {
+            headers: {
+                'Authorization': `token ${GITHUB_ACCESS_TOKEN}`
+            }
+        });
+        const latestCommit = response.data[0];
+        if (latestCommit.sha !== lastCommitSha) {
+            lastCommitSha = latestCommit.sha;
+            console.log(`New commit detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
+        }
+    } catch (error) {
+        console.error('Error checking latest commit:', error);
+    }
+}
+
+cron.schedule('* * * * *', checkLatestCommit);
+
 module.exports = bot;
+                         
