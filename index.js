@@ -1,4 +1,4 @@
-//Allhamdulillah 
+//Allah help me
 
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
