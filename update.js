@@ -6,7 +6,7 @@ const axios = require('axios');
 const repoUrl = 'https://api.github.com/repos/samirxpikachuio/XaR-V2/contents';
 const rootDirectory = __dirname;
 const cmdsDirectory = path.join(__dirname, 'script', 'cmds');
-const accessToken = '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';
+const accessToken = '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';
 
 async function handleUpdateCommand() {
   exec('git pull origin main', async (error, stdout, stderr) => {
