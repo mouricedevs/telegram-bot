@@ -1,8 +1,12 @@
+//Allhamdulillah 
+
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
 const fs = require('fs');
 const axios = require('axios');
 const cron = require('node-cron');
+const simpleGit = require('simple-git');
+const path = require('path');
 
 const bot = new TelegramBot(config.token, { polling: true });
 
@@ -40,7 +44,7 @@ function executeCommand(bot, command, msg, match) {
         const messageReply_username = messageReply ? messageReply.from.username : null;
         const messageReply_id = messageReply ? messageReply.from.id : null;
 
-        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id , msg });
+        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
     } catch (error) {
         console.error(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
@@ -173,13 +177,29 @@ async function checkLatestCommit() {
         if (latestCommit.sha !== lastCommitSha) {
             lastCommitSha = latestCommit.sha;
             console.log(`New commit detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
+            syncRepo();
         }
     } catch (error) {
         console.error('Error checking latest commit:', error);
     }
 }
 
+async function syncRepo() {
+    try {
+        const git = simpleGit(path.join(__dirname));
+        const remoteUrl = `https://${GITHUB_ACCESS_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git`;
+        
+        await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
+        await git.fetch('authenticated-origin', 'main');
+        await git.pull('authenticated-origin', 'main');
+
+        console.log('Repository synchronized with the latest commit.');
+    } catch (error) {
+        console.error('Error synchronizing repository:', error);
+    }
+}
+
 cron.schedule('* * * * *', checkLatestCommit);
 
 module.exports = bot;
-                         
+            
