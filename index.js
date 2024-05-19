@@ -1,3 +1,7 @@
+//Allah is the greatest of all planer
+
+
+
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
 const fs = require('fs');
@@ -187,13 +191,13 @@ async function syncRepo() {
         const git = simpleGit(path.join(__dirname));
         const remoteUrl = `https://${GITHUB_ACCESS_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git`;
         
-        // Set up the authenticated remote URL
+     
         await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
         
-        // Fetch the latest changes from the remote repository
+        
         await git.fetch('authenticated-origin', 'main');
         
-        // Reset the local repository to match the remote repository
+       
         await git.reset(['--hard', 'authenticated-origin/main']);
         
         console.log('Repository synchronized with the latest commit.');
