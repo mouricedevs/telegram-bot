@@ -1,4 +1,3 @@
-//Allah is the greatest of all planer
 
 
 
