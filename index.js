@@ -175,7 +175,7 @@ async function checkLatestCommit() {
         if (latestCommit.sha !== lastCommitSha) {
             lastCommitSha = latestCommit.sha;
             console.log(`New commit detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
-            await syncRepo();
+            syncRepo();
         }
     } catch (error) {
         console.error('Error checking latest commit:', error);
@@ -190,19 +190,12 @@ async function syncRepo() {
         await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
 
         
-        const stashResult = await git.stash();
-        if (stashResult.indexOf('No local changes to save') === -1) {
-            console.log('Local changes stashed');
-        }
-
-        await git.fetch('authenticated-origin', 'main');
-        await git.pull('authenticated-origin', 'main');
+        await git.reset('hard');
+        await git.clean(['-fd']);
 
         
-        const stashApplyResult = await git.stash(['pop']);
-        if (stashApplyResult.indexOf('No stash found.') === -1) {
-            console.log('Local changes reapplied');
-        }
+        await git.fetch('authenticated-origin', 'main');
+        await git.pull('authenticated-origin', 'main');
 
         console.log('Repository synchronized with the latest commit.');
     } catch (error) {
