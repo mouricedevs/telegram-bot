@@ -7,7 +7,7 @@ const config = require('./config.json');
 const fs = require('fs');
 const axios = require('axios');
 const cron = require('node-cron');
-const simpleGit = require('simple-git');
+
 const path = require('path');
 
 const bot = new TelegramBot(config.token, { polling: true });
@@ -179,32 +179,13 @@ async function checkLatestCommit() {
         if (latestCommit.sha !== lastCommitSha) {
             lastCommitSha = latestCommit.sha;
             console.log(`New commit detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
-            syncRepo();
+        
         }
     } catch (error) {
         console.error('Error checking latest commit:', error);
     }
 }
 
-async function syncRepo() {
-    try {
-        const git = simpleGit(path.join(__dirname));
-        const remoteUrl = `https://${GITHUB_ACCESS_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git`;
-        
-     
-        await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
-        
-        
-        await git.fetch('authenticated-origin', 'main');
-        
-       
-        await git.reset(['--hard', 'authenticated-origin/main']);
-        
-        console.log('Repository synchronized with the latest commit.');
-    } catch (error) {
-        console.error('Error synchronizing repository:', error);
-    }
-}
 
 cron.schedule('* * * * *', checkLatestCommit);
 
