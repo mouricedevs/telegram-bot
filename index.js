@@ -12,7 +12,7 @@ fs.readdirSync('./scripts/cmds').forEach((file) => {
         try {
             const command = require(`./scripts/cmds/${file}`);
             if (typeof command.config.role === 'undefined') {
-                command.config.role = 0; // Default role is 0 (everyone can use it)
+                command.config.role = 0;
             }
             commands.push(command);
             registerCommand(bot, command);
@@ -37,7 +37,7 @@ function executeCommand(bot, command, msg, match) {
         const firstName = msg.from.first_name;
         const lastName = msg.from.last_name || '';
         const args = match[1].trim().split(/\s+/);
-        const adminId = config.owner_id;
+
         const messageReply = msg.reply_to_message;
         const messageReply_username = messageReply ? messageReply.from.username : null;
         const messageReply_id = messageReply ? messageReply.from.id : null;
@@ -50,7 +50,7 @@ function executeCommand(bot, command, msg, match) {
             return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
         }
 
-        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg, adminId });
+        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
     } catch (error) {
         console.error(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
