@@ -17,7 +17,7 @@ async function fetchGbanList() {
         const response = await axios.get('https://raw.githubusercontent.com/samirxpikachuio/Gban/main/Gban.json');
         gbanList = response.data.map(user => user.ID);
     } catch (error) {
-        console.error('Error fetching gban list:', error);
+        logger('Error fetching gban list:', error);
     }
 }
 
@@ -57,7 +57,7 @@ async function isUserAdmin(bot, chatId, userId) {
         const chatAdministrators = await bot.getChatAdministrators(chatId);
         return chatAdministrators.some(admin => admin.user.id === userId);
     } catch (error) {
-        console.error('Error checking if user is admin:', error);
+        logger('Error checking if user is admin:', error);
         return false;
     }
 }
@@ -112,7 +112,7 @@ async function executeCommand(bot, command, msg, match) {
 
         command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
     } catch (error) {
-        console.error(`Error executing command ${command.config.name}: ${error}`);
+        logger(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
     }
 }
@@ -162,7 +162,7 @@ bot.onText(new RegExp(`^${config.prefix}unsend\\b(.*)$`, 'i'), async (msg, match
             await bot.sendMessage(msg.chat.id, "Please reply to the message you want to delete.");
         }
     } catch (error) {
-        console.error('Error deleting message:', error);
+        logger('Error deleting message:', error);
         await bot.sendMessage(msg.chat.id, 'An error occurred while trying to delete the message.');
     }
 });
@@ -181,11 +181,11 @@ function generateCommandInfoMessage(command) {
 }
 
 bot.on('polling_error', (error) => {
-    console.error('Polling error:', error);
+    logger('Polling error:', error);
 });
 
 bot.on('polling_started', () => {
-    console.log('Bot polling started');
+    logger('Bot polling started');
 });
 
 const gradient = require('gradient-string');
@@ -256,11 +256,11 @@ let lastCommitSha = null;
 function loadLastCommitSha() {
     if (fs.existsSync(VERSION_FILE)) {
         lastCommitSha = fs.readFileSync(VERSION_FILE, 'utf8').trim();
+    } else {
+               lastCommitSha = '123456789';
+        fs.writeFileSync(VERSION_FILE, lastCommitSha);
+        logger('[ Version file not found. ]\n\n[ Created version.txt ]');
     }
-}
-
-function saveLastCommitSha(sha) {
-    fs.writeFileSync(VERSION_FILE, sha);
 }
 
 async function checkLatestCommit() {
@@ -273,17 +273,17 @@ async function checkLatestCommit() {
         const latestCommit = response.data[0];
         if (latestCommit.sha !== lastCommitSha) {
             const previousCommitSha = lastCommitSha;
-            lastCommitSha = latestCommit.sha;
-            saveLastCommitSha(lastCommitSha);
-            logger(`\n[ New Update detected ]\n\nCurrent bot version: ${previousCommitSha}\n\nNew version: ${lastCommitSha}\n\nUpdate message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
+            const newCommitSha = latestCommit.sha;
+            logger(`\n[ New Update detected ]\n\n[ Current bot version: ${previousCommitSha} ]\n\n[ New version: ${newCommitSha} ]\n\n[ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
+        } else {
+            
         }
     } catch (error) {
-        console.error('Error checking latest commit:', error);
+        logger('Error checking latest update contract https://t.me/Samir_OE', error);
     }
 }
 
 loadLastCommitSha();
-
 cron.schedule('* * * * *', checkLatestCommit);
 
 
