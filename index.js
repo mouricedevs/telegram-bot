@@ -249,18 +249,18 @@ const GITHUB_ACCESS_TOKEN = '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';
 const REPO_OWNER = 'samirxpikachuio';
 const REPO_NAME = 'XaR-V2';
 
-const LAST_COMMIT_FILE = path.join(__dirname, 'version.txt');
+const VERSION_FILE = path.join(__dirname, 'version.txt');
 
 let lastCommitSha = null;
 
 function loadLastCommitSha() {
-    if (fs.existsSync(LAST_COMMIT_FILE)) {
-        lastCommitSha = fs.readFileSync(LAST_COMMIT_FILE, 'utf8').trim();
+    if (fs.existsSync(VERSION_FILE)) {
+        lastCommitSha = fs.readFileSync(VERSION_FILE, 'utf8').trim();
     }
 }
 
 function saveLastCommitSha(sha) {
-    fs.writeFileSync(LAST_COMMIT_FILE, sha);
+    fs.writeFileSync(VERSION_FILE, sha);
 }
 
 async function checkLatestCommit() {
@@ -272,9 +272,10 @@ async function checkLatestCommit() {
         });
         const latestCommit = response.data[0];
         if (latestCommit.sha !== lastCommitSha) {
+            const previousCommitSha = lastCommitSha;
             lastCommitSha = latestCommit.sha;
             saveLastCommitSha(lastCommitSha);
-            logger(`[ New Update detected: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
+            logger(`\n[ New Update detected ]\n\nCurrent bot version: ${previousCommitSha}\n\nNew version: ${lastCommitSha}\n\nUpdate message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name}`);
         }
     } catch (error) {
         console.error('Error checking latest commit:', error);
