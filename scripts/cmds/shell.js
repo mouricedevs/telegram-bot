@@ -5,13 +5,11 @@ module.exports = {
         description: "Access the shell (admin only)",
         category: "utility",
         usage: "shell <command>",
-        usePrefix: true
+        usePrefix: true,
+        role: 2
     },
     onStart: async function ({ bot, chatId, userId, args }) {
-        if (userId !== 1472439428) {
-            return bot.sendMessage(chatId, "Only admins can use this command.");
-        }
-
+       
         const command = args.join(' ');
 
         if (!command) {
