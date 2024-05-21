@@ -2,6 +2,26 @@ const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs');
 
+
+
+const gradient = require('gradient-string');
+
+function createGradientLogger() {
+    const colors = ['blue', 'cyan'];
+    return (message) => {
+        const colorIndex = Math.floor(Math.random() * colors.length);
+        const color1 = colors[colorIndex];
+        const color2 = colors[(colorIndex + 1) % colors.length];
+        const gradientMessage = gradient(color1, color2)(message);
+        console.log(gradientMessage);
+    };
+}
+
+const logger = createGradientLogger();
+
+
+
+
 const GITHUB_ACCESS_TOKEN = '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';
 const REPO_OWNER = 'samirxpikachuio';
 const REPO_NAME = 'XaR-V2';
@@ -18,17 +38,15 @@ async function syncRepo() {
         await git.fetch('authenticated-origin', 'main');
         await git.reset(['--hard', 'authenticated-origin/main']);
 
-        // Get the latest commit SHA after syncing
         const log = await git.log();
         const latestCommitSha = log.latest.hash;
 
-        // Write the latest commit SHA to version.txt
         fs.writeFileSync(VERSION_FILE, latestCommitSha);
 
-        console.log('Repository synchronized with the latest commit.');
-        console.log(`Latest commit SHA: ${latestCommitSha}`);
+        logger('[ Repository synchronized with the latest version. ]');
+        logger(`Current version: ${latestCommitSha}`);
     } catch (error) {
-        console.error('Error synchronizing repository:', error);
+    logger('Error synchronizing repository:', error);
     }
 }
 
