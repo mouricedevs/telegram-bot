@@ -8,7 +8,8 @@ module.exports = {
         description: "Toggle admin-only mode",
         category: "admin",
         usage: "adminonly <on|off>",
-        usePrefix: true
+        usePrefix: true,
+        role: 2
     },
     onStart: async function ({ bot, chatId, msg, args }) {
         const fromId = msg.from.id;
