@@ -112,19 +112,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-                        const serverStartTime = 0; 
+            let startTime = Date.now();
 
             function formatUptime(uptime) {
-                const seconds = Math.floor(uptime / 1000) % 60;
-                const minutes = Math.floor(uptime / (1000 * 60) - 55) % 60;
-                const hours = Math.floor(uptime / (1000 * 60 * 60) - 476749);
+                const seconds = Math.floor(uptime / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
 
-                return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+                const remainingSeconds = seconds % 60;
+                const remainingMinutes = minutes % 60;
+
+                return `${hours} hours, ${remainingMinutes} minutes, and ${remainingSeconds} seconds`;
             }
 
             function fetchUptime() {
                 const now = Date.now();
-                const uptime = now - serverStartTime;
+                const uptime = now - startTime;
                 const uptimeString = formatUptime(uptime);
                 document.getElementById('uptime').innerText = uptimeString;
             }
