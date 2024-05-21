@@ -8,7 +8,7 @@ module.exports = {
         category: "development",
         usage: "eval <code>",
         usePrefix: true,
-        role: 1
+        role: 2
 
 
     },
