@@ -5,6 +5,8 @@ const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
 
+//test
+
 const bot = new TelegramBot(config.token, { polling: true });
 
 const commands = [];
