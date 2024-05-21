@@ -107,17 +107,30 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            function fetchUptime() {
-                // Here you would replace with an actual API call to your server
-                const uptime = "12 hours 34 minutes"; // Example uptime
-                document.getElementById('uptime').innerText = uptime;
+                        const serverStartTime = 0; 
+
+            function formatUptime(uptime) {
+                const seconds = Math.floor(uptime / 1000) % 60;
+                const minutes = Math.floor(uptime / (1000 * 60) - 55) % 60;
+                const hours = Math.floor(uptime / (1000 * 60 * 60) - 476749);
+
+                return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
             }
+
+            function fetchUptime() {
+                const now = Date.now();
+                const uptime = now - serverStartTime;
+                const uptimeString = formatUptime(uptime);
+                document.getElementById('uptime').innerText = uptimeString;
+            }
+
             fetchUptime();
+            setInterval(fetchUptime, 1000); // Refresh every second
         });
     </script>
 </body>
