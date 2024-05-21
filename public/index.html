@@ -3,125 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Telegram Bot Dashboard</title>
+    <title>XAR-V2</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
         }
-
-        .container {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .navbar, .footer {
+            background-color: #1c1c1c;
+            font-family: monospace;
         }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        .dashboard {
-            margin-bottom: 20px;
-        }
-
-        .button {
-            background-color: #4CAF50;
+        .navbar-brand {
+            font-family: monospace;
+            font-size: 24px;
+            line-height: 2.5;
             border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            border-radius: 10px;
         }
-
-        .button:hover {
-            background-color: white;
-            color: black;
-            border: 2px solid #4CAF50;
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 35px;
+            font-family: monospace;
         }
-
-        .content {
-            text-align: left;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+        .card-header {
+            background-color: #282828;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            font-family: monospace;
         }
-
-        .button:active {
-            transform: scale(0.98);
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
+        .card-body {
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 id="bot-name">Bot Name: XaR-V2</h1>
-        <div class="dashboard">
-            <button class="button" onclick="showOwnerInfo()">Owner Info</button>
-            <button class="button" onclick="showSourceCode()">Get Source Code</button>
-            <button class="button" onclick="showBotPing()">Bot Ping</button>
-            <button class="button" onclick="showDashboard()">Dashboard</button>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">XarV2-TG BOT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://t.me/XarV2DemoBot" target="_blank">Demo Bot</a>
+                </li>
+            </ul>
         </div>
-        <div id="content" class="content">
-            <p>Welcome to the Bot Dashboard. Click the buttons above to get more information.</p>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header">This Bot Owner</div>
+                    <div class="card-body">
+                        <p>Name: Samir Œ</p>
+                        <p>Contact: <a href="https://t.me/Samir_OE" target="_blank">Telegram</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Bot Source Code</div>
+                    <div class="card-body">
+                        <p>GitHub: <a href="https://github.com/samirxpikachuio/XaR-V2" target="_blank">XaR-V2 Repository</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header">System Info</div>
+                    <div class="card-body">
+                        <p>Uptime: <span id="uptime">Loading...</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #1e1e1e; color: #ffffff;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About XarV2-TG BOT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: #ffffff;">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>XarV2-TG BOT is a versatile and powerful Telegram bot designed to provide various functionalities and services. Developed by Samir Œ, the bot offers seamless integration with Telegram and various other platforms.</p>
+                    <p>For more information, contact the developer via <a href="https://t.me/Samir_OE" target="_blank">Telegram</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function showOwnerInfo() {
-            document.getElementById('content').innerHTML = `
-                <h2>Owner Information</h2>
-                <p>Name: Samir Œ</p>
-                <p>Contact: <a href="mailto:samir@example.com">samir@example.com</a></p>
-            `;
-        }
-
-        function showSourceCode() {
-            document.getElementById('content').innerHTML = `
-                <h2>Get Source Code</h2>
-                <p>You can get the source code from the following GitHub repository:</p>
-                <p><a href="https://github.com/samirxpikachuio/XaR-V2" target="_blank">GitHub Repository</a></p>
-            `;
-        }
-
-        function showBotPing() {
-            document.getElementById('content').innerHTML = `
-                <h2>Bot Ping</h2>
-                <p>Checking bot ping...</p>
-            `;
-            // Simulate ping check
-            setTimeout(() => {
-                document.getElementById('content').innerHTML = `
-                    <h2>Bot Ping</h2>
-                    <p>Ping: 123ms</p>
-                `;
-            }, 1000);
-        }
-
-        function showDashboard() {
-            document.getElementById('content').innerHTML = `
-                <h2>Bot Dashboard</h2>
-                <p>Uptime: 99.9%</p>
-                <p>Prefix: !</p>
-                <p>Admin: Samir Œ</p>
-                <p>Usage: Moderate</p>
-            `;
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            function fetchUptime() {
+                // Here you would replace with an actual API call to your server
+                const uptime = "12 hours 34 minutes"; // Example uptime
+                document.getElementById('uptime').innerText = uptime;
+            }
+            fetchUptime();
+        });
     </script>
 </body>
 </html>
