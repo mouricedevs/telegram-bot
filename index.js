@@ -83,18 +83,24 @@ async function executeCommand(bot, command, msg, match) {
         if (gbanList.includes(userId.toString())) {
             return bot.sendMessage(chatId, "You are globally banned and cannot use commands.");
         }
+
         const isAdmin = await isUserAdmin(bot, chatId, userId);
         const isBotAdmin = userId === config.owner_id;
+
+       
+        const isPrivateChat = msg.chat.type === 'private';
 
         if (adminOnlyMode && !isBotAdmin) {
             return bot.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
         }
 
+       
         if (command.config.role === 2 && !isBotAdmin) {
             return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
         }
 
-        if (command.config.role === 1 && !isAdmin && !isBotAdmin) {
+        
+        if (command.config.role === 1 && !isBotAdmin && !isAdmin && !isPrivateChat) {
             return bot.sendMessage(chatId, "Sorry, only group/channel admins can use this command.");
         }
 
@@ -111,13 +117,13 @@ async function executeCommand(bot, command, msg, match) {
 
         cooldowns.set(cooldownKey, now);
 
-
         command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
     } catch (error) {
-        logger(`Error executing command ${command.config.name}: ${error}`);
+        console.error(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
     }
 }
+
 
 bot.onText(new RegExp(`^${config.prefix}help$`), (msg) => {
     let helpMessage = "";
