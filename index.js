@@ -13,17 +13,26 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+let startTime = process.hrtime(); 
+
+function formatUptime(uptime) {
+  const seconds = Math.floor(uptime);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  const remainingSeconds = seconds % 60;
+  const remainingMinutes = minutes % 60;
+
+  return `${hours} hours, ${remainingMinutes} minutes, and ${remainingSeconds} seconds`;
+}
+
 app.get('/uptime', (req, res) => {
-    let currentTime = Date.now();
-    let uptime = currentTime - startTime;
+  const now = process.hrtime(startTime);
+  const uptime = now[0] + (now[1] / 1e9); 
 
-    let days = Math.floor(uptime / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
-
-    res.json({ uptime: `${days} day(s) ${hours} hour(s) ${minutes} minute(s)` });
+  const uptimeString = formatUptime(uptime);
+  res.json({ uptime: uptimeString });
 });
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {});
 
