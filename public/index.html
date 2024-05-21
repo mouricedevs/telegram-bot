@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Telegram Bot Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .dashboard {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .content {
+            text-align: left;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .button:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="bot-name">Bot Name: XaR-V2</h1>
+        <div class="dashboard">
+            <button class="button" onclick="showOwnerInfo()">Owner Info</button>
+            <button class="button" onclick="showSourceCode()">Get Source Code</button>
+            <button class="button" onclick="showBotPing()">Bot Ping</button>
+            <button class="button" onclick="showDashboard()">Dashboard</button>
+        </div>
+        <div id="content" class="content">
+            <p>Welcome to the Bot Dashboard. Click the buttons above to get more information.</p>
+        </div>
+    </div>
+
+    <script>
+        function showOwnerInfo() {
+            document.getElementById('content').innerHTML = `
+                <h2>Owner Information</h2>
+                <p>Name: Samir Œ</p>
+                <p>Contact: <a href="mailto:samir@example.com">samir@example.com</a></p>
+            `;
+        }
+
+        function showSourceCode() {
+            document.getElementById('content').innerHTML = `
+                <h2>Get Source Code</h2>
+                <p>You can get the source code from the following GitHub repository:</p>
+                <p><a href="https://github.com/samirxpikachuio/XaR-V2" target="_blank">GitHub Repository</a></p>
+            `;
+        }
+
+        function showBotPing() {
+            document.getElementById('content').innerHTML = `
+                <h2>Bot Ping</h2>
+                <p>Checking bot ping...</p>
+            `;
+            // Simulate ping check
+            setTimeout(() => {
+                document.getElementById('content').innerHTML = `
+                    <h2>Bot Ping</h2>
+                    <p>Ping: 123ms</p>
+                `;
+            }, 1000);
+        }
+
+        function showDashboard() {
+            document.getElementById('content').innerHTML = `
+                <h2>Bot Dashboard</h2>
+                <p>Uptime: 99.9%</p>
+                <p>Prefix: !</p>
+                <p>Admin: Samir Œ</p>
+                <p>Usage: Moderate</p>
+            `;
+        }
+    </script>
+</body>
+</html>
