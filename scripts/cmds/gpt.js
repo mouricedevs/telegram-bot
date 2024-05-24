@@ -21,10 +21,10 @@ module.exports = {
             const response = await axios.get(apiUrl);
             const generatedText = response.data.message.content;
 
-            bot.sendMessage(chatId, generatedText);
+            bot.sendMessage(chatId, generatedText, { parse_mode: 'Markdown' });
         } catch (error) {
             console.error("Error generating text:", error);
-            bot.sendMessage(chatId, " error ");
+            bot.sendMessage(chatId, "An error occurred while generating text. Please try again later.");
         }
     }
 };

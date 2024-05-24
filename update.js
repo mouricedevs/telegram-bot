@@ -22,16 +22,15 @@ const logger = createGradientLogger();
 
 
 
-const GITHUB_ACCESS_TOKEN = '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';
 const REPO_OWNER = 'samirxpikachuio';
-const REPO_NAME = 'XaR-V2';
+const REPO_NAME = 'XarV2-TG-BOT';
 
 const VERSION_FILE = path.join(__dirname, 'version.txt');
 
 async function syncRepo() {
     try {
         const git = simpleGit(path.join(__dirname));
-        const remoteUrl = `https://${GITHUB_ACCESS_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git`;
+        const remoteUrl = `https://github.com/${REPO_OWNER}/${REPO_NAME}.git`;
 
         await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
 

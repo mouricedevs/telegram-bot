@@ -1,0 +1,33 @@
+{
+  "name": "tinyurl",
+  "version": "1.1.7",
+  "description": "TinyURL.com URL Shortener Node.js Module",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "3.8.11",
+    "gulp-jshint": "1.10.0",
+    "gulp-markdown": "1.0.0"
+  },
+  "scripts": {
+    "main": "node index.js",
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffResc/TinyURL-Node.js.git"
+  },
+  "keywords": [
+    "TinyURL",
+    "url",
+    "short",
+    "shortener"
+  ],
+  "author": "JeffResc",
+  "bugs": {
+    "url": "https://github.com/JeffResc/TinyURL-Node.js/issues"
+  },
+  "homepage": "https://github.com/JeffResc/TinyURL-Node.js",
+  "readmeFile": "README.md",
+  "license": "MIT"
+}

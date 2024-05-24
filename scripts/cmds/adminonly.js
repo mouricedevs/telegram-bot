@@ -14,7 +14,6 @@ module.exports = {
     onStart: async function ({ bot, chatId, msg, args }) {
         const fromId = msg.from.id;
 
-        // Check if the user is the bot owner
         if (fromId !== config.owner_id) {
             return bot.sendMessage(chatId, "Only the bot owner can toggle admin-only mode.");
         }

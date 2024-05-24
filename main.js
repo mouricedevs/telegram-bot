@@ -1,9 +1,25 @@
+
 const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
+const chatGroupsFile = path.join(__dirname, 'chatGroups.json');
+
+const messageCountFile = path.join(__dirname, 'messageCount.json');
+
+
+if (!fs.existsSync(messageCountFile)) {
+    fs.writeFileSync(messageCountFile, JSON.stringify({}), 'utf8');
+}
+
+if (!fs.existsSync(chatGroupsFile)) {
+    fs.writeFileSync(chatGroupsFile, JSON.stringify([]), 'utf8');
+}
+
+
+let chatGroups = JSON.parse(fs.readFileSync(chatGroupsFile, 'utf8'));
 
 
 
@@ -38,7 +54,7 @@ fs.readdirSync('./scripts/cmds').forEach((file) => {
                 command.config.cooldown = 0; 
             }
             commands.push({ ...command, config: { ...command.config, name: command.config.name.toLowerCase() } });
-            
+
             registerCommand(bot, command);
         } catch (error) {
             console.error(`Error loading command from file ${file}: ${error}`);
@@ -48,8 +64,33 @@ fs.readdirSync('./scripts/cmds').forEach((file) => {
 
 function registerCommand(bot, command) {
     const prefixPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
-    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => { 
+    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
         executeCommand(bot, command, msg, match);
+    });
+}
+
+bot.on('callback_query', async (callbackQuery) => {
+    const chatId = callbackQuery.message.chat.id;
+    const userId = callbackQuery.from.id;
+    const data = JSON.parse(callbackQuery.data);
+    const commandName = data.command; 
+
+    const command = commands.find(cmd => cmd.config.name === commandName);
+    if (command && command.onReply) {
+        command.onReply(bot, chatId, userId, data);
+    }
+});
+
+
+function handleInvalidCommand(bot) {
+    const prefixPattern = `^${config.prefix}(\\S*)`;
+    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
+        const inputCommand = match[1].toLowerCase();
+        const isValidCommand = commands.some(cmd => cmd.config.name === inputCommand);
+        
+        if (!isValidCommand) {
+            bot.sendMessage(msg.chat.id, `The command you are using does not exist, type ${config.prefix}help to see all available commands.`);
+        }
     });
 }
 
@@ -59,7 +100,6 @@ async function isUserAdmin(bot, chatId, userId) {
         const chatAdministrators = await bot.getChatAdministrators(chatId);
         return chatAdministrators.some(admin => admin.user.id === userId);
     } catch (error) {
-        logger('Error checking if user is admin:', error);
         return false;
     }
 }
@@ -87,21 +127,20 @@ async function executeCommand(bot, command, msg, match) {
         const isAdmin = await isUserAdmin(bot, chatId, userId);
         const isBotAdmin = userId === config.owner_id;
 
-       
-        const isPrivateChat = msg.chat.type === 'private';
+
 
         if (adminOnlyMode && !isBotAdmin) {
             return bot.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
         }
 
-       
+
         if (command.config.role === 2 && !isBotAdmin) {
             return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
         }
 
-        
-        if (command.config.role === 1 && !isBotAdmin && !isAdmin && !isPrivateChat) {
-            return bot.sendMessage(chatId, "Sorry, only group/channel admins can use this command.");
+
+        if (command.config.role === 1 && !isBotAdmin && !isAdmin) {
+            return bot.sendMessage(chatId, "This command is only available to groups admins");
         }
 
         const cooldownKey = `${command.config.name}-${userId}`;
@@ -117,7 +156,7 @@ async function executeCommand(bot, command, msg, match) {
 
         cooldowns.set(cooldownKey, now);
 
-        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg });
+        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg, match });
     } catch (error) {
         console.error(`Error executing command ${command.config.name}: ${error}`);
         bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
@@ -125,68 +164,78 @@ async function executeCommand(bot, command, msg, match) {
 }
 
 
-bot.onText(new RegExp(`^${config.prefix}help$`), (msg) => {
-    let helpMessage = "";
-    const categories = {};
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    const userId = msg.from.id;
 
-    commands.forEach((command) => {
-        const category = command.config.category || "Uncategorized";
-        if (!categories[category]) {
-            categories[category] = [];
-        }
-        categories[category].push(command.config.name);
-    });
-
-    Object.keys(categories).forEach((category) => {
-        helpMessage += `\n╭──『 ${category} 』\n`;
-        helpMessage += `✧${categories[category].join(' ✧')}\n`;
-        helpMessage += "╰───────────◊\n";
-    });
-
-    bot.sendMessage(msg.chat.id, helpMessage);
-});
-
-bot.onText(new RegExp(`^${config.prefix}help (.+)$`), (msg, match) => {
-    const commandName = match[1].trim().toLowerCase(); 
-    const command = commands.find((cmd) => cmd.config.name === commandName);
-
-    if (command) {
-        const infoMessage = generateCommandInfoMessage(command);
-        bot.sendMessage(msg.chat.id, infoMessage);
-    } else {
-        bot.sendMessage(msg.chat.id, `Command "${commandName}" not found.`);
-    }
-});
-
-bot.onText(new RegExp(`^${config.prefix}unsend\\b(.*)$`, 'i'), async (msg, match) => {
     try {
 
-        if (msg.reply_to_message) {
-            const chatId = msg.chat.id;
-            const messageIDToDelete = msg.reply_to_message.message_id;
-            await bot.deleteMessage(chatId, messageIDToDelete);
-           
-        } else {
-            await bot.sendMessage(msg.chat.id, "Please reply to the message you want to delete.");
+        const data = fs.readFileSync(messageCountFile);
+        const messageCount = JSON.parse(data);
+
+        if (!messageCount[chatId]) {
+            messageCount[chatId] = {};
         }
+        if (!messageCount[chatId][userId]) {
+            messageCount[chatId][userId] = 0;
+        }
+
+        messageCount[chatId][userId] += 1;
+
+        fs.writeFileSync(messageCountFile, JSON.stringify(messageCount), 'utf8');
     } catch (error) {
-        logger('Error deleting message:', error);
-        await bot.sendMessage(msg.chat.id, 'An error occurred while trying to delete the message.');
+        logger('[ERROR]', error);
     }
 });
 
+bot.on('new_chat_members', (msg) => {
+    if (!config.greetNewMembers || !config.greetNewMembers.enabled) return;
 
-function generateCommandInfoMessage(command) {
-    let infoMessage = `─── ${command.config.name.toUpperCase()} ────⭓\n`;
-    infoMessage += `» Author: ${command.config.author}\n`;
-    infoMessage += `» Description: ${command.config.description}\n`;
-    if (command.config.usage) {
-        infoMessage += `─── USAGE ────⭓\n`;
-        infoMessage += `» ${command.config.usage}\n`;
+    const chatId = msg.chat.id;
+    const newMembers = msg.new_chat_members;
+    const gifUrl = config.greetNewMembers.gifUrl;
+
+    newMembers.forEach(member => {
+        const firstName = member.first_name;
+        const lastName = member.last_name || '';
+        const fullName = `${firstName} ${lastName}`.trim();
+
+        const welcomeMessage = `Welcome, ${fullName}! We're glad to have you here.`;
+
+        bot.sendAnimation(chatId, gifUrl)
+            .then(() => {
+                bot.sendMessage(chatId, welcomeMessage);
+            })
+            .catch(error => {
+            logger("Error sending GIF:", error);
+                bot.sendMessage(chatId, welcomeMessage);
+            });
+    });
+});
+
+bot.on('new_chat_members', (msg) => {
+    const chatId = msg.chat.id;
+    if (!chatGroups.includes(chatId)) {
+        chatGroups.push(chatId);
+        fs.writeFileSync(chatGroupsFile, JSON.stringify(chatGroups, null, 2));
     }
+});
 
-    return infoMessage;
-}
+bot.on('left_chat_member', (msg) => {
+    const chatId = msg.chat.id;
+    if (chatGroups.includes(chatId)) {
+        chatGroups = chatGroups.filter(id => id !== chatId);
+        fs.writeFileSync(chatGroupsFile, JSON.stringify(chatGroups, null, 2));
+    }
+});
+
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    if (!chatGroups.includes(chatId)) {
+        chatGroups.push(chatId);
+        fs.writeFileSync(chatGroupsFile, JSON.stringify(chatGroups, null, 2));
+    }
+});
 
 bot.on('polling_error', (error) => {
     logger('Polling error:', error);
@@ -195,6 +244,8 @@ bot.on('polling_error', (error) => {
 bot.on('polling_started', () => {
     logger('Bot polling started');
 });
+
+handleInvalidCommand(bot);
 
 const gradient = require('gradient-string');
 
@@ -211,28 +262,6 @@ function createGradientLogger() {
 
 const logger = createGradientLogger();
 
-function loadingAnimation(message) {
-    const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
-    let frameIndex = 0;
-    let timer;
-    let percentage = 0;
-
-    function animate() {
-        process.stdout.clearLine(0);
-        process.stdout.cursorTo(0);
-        logger(`\n[ ${frames[frameIndex]} ${message} ${percentage}% ]`);
-        frameIndex = (frameIndex + 1) % frames.length;
-        percentage += 10;
-        if (percentage > 100) {
-            percentage = 100;
-        }
-    }
-
-    timer = setInterval(animate, 250);
-    return timer;
-}
-
-function logBotName() {
     const botName = `  
 ██   ██  █████  ██████  ██    ██ ██████  
  ██ ██  ██   ██ ██   ██ ██    ██      ██ 
@@ -243,19 +272,11 @@ function logBotName() {
 
     logger(botName);
     logger('[ Made by Samir Œ ]');
-}
-
-const loadingTimer = loadingAnimation('XarV2 loaded:');
-
-setTimeout(() => {
-    clearInterval(loadingTimer);
-    logBotName();
-}, 3000);
 
 
-const GITHUB_ACCESS_TOKEN = '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';
+
 const REPO_OWNER = 'samirxpikachuio';
-const REPO_NAME = 'XaR-V2';
+const REPO_NAME = 'XarV2-TG-BOT';
 
 const VERSION_FILE = path.join(__dirname, 'version.txt');
 
@@ -267,24 +288,20 @@ function loadLastCommitSha() {
     } else {
                lastCommitSha = '123456789';
         fs.writeFileSync(VERSION_FILE, lastCommitSha);
-        logger('[ Version file not found. ]\n\n[ Created version.txt ]');
+        logger('[ Version file not found. ]\n\n [ Created version.txt ]');
     }
 }
 
 async function checkLatestCommit() {
     try {
-        const response = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`, {
-            headers: {
-                'Authorization': `token ${GITHUB_ACCESS_TOKEN}`
-            }
-        });
+        const response = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`);
         const latestCommit = response.data[0];
         if (latestCommit.sha !== lastCommitSha) {
             const previousCommitSha = lastCommitSha;
             const newCommitSha = latestCommit.sha;
-            logger(`\n[ New Update detected ]\n\n[ Current bot version: ${previousCommitSha} ]\n\n[ New version: ${newCommitSha} ]\n\n[ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
+            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousCommitSha} ]\n\n [ New version: ${newCommitSha} ]\n\n [ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
         } else {
-            
+
         }
     } catch (error) {
         logger('Error checking latest update contract https://t.me/Samir_OE', error);
@@ -296,3 +313,4 @@ cron.schedule('* * * * *', checkLatestCommit);
 
 
 module.exports = bot;
+

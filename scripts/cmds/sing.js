@@ -10,24 +10,24 @@ module.exports = {
     name: "sing",
     author: "Samir Œ",
     description: "Search and download music from YouTube",
-    category: "YouTube sing",
-    usage: "music [title]",
+    category: "song",
+    usage: "song [title]",
     usePrefix: true,
-    role: 1
+    role: 0
 
   },
   onStart: async ({ bot, chatId, args }) => {
 
-    const searchTerm = args.join(" ");
+    const search = args.join(" ");
 
     try {
-      if (!searchTerm) {
+      if (!search) {
         return bot.sendMessage(chatId, `Please provide a search query. Usage: /sing song name`);
       }
 
-      bot.sendMessage(chatId, `🔍 Searching for song: ${searchTerm}`);
+      bot.sendMessage(chatId, `🔍 Searching for song: ${search}`);
 
-      const searchResults = await yts(searchTerm);
+      const searchResults = await yts(search);
       if (!searchResults.videos.length) {
         return bot.sendMessage(chatId, "No music found for your query.");
       }

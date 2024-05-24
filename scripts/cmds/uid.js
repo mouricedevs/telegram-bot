@@ -10,8 +10,6 @@ module.exports = {
     },
     onStart: async function ({ bot, chatId, userId, username, msg }) {
         let targetUserId, targetUsername;
-
-        // Check if the message is a reply
         if (msg.reply_to_message) {
             targetUserId = msg.reply_to_message.from.id;
             targetUsername = msg.reply_to_message.from.username;

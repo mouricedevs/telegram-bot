@@ -1,5 +1,4 @@
 
-
 module.exports = {
     config: {
         name: "eval",
@@ -29,7 +28,7 @@ module.exports = {
 
  bot.sendMessage(adminId, `Result: ${result}`);
 
-            
+
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, `Error: ${error.message}`);
