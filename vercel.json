@@ -1,6 +1,6 @@
 {
   "version": 2,
-   "name": "APIs",
+   "name": "telegram bot",
   "builds": [
     { "src": "./index.js", "use": "@vercel/node" }
   ],
