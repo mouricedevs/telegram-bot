@@ -1,4 +1,4 @@
-# XarV2-TG-BOT
+# XarV2
 
 XarV2-TG-BOT is a versatile Telegram bot project designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
 
