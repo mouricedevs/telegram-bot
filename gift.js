@@ -1,13 +1,13 @@
 
 const TelegramBot = require('node-telegram-bot-api');
-const config = require('config.json');
+const config = require('./gift/config.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, 'grpchats.json');
+const chatGroupsFile = path.join(__dirname, './gift/grpchats.json');
 
-const messageCountFile = path.join(__dirname, 'msgscount.json');
+const messageCountFile = path.join(__dirname, './gift/msgscount.json');
 
 
 if (!fs.existsSync(messageCountFile)) {
