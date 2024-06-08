@@ -19,20 +19,20 @@ module.exports = {
 
       const categories = {};
       const commands = {};
-      const categorizedCommand = {};
+      const categorizedCommands = {};
 
       for (const file of files) {
         const command = require(path.join(commandsDir, file));
-        const category = command.config.category || 'Uncategorized';
+        const category = command.config.category || 'categorized';
 
         if (!categories[category]) {
           categories[category] = [];
-          categorizedCommand[category] = [];
+          categorizedCommands[category] = [];
         }
 
         categories[category].push(command.config.name);
         commands[command.config.name] = command.config;
-        categorizedCommand[category].push(command.config.name);
+        categorizedCommands[category].push(command.config.name);
       }
 
       if (match && match[1] && match[1].trim()) {
@@ -48,13 +48,10 @@ module.exports = {
       } else {
         let helpMessage = '';
 
-        for (const category in categorizedCommand) {
-          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n`;
-          helpMessage += "┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n";
-          helpMessage += "╰════════════════⊷\n\n";
-          helpMessage += `╭──ᴛʜɪs ɪs ᴠᴇʀsɪᴏɴ 1.0.0\n\n`;
+        for (const category in categorizedCommands) {
+          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:`;
           helpMessage += `╭──✧『 ${category} 』✧\n`;
-          helpMessage += `✧.${categorizedCommand[category].join('✧.')}\n`;
+          helpMessage += `✧.${categorizedCommands[category].join('✧.')}\n`;
           helpMessage += "╰───────────⊷\n";
         }
 
