@@ -19,7 +19,7 @@ module.exports = {
 
       const categories = {};
       const commands = {};
-      const categorizedCommands = {};
+      const categorizedCommand = {};
 
       for (const file of files) {
         const command = require(path.join(commandsDir, file));
@@ -27,12 +27,12 @@ module.exports = {
 
         if (!categories[category]) {
           categories[category] = [];
-          categorizedCommands[category] = [];
+          categorizedCommand[category] = [];
         }
 
         categories[category].push(command.config.name);
         commands[command.config.name] = command.config;
-        categorizedCommands[category].push(command.config.name);
+        categorizedCommand[category].push(command.config.name);
       }
 
       if (match && match[1] && match[1].trim()) {
@@ -48,17 +48,21 @@ module.exports = {
       } else {
         let helpMessage = '';
 
-        for (const category in categorizedCommands) {
-          helpMessage += `╭──『 ${category} 』\n`;
-          helpMessage += `✧ .${categorizedCommands[category].join(' .')}\n\n`;
-          helpMessage += "╰───────────◊\n";
+        for (const category in categorizedCommand) {
+          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n`;
+          helpMessage += "┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n";
+          helpMessage += "╰════════════════⊷\n\n";
+          helpMessage += `╭──ᴛʜɪs ɪs ᴠᴇʀsɪᴏɴ 1.0.0\n\n`;
+          helpMessage += `╭──✧『 ${category} 』✧\n`;
+          helpMessage += `✧.${categorizedCommand[category].join('✧.')}\n`;
+          helpMessage += "╰───────────⊷\n";
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
       }
     } catch (error) {
-      console.error('Error generating help message:', error);
-      await bot.sendMessage(msg.chat.id, 'An error occurred while generating the help message.');
+      console.error('Error generating menu message:', error);
+      await bot.sendMessage(msg.chat.id, 'An error occurred while generating the menu message.');
     }
   }
 };
