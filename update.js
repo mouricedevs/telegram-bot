@@ -42,7 +42,7 @@ async function syncRepo() {
 
         fs.writeFileSync(VERSION_FILE, latestCommitSha);
 
-        logger('[ Repository synchronized with the latest version. ]');
+        logger('[ Repository synchronized to the latest version. ]');
         logger(`Current version: ${latestCommitSha}`);
     } catch (error) {
     logger('Error synchronizing repository:', error);
