@@ -1,6 +1,6 @@
 
 const TelegramBot = require('node-telegram-bot-api');
-const config = require('gifted.json');
+const config = require('config.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
