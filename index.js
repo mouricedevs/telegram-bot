@@ -5,20 +5,20 @@ const axios = require('axios')
 const app = express();
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'gifted')));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'gifted', 'gifted.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {});
 
 
-//startproject function is taken from goat-bot v2
-function startProject() {
-    const child = spawn("node", ["main.js"], {
+//startGifted function is taken from gifted-md v4.5.0
+function startGifted() {
+    const child = spawn("node", ["gift.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
@@ -26,11 +26,11 @@ function startProject() {
 
     child.on("close", (code) => {
         if (code === 2) {
-            console.log("Restarting Project...");
-            startProject();
+            console.log("Restarting Giftef...");
+            startGifted();
         }
     });
 }
 
 
-startProject();
+startGifted();
