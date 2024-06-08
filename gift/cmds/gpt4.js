@@ -19,7 +19,7 @@ module.exports = {
         const searchMessage = await bot.sendMessage(chatId, `🔍 Analysing Response: ${query}`);
 
         try {
-            const response = await axios.get(`https://api.maher-zubair.tech/ai/chatgpt4?q=${encodeURIComponent(query)}`);
+            const response = await axios.get(`https://aemt.me/gpt4?text=${encodeURIComponent(query)}`);
             const { gifted } = response.data;
 
             await bot.sendMessage(chatId, `GIFTED CHAT GPT4:\n\n ${gifted}`);
