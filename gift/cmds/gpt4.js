@@ -12,10 +12,12 @@ module.exports = {
         role: 0
     },
 
-    const gptA = async(client, m, text) => {
+    onStart: async function ({ bot, chatId, args }) {
+        const query = args.join(" ");
 
-if (!text) return m.reply("Provide text...");
-
+        if (!query) {
+            return bot.sendMessage(chatId, `Please provide your query. Usage: .gpt4 [some_text]`);
+	}
 
 
 
@@ -39,4 +41,3 @@ GPT.chatCompletion(messages)
 
 }
 
-export default gptA;
