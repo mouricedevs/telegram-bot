@@ -1,14 +1,14 @@
 {
-  "prefix": "/",
+  "prefix": ".",
   "greetNewMembers": {
         "enabled": true,
-        "gifUrl": "https://tinyurl.com/2xzaydex"
+        "gifUrl": "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGE4enB5eXFsZWZ5cmhucmI4YTZoZnMyYjVnbzd2ZTN6c3czYWJ1eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WiIuC6fAOoXD2/giphy.gif"
   },
   "port": "8080",
-  "owner": "Samir Œ",
-  "owner_id": 1472439428,
-  "token": "",
-  "age": "14",
+  "owner": "Gifted Tech",
+  "owner_id": 7267479440,
+  "token": "7267479440:AAFl4FCnAe1QfMQepb89VOLG1DYF5gJPNR0",
+  "age": "19",
   "gender": "male",
-  "country": "Bangladesh"
+  "country": "Kenya"
 }
