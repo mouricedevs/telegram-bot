@@ -3,9 +3,9 @@ const path = require('path');
 
 module.exports = {
   config: {
-    name: 'help',
+    name: 'menu',
     description: 'Show available commands',
-    usage: '.help [command_name]',
+    usage: '.menu [command_name]',
     author: 'Gifted Tech',
     category: 'Utility',
     role: 0,
@@ -50,7 +50,7 @@ module.exports = {
 
         for (const category in categorizedCommands) {
           helpMessage += `╭──『 ${category} 』\n`;
-          helpMessage += `✧${categorizedCommands[category].join(' ✧')}\n`;
+          helpMessage += `✧ .${categorizedCommands[category].join(' .')}\n\n`;
           helpMessage += "╰───────────◊\n";
         }
 
