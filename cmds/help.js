@@ -5,8 +5,8 @@ module.exports = {
   config: {
     name: 'help',
     description: 'Show available commands',
-    usage: '/help [command_name]',
-    author: 'Samir OE',
+    usage: '.help [command_name]',
+    author: 'Gifted Tech',
     category: 'Utility',
     role: 0,
     cooldown: 0,
