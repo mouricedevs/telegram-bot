@@ -1,13 +1,13 @@
 
 const TelegramBot = require('node-telegram-bot-api');
-const config = require('../themes/gifted.json');
+const config = require('..l/themes/gifted.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, '../grpchats.json');
+const chatGroupsFile = path.join(__dirname, 'grpchats.json');
 
-const messageCountFile = path.join(__dirname, '../msgscount.json');
+const messageCountFile = path.join(__dirname, 'msgscount.json');
 
 
 if (!fs.existsSync(messageCountFile)) {
@@ -43,10 +43,10 @@ async function fetchGbanList() {
 fetchGbanList();
 cron.schedule('*/1 * * * *', fetchGbanList);
 
-fs.readdirSync('../cmds').forEach((file) => {
+fs.readdirSync('./cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
-            const command = require(`../cmds/${file}`);
+            const command = require(`./cmds/${file}`);
             if (typeof command.config.role === 'undefined') {
                 command.config.role = 0; 
             }
