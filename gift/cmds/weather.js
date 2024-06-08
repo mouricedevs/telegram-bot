@@ -5,7 +5,7 @@ module.exports = {
         name: "weather",
         author: "Gifted Tech",
         description: "Fetch and display weather information",
-        category: "information",
+        category: "ɪɴғᴏʀᴍᴀᴛɪᴏʙ",
         usage: "weather <city>",
         usePrefix: true,
         role: 0
