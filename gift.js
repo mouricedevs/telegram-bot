@@ -43,10 +43,10 @@ async function fetchGbanList() {
 fetchGbanList();
 cron.schedule('*/1 * * * *', fetchGbanList);
 
-fs.readdirSync('cmds').forEach((file) => {
+fs.readdirSync('./gift/cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
-            const command = require(`cmds/${file}`);
+            const command = require(`./gift/cmds/${file}`);
             if (typeof command.config.role === 'undefined') {
                 command.config.role = 0; 
             }
