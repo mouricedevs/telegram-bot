@@ -46,10 +46,10 @@ module.exports = {
           await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
         }
       } else {
-        let helpMessage = '';
+        let helpMessage = 'GIFTED-MD';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category] \n╰───────────⊷\n`;
+          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category].join(' ✧')}\n`╰───────────⊷\n`;
           
         }
 
