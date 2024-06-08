@@ -1,4 +1,4 @@
-# XarV2
+# tg-bot
 
 XarV2 BOT is a versatile Telegram bot project designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
 
@@ -20,8 +20,8 @@ XarV2 BOT is a versatile Telegram bot project designed to automate tasks, respon
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/samirxpikachuio/Xar-V2.git
-   cd Xar-V2
+   git clone https://github.com/mouricedevs/tg-bot.git
+   cd tg-bot
    ```
    
 2. **Install Dependencies**:
@@ -52,26 +52,4 @@ To interact with the bot, users can send commands and messages. The bot will res
 - `/start` - Greets the user and provides information about the bot.
 - `/help` - Displays a list of available commands and their descriptions.
 - `/weather` - Retrieves weather information for a specific location.
-
-## Contributing
-
-We welcome contributions! To contribute to the project, please follow these steps:
-
-1. **Report Issues**: Submit bug reports or feature requests as issues on the [GitHub repository](https://github.com/samirxpikachuio/XarV2/issues).
-2. **Fork the Repository**: Create your own fork and make a new branch for your changes.
-3. **Submit a Pull Request**: Provide a clear description of your changes and the issues they address.
-
-
-
-
-## Authors
-
-• **Samir Œ** (Lead Author):
-[Github](https://github.com/samirxpikachuio) -
-[Facebook]((https://www.facebook.com/samirxpikachuio)) -
-[Telegram](https://t.me/SamirOE) -
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
