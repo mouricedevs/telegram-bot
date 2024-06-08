@@ -7,7 +7,7 @@ module.exports = {
     description: 'Show available commands',
     usage: '.menu [command_name]',
     author: 'Gifted Tech',
-    category: 'Utility',
+    category: 'ᴜᴛɪʟɪᴛʏ',
     role: 0,
     cooldown: 0,
     usePrefix: true
@@ -46,12 +46,12 @@ module.exports = {
           await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
         }
       } else {
-        let helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n';
+        let helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\n';
 
         for (const category in categorizedCommands) {
           helpMessage += `╭──『 ${category} 』\n`;
           helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
-          helpMessage += "╰───────────◊\n";
+          helpMessage += "╰───────────◊\n\n";
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
