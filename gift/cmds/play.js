@@ -10,7 +10,7 @@ module.exports = {
     name: "play",
     author: "Gifted Tech",
     description: "Search and download music from YouTube",
-    category: "song",
+    category: "ᴅᴏᴡɴʟᴏᴀᴅᴇʀ",
     usage: "play [title]",
     usePrefix: true,
     role: 0
