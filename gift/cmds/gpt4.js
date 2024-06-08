@@ -21,9 +21,10 @@ module.exports = {
         }
 
         try {
-            const apiUrl = `https://api.vihangayt.com/ai/chatgpt-4?q=${encodeURIComponent}`;
-            const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
-            await bot.sendMesage(chatId, response);
+            async function getBotResponse(prompt) {
+            const response = await fetch(`https://api.vihangayt.com/ai/chatgpt-4?q=${encodeURIComponent(prompt)}`);
+            const data = await response.json();
+            return data.answer;
         } catch (error) {
             console.error('Error communicating with Api', error);
             bot.sendMessage(chatId, 'Sorry, an error occurred while communicating with gpt4 APi');
