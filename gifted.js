@@ -18,7 +18,7 @@ app.listen(PORT, () => {});
 
 //startGifted function is taken from gifted-md v4.5.0
 function startGifted() {
-    const child = spawn("node", ["gift/gifted.js"], {
+    const child = spawn("node", ["gift.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
