@@ -5,7 +5,7 @@ module.exports = {
         name: "ss",
         author: "Gifted Tech",
         description: "Get phone sized screenshot",
-        category: "sᴇᴀʀᴄʜ",
+        category: "ᴜᴛɪʟɪᴛʏ",
         usage: "<url_link>",
         usePrefix: true
     },
