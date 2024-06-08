@@ -19,7 +19,7 @@ module.exports = {
         const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for lyrics: ${query}`);
 
         try {
-            const response = await axios.get(`https://api.maher-zubair.tech/search/lyrics?q=${encodeURIComponent(query)}`);
+            const response = await axios.get(`https://apis-samir.onrender.com/lyrics?query=${encodeURIComponent(query)}`);
             const { title, artist, lyrics, image } = response.data;
 
             await bot.sendMessage(chatId, `Lyrics by Gifted-Md:\n\n ${lyrics}\n\nSong Name: ${title}\n\nWriter: ${artist}`);
