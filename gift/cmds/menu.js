@@ -49,7 +49,7 @@ module.exports = {
         let helpMessage = '';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category].join('✧.')}\n╰───────────⊷\n`;
+          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category] \n╰───────────⊷\n`;
           
         }
 
