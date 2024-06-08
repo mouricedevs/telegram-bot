@@ -3,7 +3,7 @@ module.exports = {
     name: "delete",
     author: "Gifted Tech",
     description: "Deletes a message that the bot posted in reply to.",
-    category: "Utility",
+    category: "ᴜᴛɪʟɪᴛʏ",
     usage: ".delete (reply to the message you want to delete)",
     usePrefix: true
   },
