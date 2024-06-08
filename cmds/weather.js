@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
     config: {
         name: "weather",
-        author: "Samir Œ",
+        author: "Gifted Tech",
         description: "Fetch and display weather information",
         category: "information",
         usage: "weather <city>",
