@@ -21,7 +21,7 @@ module.exports = {
         }
 
         try {
-            async function getBotResponse(prompt) {
+        
             const response = await fetch(`https://api.vihangayt.com/ai/chatgpt-4?q=${encodeURIComponent(prompt)}`);
             const data = await response.json();
             return data.answer;
