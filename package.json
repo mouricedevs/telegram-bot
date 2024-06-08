@@ -1,16 +1,16 @@
 {
-  "name": "telegram-Bot",
+  "name": "telegram-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "gifted.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "node gifted.js",
     "restart": "npm run stop && npm run start",
     "stop": "pkill -f node"
   },
   "keywords": [],
-  "author": "Samir Œ",
+  "author": "Gifted Tech",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^18.0.6",
