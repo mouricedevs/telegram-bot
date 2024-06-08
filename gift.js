@@ -89,7 +89,7 @@ function handleInvalidCommand(bot) {
         const isValidCommand = commands.some(cmd => cmd.config.name === inputCommand);
         
         if (!isValidCommand) {
-            bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}help to see all available commands. \nRegards, \nGifted Tech, \n(Owner& Developer)`);
+            bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}help to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner& Developer)`);
         }
     });
 }
