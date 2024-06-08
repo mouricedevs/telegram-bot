@@ -18,7 +18,7 @@ app.listen(PORT, () => {});
 
 //startGifted function is taken from gifted-md v4.5.0
 function startGifted() {
-    const child = spawn("node", ["lib/gifted.js"], {
+    const child = spawn("node", ["gift/gifted.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
@@ -26,7 +26,7 @@ function startGifted() {
 
     child.on("close", (code) => {
         if (code === 2) {
-            console.log("Restarting Giftef...");
+            console.log("Restarting Gifted...");
             startGifted();
         }
     });
