@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 1,
    "name": "telegram bot",
   "builds": [
-    { "src": "./index.js", "use": "@vercel/node" }
+    { "src": "./gifted.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/" }
