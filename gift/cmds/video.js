@@ -18,7 +18,7 @@ module.exports = {
     const searchTerm = args.join(" ");
 
     if (!searchTerm) {
-      return bot.sendMessage(chatId, `Please provide a search query. Usage: /video [title]`);
+      return bot.sendMessage(chatId, `Please provide a search query. Usage: .video [title]`);
     }
 
     const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for video: ${searchTerm}`);
