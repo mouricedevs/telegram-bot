@@ -49,8 +49,9 @@ module.exports = {
         let helpMessage = 'GIFTED-MD';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category].join(' ✧')}\n`╰───────────⊷\n`;
-          
+          helpMessage += `╭──『 ${category} 』\n`;
+          helpMessage += `✧.${categorizedCommands[category].join(' ✧.')}\n`;
+          helpMessage += "╰───────────◊\n";
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
