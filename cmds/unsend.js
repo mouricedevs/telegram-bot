@@ -1,10 +1,10 @@
 module.exports = {
   config: {
-    name: "unsend",
-    author: "Samir Œ",
+    name: "delete",
+    author: "Gifted Tech",
     description: "Deletes a message that the bot posted in reply to.",
     category: "Utility",
-    usage: "/unsend (reply to the message you want to delete)",
+    usage: ".delete (reply to the message you want to delete)",
     usePrefix: true
   },
   onStart: async function ({ bot, msg }) {
