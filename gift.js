@@ -32,7 +32,7 @@ const cooldowns = new Map();
 
 async function fetchGbanList() {
     try {
-        const response = await axios.get('https://assets.giftedtechnexus.co.ke/json/tg-bot/gban.json');
+        const response = await axios.get('https://raw.githubusercontent.com/mouricedevs/Gban/main/Gban.json');
         gbanList = response.data.map(user => user.ID);
     } catch (error) {
         logger('Error fetching gban list:', error);
