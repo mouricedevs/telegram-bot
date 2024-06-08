@@ -3,9 +3,9 @@ const axios = require("axios");
 module.exports = {
     config: {
         name: "lyrics",
-        author: "Samir Œ",
+        author: "Gifted Tech",
         description: "Get lyrics of a song",
-        category: "music",
+        category: "sᴇᴀʀᴄʜ",
         usage: "<song_name>",
         usePrefix: true
     },
@@ -13,7 +13,7 @@ module.exports = {
         const query = args.join(" ");
 
         if (!query) {
-            return bot.sendMessage(chatId, `Please provide a song name. Usage: /lyrics [song_name]`);
+            return bot.sendMessage(chatId, `Please provide a song name. Usage: .lyrics [song_name]`);
         }
 
         const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for lyrics: ${query}`);
