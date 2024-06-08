@@ -10,7 +10,7 @@ module.exports = {
     name: "video",
     author: "Gifted Tech",
     description: "Search and download video from YouTube",
-    category: "video",
+    category: "ᴅᴏᴡɴʟᴏᴀᴅᴇʀ",
     usage: "video [title]",
     usePrefix: true
   },
