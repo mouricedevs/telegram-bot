@@ -28,7 +28,6 @@
     "simple-git": "^3.24.0",
     "telegram-inline-calendar": "^1.7.0",
     "tinyurl": "^1.1.7",
-    "g4f": "^1.1.0",
     "yt-search": "^2.11.0",
     "ytdl-core": "^4.11.5"
   }
