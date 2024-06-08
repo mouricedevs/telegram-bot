@@ -1,5 +1,5 @@
 const axios = require('axios');
-const G4F = require('g5f');
+const G4F = require('g4f');
 
 module.exports = {
     config: {
