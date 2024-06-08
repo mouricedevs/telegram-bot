@@ -8,7 +8,7 @@ const ID3Writer = require('node-id3');
 module.exports = {
   config: {
     name: "video",
-    author: "Samir Œ",
+    author: "Gifted Tech",
     description: "Search and download video from YouTube",
     category: "video",
     usage: "video [title]",
