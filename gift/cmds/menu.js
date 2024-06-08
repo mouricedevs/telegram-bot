@@ -49,10 +49,8 @@ module.exports = {
         let helpMessage = '';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n`;
-          helpMessage += `╭──✧『 ${category} 』✧\n`;
-          helpMessage += `✧.${categorizedCommands[category].join('✧.')}\n`;
-          helpMessage += "╰───────────⊷\n";
+          helpMessage += `╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷\n┃❍  ᴏᴡɴᴇʀ: Gifted Tech\n╰════════════════⊷\n\nɢɪғᴛᴇᴅ-ᴍᴅ ᴄᴏᴍᴍᴀɴᴅs:\n\n╭──✧『 ${category} 』✧\n✧.${categorizedCommands[category].join('✧.')}\n╰───────────⊷\n`;
+          
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
