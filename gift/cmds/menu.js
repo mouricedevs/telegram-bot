@@ -50,7 +50,7 @@ module.exports = {
 
         for (const category in categorizedCommands) {
           helpMessage += `╭──『 ${category} 』\n`;
-          helpMessage += `✧ .${categorizedCommands[category].join('✧ .')}\n`;
+          helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
           helpMessage += "╰───────────◊\n";
         }
 
