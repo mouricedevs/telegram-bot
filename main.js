@@ -1,13 +1,13 @@
 
 const TelegramBot = require('node-telegram-bot-api');
-const config = require('./config.json');
+const config = require('./themes/gifted.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, 'chatGroups.json');
+const chatGroupsFile = path.join(__dirname, 'grpchats.json');
 
-const messageCountFile = path.join(__dirname, 'messageCount.json');
+const messageCountFile = path.join(__dirname, 'msgscount.json');
 
 
 if (!fs.existsSync(messageCountFile)) {
@@ -32,7 +32,7 @@ const cooldowns = new Map();
 
 async function fetchGbanList() {
     try {
-        const response = await axios.get('https://raw.githubusercontent.com/mouricedevs/telegram-bot/main/gban.json');
+        const response = await axios.get('./gban.json');
         gbanList = response.data.map(user => user.ID);
     } catch (error) {
         logger('Error fetching gban list:', error);
@@ -43,10 +43,10 @@ async function fetchGbanList() {
 fetchGbanList();
 cron.schedule('*/1 * * * *', fetchGbanList);
 
-fs.readdirSync('./scripts/cmds').forEach((file) => {
+fs.readdirSync('./cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
-            const command = require(`./scripts/cmds/${file}`);
+            const command = require(`./cmds/${file}`);
             if (typeof command.config.role === 'undefined') {
                 command.config.role = 0; 
             }
@@ -263,20 +263,16 @@ function createGradientLogger() {
 const logger = createGradientLogger();
 
     const botName = `  
-██   ██  █████  ██████  ██    ██ ██████  
- ██ ██  ██   ██ ██   ██ ██    ██      ██ 
-  ███   ███████ ██████  ██    ██  █████  
- ██ ██  ██   ██ ██   ██  ██  ██  ██      
-██   ██ ██   ██ ██   ██   ████   ███████ 
+𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗧𝗚 𝗕𝗢𝗧 
 `;
 
     logger(botName);
-    logger('[ Made by Samir Œ ]');
+    logger('[ Made by Gifted Tech ]');
 
 
 
-const REPO_OWNER = 'samirxpikachuio';
-const REPO_NAME = 'XaR-V2';
+const REPO_OWNER = 'mouricedevs';
+const REPO_NAME = 'telegram-bot';
 
 const VERSION_FILE = path.join(__dirname, 'version.txt');
 
@@ -304,7 +300,7 @@ async function checkLatestCommit() {
 
         }
     } catch (error) {
-        logger('Error checking latest update contract https://t.me/Samir_OE', error);
+        logger('Error checking latest update contact https://t.me/giftedmd', error);
     }
 }
 
