@@ -1,4 +1,5 @@
 const axios = require('axios');
+const G4F = require('g5f');
 
 module.exports = {
     config: {
@@ -11,23 +12,31 @@ module.exports = {
         role: 0
     },
 
-    onStart: async function ({ bot, chatId, args }) {
-        const input = args.join(' ');
-        const [prompt] = input.split('|').map(s => s.trim());
+    const gptA = async(client, m, text) => {
 
-        if (!prompt) {
-            bot.sendMessage(chatId, "Please provide your query");
-            return;
-        }
+if (!text) return m.reply("Provide text...");
 
-        try {
-        
-            const response = await fetch(`https://api.vihangayt.com/ai/chatgpt-4?q=${encodeURIComponent(prompt)}`);
-            const data = await response.json();
-            return data.answer;
-        } catch (error) {
-            console.error('Error communicating with Api', error);
-            bot.sendMessage(chatId, 'Sorry, an error occurred while communicating with gpt4 APi');
-        }
-    }
-};
+
+
+
+const GPT = new G4F(); 
+
+const messages = [
+	{ role: "system", content: "You're an AI.."},
+	{ role: "user", content: text}
+];
+
+
+GPT.chatCompletion(messages)
+  .then(result => {
+    console.log(result);
+    m.reply(result);
+  });
+
+
+
+
+
+}
+
+export default gptA;
