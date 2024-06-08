@@ -6,9 +6,9 @@ const path = require('path');
 module.exports = {
     config: {
         name: "stats",
-        author: "Samir Œ",
+        author: "Gifted Tech",
         description: "Display bot statistics",
-        category: "utility",
+        category: "ᴜᴛɪʟɪᴛʏ",
         usage: "stats",
         usePrefix: true
     },
@@ -27,11 +27,13 @@ module.exports = {
             const jsFileCount = countJSFiles();
 
             const statsMessage = `
-            📊 Bot Statistics 📊
+            📊 Gifted-Md Statistics 📊
 
             🕒 Uptime: ${uptimeString}
             💾 Memory Usage: ${memoryUsageMB} MB           
-            📂 total cmds: ${jsFileCount}
+            📂 total Cmds: ${jsFileCount}
+
+            ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
             `;
 
             bot.sendMessage(chatId, statsMessage);
