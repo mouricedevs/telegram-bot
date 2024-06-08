@@ -23,7 +23,7 @@ const logger = createGradientLogger();
 
 
 const REPO_OWNER = 'mouricedevs';
-const REPO_NAME = 'tg-bot';
+const REPO_NAME = 'telegram-bot';
 
 const VERSION_FILE = path.join(__dirname, 'version.txt');
 
