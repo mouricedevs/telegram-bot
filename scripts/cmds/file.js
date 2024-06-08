@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     config: {
         name: "file",
-        author: "Samir Œ",
+        author: "Gifted",
         description: "Send the command code as a file",
         category: "utility",
         usage: "file <command_name>",
