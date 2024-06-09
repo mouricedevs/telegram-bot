@@ -1,13 +1,13 @@
 
 const TelegramBot = require('node-telegram-bot-api');
-const config = require('./gift/config.json');
+const config = require('./gift/cmds/config.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, './gift/grpchats.json');
+const chatGroupsFile = path.join(__dirname, './gift/cmds/grpchats.json');
 
-const messageCountFile = path.join(__dirname, './gift/msgscount.json');
+const messageCountFile = path.join(__dirname, './gift/cmds/msgscount.json');
 
 
 if (!fs.existsSync(messageCountFile)) {
@@ -263,39 +263,41 @@ function createGradientLogger() {
 const logger = createGradientLogger();
 
     const botName = `  
-𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗧𝗚 𝗕𝗢𝗧 
+𝗚𝗜𝗙𝗧𝗘𝗗 𝗩𝗘𝗥𝗦𝗜𝗢𝗡 𝟭.𝟬.𝟬
+𝗠𝗨𝗟𝗧𝗜-𝗗𝗘𝗩𝗜𝗖𝗘 
+𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗨𝗦𝗘𝗥 𝗕𝗢𝗧 
 `;
 
     logger(botName);
-    logger('[ Made by Gifted Tech ]');
+    logger('[ Gifted-Md is Active and Online]');
 
 
 
-const REPO_OWNER = 'mouricedevs';
-const REPO_NAME = 'telegram-bot';
+const GIFTED_TECH = 'mouricedevs';
+const TELEGRAM_BOT = 'telegram-bot';
 
-const VERSION_FILE = path.join(__dirname, 'version.txt');
+const GIFTED_UPDATE = path.join(__dirname, './gift/version.txt');
 
-let lastCommitSha = null;
+let lastGiftCommit = null;
 
-function loadLastCommitSha() {
-    if (fs.existsSync(VERSION_FILE)) {
-        lastCommitSha = fs.readFileSync(VERSION_FILE, 'utf8').trim();
+function loadLastGiftCommit() {
+    if (fs.existsSync(GIFTED_UPDATE)) {
+        lastGiftCommit = fs.readFileSync(GIFTED_UPDATE, 'utf8').trim();
     } else {
-               lastCommitSha = '123456789';
-        fs.writeFileSync(VERSION_FILE, lastCommitSha);
+               lastGiftCommit = '123456789';
+        fs.writeFileSync(GIFTED_UPDATE, lastGiftCommit);
         logger('[ Version file not found. ]\n\n [ Created version.txt ]');
     }
 }
 
-async function checkLatestCommit() {
+async function checkLatestGiftCommit() {
     try {
-        const response = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits`);
-        const latestCommit = response.data[0];
-        if (latestCommit.sha !== lastCommitSha) {
-            const previousCommitSha = lastCommitSha;
-            const newCommitSha = latestCommit.sha;
-            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousCommitSha} ]\n\n [ New version: ${newCommitSha} ]\n\n [ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
+        const response = await axios.get(`https://api.github.com/repos/${GIFTED_TECH}/${TELEGRAM_BOT}/commits`);
+        const latestGiftedCommit = response.data[0];
+        if (latestGiftedCommit.sha !== lastGiftCommit) {
+            const previousGiftCommit = lastGiftCommit;
+            const newGiftCommit = latestGiftedCommit.sha;
+            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousGiftCommit} ]\n\n [ New version: ${newGiftCommit} ]\n\n [ Update message: ${latestGiftedCommit.commit.message} by ${latestGiftedCommit.commit.author.name} ]`);
         } else {
 
         }
@@ -304,8 +306,8 @@ async function checkLatestCommit() {
     }
 }
 
-loadLastCommitSha();
-cron.schedule('* * * * *', checkLatestCommit);
+loadLastGiftCommit();
+cron.schedule('* * * * *', checkLatestGiftCommit);
 
 
 module.exports = bot;
