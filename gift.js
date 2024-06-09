@@ -301,7 +301,7 @@ async function checkGiftedLatestCommit() {
 
         }
     } catch (error) {
-        logger('Could not load latest update from main repository. Do not worry since the bot is still running normally. Incase of other issues please contact developer on: https://t.me/giftedmd', error);
+        logger('Could not load latest update from main repository. This might mean that no changes have been made yet. Do not worry since the bot is still running normally. Incase of other issues please contact developer on: https://t.me/giftedmd', error);
     }
 }
 
