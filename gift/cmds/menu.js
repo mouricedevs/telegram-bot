@@ -18,8 +18,8 @@ module.exports = {
       const Giftedam = giftek.readdirSync(amGifted).filter(file => file.endsWith('.js'));
 
       const categories = {};
-      const commands = {};
-      const categorizedCommands = {};
+      const tekgifted = {};
+      const iamgifted = {};
 
       for (const file of Giftedam) {
         const command = require(gift.join(amGifted, file));
@@ -27,17 +27,17 @@ module.exports = {
 
         if (!categories[giftechke]) {
           categories[giftechke] = [];
-          categorizedCommands[giftechke] = [];
+          iamgifted[giftechke] = [];
         }
 
         categories[giftechke].push(command.config.name);
-        commands[command.config.name] = command.config;
-        categorizedCommands[giftechke].push(command.config.name);
+        tekgifted[command.config.name] = command.config;
+        iamgifted[giftechke].push(command.config.name);
       }
 
       if (match && match[1] && match[1].trim()) {
         const giftedTech = match[1].trim().toLowerCase();
-        const techGifted = commands[giftedTech];
+        const techGifted = tekgifted[giftedTech];
 
         if (techGifted) {
           let giftedDevs = `─── NAME ────⭓\n\n» ${techGifted.name}\n\n─── INFO ────⭓\n\n» Description: ${techGifted.description || 'Do not have'}\n» Role: ${techGifted.role}\n» Author: ${techGifted.author || 'Unknown'}\n» Cooldown: ${techGifted.cooldown}\n» Use Prefix: ${techGifted.usePrefix}\n\n─── USAGE ────⭓\n\n» ${techGifted.usage || `/${techGifted.name}`}\n\n───────⭔`;
@@ -48,9 +48,9 @@ module.exports = {
       } else {
         let devGifted = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃ \n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 40 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
 
-        for (const giftechke in categorizedCommands) {
+        for (const giftechke in iamgifted) {
           devGifted += `╭─── **『 ${giftechke} 』** \n`;
-          devGifted += `✧ .${categorizedCommands[giftechke].join(' ✧ .')}\n`;
+          devGifted += `✧ .${iamgifted[giftechke].join(' ✧ .')}\n`;
           devGifted += "╰─────────────────◊\n\n";
         }
         await bot.sendMessage(msg.chat.id, devGifted, { parse_mode: 'markdown' });
