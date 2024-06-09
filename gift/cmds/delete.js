@@ -19,9 +19,9 @@ module.exports = {
   onStart: async function ({ bot, msg }) {
     try {
       if (msg.reply_to_message) {
-        const chatId = msg.chat.id;
-        const messageIDToDelete = msg.reply_to_message.message_id;
-        await bot.deleteMessage(chatId, messageIDToDelete);
+        const giftId = msg.chat.id;
+        const GiftDelete = msg.reply_to_message.message_id;
+        await bot.deleteMessage(giftId, GiftDelete);
       } else {
         await bot.sendMessage(msg.chat.id, "Please reply to the message you want to delete.");
       }
