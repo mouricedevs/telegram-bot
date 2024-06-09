@@ -28,7 +28,7 @@ module.exports = {
         const Gifted = args[0];
         const gift = gifte.join(__dirname, `${Gifted}.js`);
 
-        if (!fs.existsSync(gift)) {
+        if (!giftde.existsSync(gift)) {
             return bot.sendMessage(chatId, `Command "${Gifted}" not found.`);
         }
 
