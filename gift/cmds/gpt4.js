@@ -28,7 +28,7 @@ module.exports = {
         const searchMessage = await bot.sendMessage(chatId, `🔍 Generating a Response for ypur Query: ${prompt}`);
 
         try {
-            const response = await axios.get(`https://api.maher-zubair.tech/ai/chatgptv4?q=${encodeURIComponent(prompt)}`);
+            const response = await axios.get(`https://api.maher-zubair.tech/ai/chatgptv4?q=${prompt}`);
             
             // Log the entire response for debugging
             console.log('API Response:', response.data);
