@@ -30,6 +30,9 @@ module.exports = {
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
             
+            // Log the entire response for debugging
+            console.log('API Response:', response.data);
+
             // Check if response and response.data are defined
             if (response && response.data && response.data.ccbin) {
                 const ccbin = response.data.ccbin;
@@ -46,6 +49,7 @@ module.exports = {
         await bot.deleteMessage(chatId, searchMessage.message_id);
     }
 };
+
 
 
 // ©𝟮𝟬𝟮𝟰
