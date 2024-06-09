@@ -25,13 +25,12 @@ module.exports = {
             return bot.sendMessage(chatId, `Please provide a bin number. Usage: .gen [bin_number]`);
         }
 
-        const searchMessage = await bot.sendMessage(chatId, `🔍 Generating Heroku CC from Bin: ${query}`);
+        const searchMessage = await bot.sendMessage(chatId, `🔍 Generating Heroku CC from provided Bin: ${query}`);
 
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
-            const { ccbin } = response.data;
 
-            await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
+            await bot.sendMessage(chatId, `HERE WE GO: ${response}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, 'An error occurred while generating cc');
