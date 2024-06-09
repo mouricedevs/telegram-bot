@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, './gift/cmds/grpchats.json'');
+const chatGroupsFile = path.join(__dirname, './gift/cmds/grpchats.json');
 
 const messageCountFile = path.join(__dirname, './gift/cmds/msgscount.json');
 
