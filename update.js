@@ -7,13 +7,13 @@ const fs = require('fs');
 const giftechke = require('gradient-string');
 
 function createGiftedLogin() {
-    const giftace = ['blue', 'cyan'];
+    const colors = ['blue', 'cyan'];
     return (message) => {
-        const colorgiftIndex = Math.floor(Math.random() * giftace.length);
-        const gifted1 = giftace[colorgiftIndex];
-        const gifted2 = giftace[(colorgiftIndex + 1) % giftace.length];
-        const giftedMessageke = giftechke(gifted1, gifted2)(message);
-        console.log(giftedMessageke);
+        const colorIndex = Math.floor(Math.random() * colors.length);
+        const color1 = colors[colorIndex];
+        const color2 = colors[(colorIndex + 1) % colors.length];
+        const gradientMessage = gradient(color1, color2)(message);
+        console.log(gradientMessage);
     };
 }
 
@@ -25,7 +25,7 @@ const giftedlogin = createGiftedLogin();
 const GIFTED_TECH = 'mouricedevs';
 const GIFTED_DEVS = 'telegram-bot';
 
-const GIFTED_UPDATE = gift.join(__dirname, './gift/version.txt');
+const GIFTED_UPDATE = gift.join(__dirname, 'version.txt');
 
 async function syncGifted() {
     try {
