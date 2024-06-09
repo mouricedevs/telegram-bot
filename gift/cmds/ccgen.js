@@ -8,6 +8,7 @@
 
 
 const axios = require("axios");
+const axios = require("axios");
 
 module.exports = {
     config: {
@@ -29,12 +30,18 @@ module.exports = {
 
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
-            const {ccbin} = response.data;
             
-            await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
+            // Check if response and response.data are defined
+            if (response && response.data && response.data.ccbin) {
+                const ccbin = response.data.ccbin;
+                await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
+            } else {
+                await bot.sendMessage(chatId, `Failed to retrieve credit card data. Please try again.`);
+                console.error('[ERROR] Unexpected API response structure:', response.data);
+            }
         } catch (error) {
             console.error('[ERROR]', error);
-            bot.sendMessage(chatId, 'An error occurred while generating cc');
+            await bot.sendMessage(chatId, 'An error occurred while generating cc');
         }
 
         await bot.deleteMessage(chatId, searchMessage.message_id);
