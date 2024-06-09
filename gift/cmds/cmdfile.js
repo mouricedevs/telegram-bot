@@ -7,8 +7,8 @@
 
 
 
-const fs = require('fs');
-const path = require('path');
+const giftde = require('fs');
+const gifte = require('path');
 
 module.exports = {
     config: {
@@ -25,17 +25,17 @@ module.exports = {
             return bot.sendMessage(chatId, "Usage: .file <command_name> This will send the cmd as a file");
         }
 
-        const commandName = args[0];
-        const filePath = path.join(__dirname, `${commandName}.js`);
+        const Gifted = args[0];
+        const gift = gifte.join(__dirname, `${Gifted}.js`);
 
-        if (!fs.existsSync(filePath)) {
-            return bot.sendMessage(chatId, `Command "${commandName}" not found.`);
+        if (!fs.existsSync(gift)) {
+            return bot.sendMessage(chatId, `Command "${Gifted}" not found.`);
         }
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-        await bot.sendMessage(chatId,fileContent);
-     bot.sendDocument(chatId, filePath, {}, {
-            filename: `${commandName}.js`,
+    const giftedTe = giftde.readFileSync(gift, 'utf8');
+        await bot.sendMessage(chatId,giftedTe);
+     bot.sendDocument(chatId, gift, {}, {
+            filename: `${Gifted}.js`,
             contentType: 'text/javascript'
         });
     }
