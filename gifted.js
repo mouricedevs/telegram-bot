@@ -13,7 +13,7 @@ gift.get('/', (req, res) => {
 });
 
 const GIFTE = process.env.GIFTE || 5000;
-gift.listen(GIFTED, () => {});
+gift.listen(GIFTE, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
