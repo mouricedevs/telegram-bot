@@ -6,7 +6,7 @@ module.exports = {
         name: "gpt4",
         author: "Gifted Tech",
         description: "Send a link of the replied file",
-        category: "ᴜᴛɪʟɪᴛʏ",
+        category: "ᴀɪ",
         usage: "sendgptrrsponse",
         usePrefix: true
     },
@@ -18,7 +18,7 @@ module.exports = {
         }
 
         try {
-            const apiUrl = `https://apis-samir.onrender.com/telegraph?url=${encodeURIComponent(gift)}`;
+            const apiUrl = `https://api.maher-zubair.tech/ai/chatgpt4?q=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
             const gifted = response.data. `json`;
 
