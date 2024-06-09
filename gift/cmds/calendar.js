@@ -20,7 +20,7 @@ module.exports = {
     },
 
     onStart: async function({ bot, chatId, msg }) {
-        const gifted = new Calendar(bot, {
+        const gifted = new Gifted(bot, {
             date_format: 'DD-MM-YYYY',
             language: 'en'
         });
