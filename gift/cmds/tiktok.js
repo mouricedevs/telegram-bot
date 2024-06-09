@@ -17,7 +17,7 @@ module.exports = {
         }
 
         const query = encodeURIComponent(args.join(' '));
-        const url = `https://aemt.me/download/tiktokdl?url=${query}`;
+        const url = `https://api.vihangayt.com/downloader/tiktok?url=${query}`;
 
         try {
             const response = await fetch(url);
