@@ -1,5 +1,3 @@
-const os = require('os');
-const process = require('process');
 const fs = require('fs');
 const path = require('path');
 
@@ -16,16 +14,6 @@ module.exports = {
   },
   onStart: async function ({ msg, bot, match }) {
     try {
-      const uptime = process.uptime(); 
-            const uptimeString = formatUptime(uptime);
-
-            const memoryUsage = process.memoryUsage();
-            const memoryUsageMB = (memoryUsage.rss / (1024 * 1024)).toFixed(2);
-
-            const cpuUsage = os.loadavg();
-            const cpuUsageString = cpuUsage.map(avg => avg.toFixed(2)).join(', ');
-
-            const jsFileCount = countJSFiles();
       const commandsDir = path.join(__dirname, '.');
       const files = fs.readdirSync(commandsDir).filter(file => file.endsWith('.js'));
 
@@ -58,7 +46,7 @@ module.exports = {
           await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
         }
       } else {
-        const helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷ \n┃❍  ᴏᴡɴᴇʀ: Gifted Tech \n┃❍ ᴄᴏᴍᴍᴀɴᴅs: 8 \n╰════════════════⊷ \n\n𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔: \n\n';
+        const helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷ \n┃❍  ᴏᴡɴᴇʀ: Gifted Tech \n┃❍ ᴄᴏᴍᴍᴀɴᴅs: 8 \n╰════════════════⊷ \n\n';
 
         for (const category in categorizedCommands) {
           helpMessage += `╭──『 ${category} 』\n`;
