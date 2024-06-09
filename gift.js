@@ -1,5 +1,5 @@
 
-const TelegramBot = require('node-telegram-bot-api');
+const GiftedTgBot = require('node-telegram-bot-api');
 const config = require('./gift/cmds/config.json');
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +23,7 @@ let chatGroups = JSON.parse(fs.readFileSync(chatGroupsFile, 'utf8'));
 
 
 
-const bot = new TelegramBot(config.token, { polling: true });
+const bot = new GiftedTgBot(config.token, { polling: true });
 
 const commands = [];
 let adminOnlyMode = false;
