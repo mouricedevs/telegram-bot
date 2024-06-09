@@ -7,13 +7,13 @@
 
 
 
-const fs = require('fs');
-const path = require('path');
-const messageCountFile = path.join(__dirname, './msgcount.json');
+const gifte = require('fs');
+const gift = require('path');
+const messageCountFile = gift.join(__dirname, './msgcount.json');
 
 
-if (!fs.existsSync(messageCountFile)) {
-    fs.writeFileSync(messageCountFile, JSON.stringify({}));
+if (!gifte.existsSync(messageCountFile)) {
+    gifte.writeFileSync(messageCountFile, JSON.stringify({}));
 }
 
 module.exports = {
@@ -31,14 +31,14 @@ module.exports = {
         const firstName = msg.from.first_name;
 
 
-        const data = fs.readFileSync(messageCountFile, 'utf8');
-        const messageCount = JSON.parse(data);
+        const gifted = gifte.readFileSync(messageCountFile, 'utf8');
+        const giftedCount = JSON.parse(gifted);
 
-        if (!messageCount[chatId]) {
+        if (!giftedCount[chatId]) {
             return bot.sendMessage(chatId, "No message data available for this chat.");
         }
 
-        const chatMessageCounts = messageCount[chatId];
+        const chatMessageCounts = giftedCount[chatId];
 
         if (args[0] === 'all') {
         
@@ -53,12 +53,12 @@ module.exports = {
             
             userMessageCounts.sort((a, b) => b.count - a.count);
 
-            let response = "Number of messages of members:\n";
+            let giftech = "Number of messages of members:\n";
             userMessageCounts.forEach((user, index) => {
-                response += `${index + 1}/ ${user.username}: ${user.count}\n`;
+                giftech += `${index + 1}/ ${user.username}: ${user.count}\n`;
             });
 
-            return bot.sendMessage(chatId, response);
+            return bot.sendMessage(chatId, giftech);
         } else {
         
             const userMessageCount = chatMessageCounts[userId] || 0;
