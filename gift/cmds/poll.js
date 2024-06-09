@@ -14,7 +14,7 @@ module.exports = {
         const pollData = args.join(' ').split('|').map(option => option.trim());
 
         if (pollData.length < 3) {
-            return bot.sendMessage(chatId, `Please provide a question and at least two options. Usage: ${global.config.prefix}poll <question> | <option1> | <option2> | ...`);
+            return bot.sendMessage(chatId, `Please provide a question and at least two options. Usage: ${prefix}poll <question> | <option1> | <option2> | ...`);
         }
 
         const question = pollData[0];
