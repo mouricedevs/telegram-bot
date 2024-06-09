@@ -38,7 +38,7 @@ module.exports = {
         try {
             const res = await fetch(apiURL);
             if (!res.ok) {
-                bot.sendMessage(chatId, `API not responding. Please try again later.`);
+                bot.sendMessage(chatId, `Invalid input⚠️\nPlease use:\n${p}ssweb <url> \nor\n${p}ssweb  <link>.`);
                 return;
             }
 
