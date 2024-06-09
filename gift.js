@@ -1,10 +1,11 @@
-const GiftedTgBot = require('node-telegram-bot-api');
+
+const GiftedTech = require('node-telegram-bot-api');
 const config = require('./gift/cmds/config.json');
 const fs = require('fs');
 const path = require('path');
 const cron = require('node-cron');
 const axios = require('axios');
-const chatGroupsFile = path.join(__dirname, './gift/cmds/grpchats.json');
+const chatGroupsFile = path.join(__dirname, './gift/cmds/grpchats.json'');
 
 const messageCountFile = path.join(__dirname, './gift/cmds/msgscount.json');
 
@@ -22,7 +23,7 @@ let chatGroups = JSON.parse(fs.readFileSync(chatGroupsFile, 'utf8'));
 
 
 
-const bot = new GiftedTgBot(config.token, { polling: true });
+const bot = new GiftedTech(config.token, { polling: true });
 
 const commands = [];
 let adminOnlyMode = false;
@@ -62,8 +63,8 @@ fs.readdirSync('./gift/cmds').forEach((file) => {
 });
 
 function registerCommand(bot, command) {
-    const giftedPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
-    bot.onText(new RegExp(giftedPattern, 'i'), (msg, match) => {
+    const prefixPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
+    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
         executeCommand(bot, command, msg, match);
     });
 }
@@ -82,12 +83,12 @@ bot.on('callback_query', async (callbackQuery) => {
 
 
 function handleInvalidCommand(bot) {
-    const giftedPattern = `^${config.prefix}(\\S*)`;
-    bot.onText(new RegExp(giftedPattern, 'i'), (msg, match) => {
-        const inputGifted = match[1].toLowerCase();
-        const GiftedisValid = commands.some(cmd => cmd.config.name === inputGifted);
+    const prefixPattern = `^${config.prefix}(\\S*)`;
+    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
+        const inputCommand = match[1].toLowerCase();
+        const isValidCommand = commands.some(cmd => cmd.config.name === inputCommand);
         
-        if (!GiftedisValid) {
+        if (!isValidCommand) {
             bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}menu to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner & Developer)`);
         }
     });
