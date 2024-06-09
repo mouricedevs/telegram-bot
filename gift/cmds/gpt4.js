@@ -19,9 +19,9 @@ module.exports = {
         try {
             const apiUrl = `https://api.maher-zubair.tech/ai/chatgpt4?q=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
-            const gifted = response.data;
+            const giftech = response.data.result;
 
-            bot.sendMessage(chatId, `GPT4 RESPONSE: ${response}`);
+            bot.sendMessage(chatId, `GPT4 RESPONSE: ${giftech}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, "An error occurred while processing the command.");
