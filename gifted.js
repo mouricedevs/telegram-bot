@@ -2,18 +2,18 @@ const express = require('express');
 const path = require('path');
 const { spawn } = require('child_process');
 const axios = require('axios')
-const app = express();
+const gift = express();
 
 
-app.use(express.static(path.join(__dirname, 'gifted')));
+gift.use(express.static(path.join(__dirname, 'gifted')));
 
 
-app.get('/', (req, res) => {
+gift.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'gifted', 'gifted.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {});
+const PORT = process.env.PORT || 5000;
+gift.listen(PORT, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
