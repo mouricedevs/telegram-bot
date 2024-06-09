@@ -1,4 +1,3 @@
-
 const GiftedTgBot = require('node-telegram-bot-api');
 const config = require('./gift/cmds/config.json');
 const fs = require('fs');
@@ -63,8 +62,8 @@ fs.readdirSync('./gift/cmds').forEach((file) => {
 });
 
 function registerCommand(bot, command) {
-    const prefixPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
-    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
+    const giftedPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
+    bot.onText(new RegExp(giftedPattern, 'i'), (msg, match) => {
         executeCommand(bot, command, msg, match);
     });
 }
@@ -83,13 +82,13 @@ bot.on('callback_query', async (callbackQuery) => {
 
 
 function handleInvalidCommand(bot) {
-    const prefixPattern = `^${config.prefix}(\\S*)`;
-    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
-        const inputCommand = match[1].toLowerCase();
-        const isValidCommand = commands.some(cmd => cmd.config.name === inputCommand);
+    const giftedPattern = `^${config.prefix}(\\S*)`;
+    bot.onText(new RegExp(giftedPattern, 'i'), (msg, match) => {
+        const inputGifted = match[1].toLowerCase();
+        const GiftedisValid = commands.some(cmd => cmd.config.name === inputGifted);
         
-        if (!isValidCommand) {
-            bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}menu to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner& Developer)`);
+        if (!GiftedisValid) {
+            bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}menu to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner & Developer)`);
         }
     });
 }
@@ -264,7 +263,7 @@ const logger = createGradientLogger();
 
     const botName = `  
 𝗚𝗜𝗙𝗧𝗘𝗗 𝗩𝗘𝗥𝗦𝗜𝗢𝗡 𝟭.𝟬.𝟬
-𝗠𝗨𝗟𝗧𝗜-𝗗𝗘𝗩𝗜𝗖𝗘 
+𝗔 𝗖𝗢𝗢𝗟 𝗠𝗨𝗟𝗧𝗜-𝗗𝗘𝗩𝗜𝗖𝗘 
 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗨𝗦𝗘𝗥 𝗕𝗢𝗧 
 `;
 
@@ -274,41 +273,40 @@ const logger = createGradientLogger();
 
 
 const GIFTED_TECH = 'mouricedevs';
-const TELEGRAM_BOT = 'telegram-bot';
+const GIFTED_DEVS = 'telegram-bot';
 
 const GIFTED_UPDATE = path.join(__dirname, './gift/version.txt');
 
-let lastGiftCommit = null;
+let lastCommitSha = null;
 
-function loadLastGiftCommit() {
+function loadGiftedLastCommitSha() {
     if (fs.existsSync(GIFTED_UPDATE)) {
-        lastGiftCommit = fs.readFileSync(GIFTED_UPDATE, 'utf8').trim();
+        lastCommitSha = fs.readFileSync(GIFTED_UPDATE, 'utf8').trim();
     } else {
-               lastGiftCommit = '123456789';
-        fs.writeFileSync(GIFTED_UPDATE, lastGiftCommit);
+               lastCommitSha = '123456789';
+        fs.writeFileSync(GIFTED_UPDATE, lastCommitSha);
         logger('[ Version file not found. ]\n\n [ Created version.txt ]');
     }
 }
 
-async function checkLatestGiftCommit() {
+async function checkGiftedLatestCommit() {
     try {
-        const response = await axios.get(`https://api.github.com/repos/${GIFTED_TECH}/${TELEGRAM_BOT}/commits`);
-        const latestGiftedCommit = response.data[0];
-        if (latestGiftedCommit.sha !== lastGiftCommit) {
-            const previousGiftCommit = lastGiftCommit;
-            const newGiftCommit = latestGiftedCommit.sha;
-            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousGiftCommit} ]\n\n [ New version: ${newGiftCommit} ]\n\n [ Update message: ${latestGiftedCommit.commit.message} by ${latestGiftedCommit.commit.author.name} ]`);
+        const response = await axios.get(`https://api.github.com/repos/${GIFTED_TECH}/${GIFTED_DEVS}/commits`);
+        const latestCommit = response.data[0];
+        if (latestCommit.sha !== lastCommitSha) {
+            const previousCommitSha = lastCommitSha;
+            const newCommitSha = latestCommit.sha;
+            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousCommitSha} ]\n\n [ New version: ${newCommitSha} ]\n\n [ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
         } else {
 
         }
     } catch (error) {
-        logger('Error checking latest update contact https://t.me/giftedmd', error);
+        logger('Error checking latest update contract https://t.me/Samir_OE', error);
     }
 }
 
-loadLastGiftCommit();
-cron.schedule('* * * * *', checkLatestGiftCommit);
+loadGiftedLastCommitSha();
+cron.schedule('* * * * *', checkGiftedLatestCommit);
 
 
 module.exports = bot;
-
