@@ -1,19 +1,19 @@
-const giftech = require('express');
-const gifted = require('path');
+const gifted = require('express');
+const giftech = require('path');
 const { spawn } = require('child_process');
 const axios = require('axios')
-const gift = giftech();
+const gift = gifted();
 
 
-gift.use(giftech.static(gifted.join(__dirname, 'gifted')));
+gift.use(gifted.static(giftech.join(__dirname, 'gifted')));
 
 
 gift.get('/', (req, res) => {
-    res.sendFile(gifted.join(__dirname, 'gifted', 'gifted.html'));
+    res.sendFile(giftech.join(__dirname, 'gifted', 'gifted.html'));
 });
 
-const GIFTED_TECH = process.env.GIFTED_TECH || 3000;
-gift.listen(GIFTED_TECH, () => {});
+const PORT = process.env.PORT || 3000;
+gift.listen(PORT, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
@@ -26,7 +26,7 @@ function startGifted() {
 
     child.on("close", (code) => {
         if (code === 2) {
-            console.log("Restarting Gifted...");
+            console.log("Restarting Gifted-Md...");
             startGifted();
         }
     });
