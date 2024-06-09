@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const giftek = require('fs');
+const gift = require('path');
 
 module.exports = {
   config: {
@@ -14,46 +14,46 @@ module.exports = {
   },
   onStart: async function ({ msg, bot, match }) {
     try {
-      const commandsDir = path.join(__dirname, '.');
-      const files = fs.readdirSync(commandsDir).filter(file => file.endsWith('.js'));
+      const amGifted = gift.join(__dirname, '.');
+      const Giftedam = giftek.readdirSync(amGifted).filter(file => file.endsWith('.js'));
 
       const categories = {};
       const commands = {};
       const categorizedCommands = {};
 
-      for (const file of files) {
-        const command = require(path.join(commandsDir, file));
-        const category = command.config.category || 'categorized';
+      for (const file of Giftedam) {
+        const command = require(gift.join(amGifted, file));
+        const giftechke = command.config.category || 'categorized';
 
-        if (!categories[category]) {
-          categories[category] = [];
-          categorizedCommands[category] = [];
+        if (!categories[giftechke]) {
+          categories[giftechke] = [];
+          categorizedCommands[giftechke] = [];
         }
 
-        categories[category].push(command.config.name);
+        categories[giftechke].push(command.config.name);
         commands[command.config.name] = command.config;
-        categorizedCommands[category].push(command.config.name);
+        categorizedCommands[giftechke].push(command.config.name);
       }
 
       if (match && match[1] && match[1].trim()) {
-        const commandName = match[1].trim().toLowerCase();
-        const commandConfig = commands[commandName];
+        const giftedTech = match[1].trim().toLowerCase();
+        const techGifted = commands[giftedTech];
 
-        if (commandConfig) {
-          let commandInfo = `─── NAME ────⭓\n\n» ${commandConfig.name}\n\n─── INFO ────⭓\n\n» Description: ${commandConfig.description || 'Do not have'}\n» Role: ${commandConfig.role}\n» Author: ${commandConfig.author || 'Unknown'}\n» Cooldown: ${commandConfig.cooldown}\n» Use Prefix: ${commandConfig.usePrefix}\n\n─── USAGE ────⭓\n\n» ${commandConfig.usage || `/${commandConfig.name}`}\n\n───────⭔`;
-          await bot.sendMessage(msg.chat.id, commandInfo, { parse_mode: 'markdown' });
+        if (techGifted) {
+          let giftedDevs = `─── NAME ────⭓\n\n» ${techGifted.name}\n\n─── INFO ────⭓\n\n» Description: ${techGifted.description || 'Do not have'}\n» Role: ${techGifted.role}\n» Author: ${techGifted.author || 'Unknown'}\n» Cooldown: ${techGifted.cooldown}\n» Use Prefix: ${techGifted.usePrefix}\n\n─── USAGE ────⭓\n\n» ${techGifted.usage || `/${techGifted.name}`}\n\n───────⭔`;
+          await bot.sendMessage(msg.chat.id, giftedDevs, { parse_mode: 'markdown' });
         } else {
-          await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
+          await bot.sendMessage(msg.chat.id, `Command '${giftedTech}' not found.`);
         }
       } else {
-        let helpMessage = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃ \n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 39 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
+        let devGifted = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃ \n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 40 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭─── **『 ${category} 』** \n`;
-          helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
-          helpMessage += "╰─────────────────◊\n\n";
+          devGifted += `╭─── **『 ${giftechke} 』** \n`;
+          devGifted += `✧ .${categorizedCommands[giftechke].join(' ✧ .')}\n`;
+          devGifted += "╰─────────────────◊\n\n";
         }
-        await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
+        await bot.sendMessage(msg.chat.id, devGifted, { parse_mode: 'markdown' });
       }
     } catch (error) {
       console.error('Error generating menu message:', error);
