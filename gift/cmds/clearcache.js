@@ -31,8 +31,8 @@ module.exports = {
             }
 
             files.forEach(file => {
-                const Gifted = path.join(Gifted, file);
-                fs.unlink(Gifted, err => {
+                const Giftedte = path.join(Gifted, file);
+                fs.unlink(Giftedte, err => {
                     if (err) {
                         console.error(err);
                         bot.sendMessage(chatId, `Failed to delete file: ${file}`);
