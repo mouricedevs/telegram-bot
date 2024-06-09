@@ -31,13 +31,13 @@ module.exports = {
                 return bot.sendMessage(chatId, "This user has no profile pictures.");
             }
 
-            const gifte = gift.photos[0][0].file_id;
-            await bot.sendPhoto(chatId, gifte);
+            const Giftech = gift.photos[0][0].file_id;
+            await bot.sendPhoto(chatId, Giftech);
         } catch (error) {
        
-        const gifted = await bot.getUserProfilePhotos(msg.from.id);
+        const gift = await bot.getUserProfilePhotos(msg.from.id);
       
-        const Giftech = gifted.photos[0][0].file_id;
+        const Giftech = gift.photos[0][0].file_id;
         await bot.sendPhoto(chatId, Giftech);  }
     }
 };
