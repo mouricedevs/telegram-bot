@@ -32,7 +32,7 @@ module.exports = {
                 giftMessage += `» Invite Link: ${gift.invite_link}\n`;
             }
 
-            bot.sendMessage(chatId, infoMessage);
+            bot.sendMessage(chatId, giftMessage);
         } catch (error) {
             console.error('Error retrieving group information:', error);
             bot.sendMessage(chatId, 'An error occurred while retrieving the group information.');
