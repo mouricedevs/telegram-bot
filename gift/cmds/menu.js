@@ -49,7 +49,7 @@ module.exports = {
 
         if (techGifted) {
           let giftedDevs = `─── NAME ────⭓\n\n» ${techGifted.name}\n\n─── INFO ────⭓\n\n» Description: ${techGifted.description || 'Do not have'}\n» Role: ${techGifted.role}\n» Author: ${techGifted.author || 'Unknown'}\n» Cooldown: ${techGifted.cooldown}\n» Use Prefix: ${techGifted.usePrefix}\n\n─── USAGE ────⭓\n\n» ${techGifted.usage || `/${techGifted.name}`}\n\n───────⭔`;
-          await bot.sendMessage(msg.chat.id, giftedDevs, { parse_mode: 'markdown' }`);
+          await bot.sendMessage(msg.chat.id, `${giftedDevs}`);
         } else {
           await bot.sendMessage(msg.chat.id, `Command '${giftedTech}' not found.`);
         }
