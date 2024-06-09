@@ -7,7 +7,7 @@
 
 
 
-const Calendar = require('telegram-inline-calendar');
+const Gifted = require('telegram-inline-calendar');
 
 module.exports = {
     config: {
@@ -20,16 +20,16 @@ module.exports = {
     },
 
     onStart: async function({ bot, chatId, msg }) {
-        const calendar = new Calendar(bot, {
+        const gifted = new Gifted(bot, {
             date_format: 'DD-MM-YYYY',
             language: 'en'
         });
 
-        calendar.startNavCalendar(msg);
+        gifted.startNavGifted(msg);
 
         bot.on("callback_query", (query) => {
-            if (query.message.message_id == calendar.chats.get(query.message.chat.id)) {
-                const res = calendar.clickButtonCalendar(query);
+            if (query.message.message_id == gifted.chats.get(query.message.chat.id)) {
+                const res = gifted.clickButtonGifted(query);
                 if (res !== -1) {
                     bot.sendMessage(query.message.chat.id, "You selected: " + res);
                 }
