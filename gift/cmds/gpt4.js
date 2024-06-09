@@ -21,7 +21,7 @@ module.exports = {
             const response = await axios.get(apiUrl);
             const gifted = response.data;
 
-            bot.sendMessage(chatId, `GPT4 RESPONSE: ${gifted}`);
+            bot.sendMessage(chatId, `GPT4 RESPONSE: ${response}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, "An error occurred while processing the command.");
