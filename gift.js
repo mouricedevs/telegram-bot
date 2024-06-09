@@ -23,9 +23,9 @@ let chatGroups = JSON.parse(fs.readFileSync(chatGroupsFile, 'utf8'));
 
 
 
-const bot = new GiftedTgBot(config.token, { polling: true });
+const gift = new GiftedTgBot(config.token, { polling: true });
 
-const commands = [];
+const giftech = [];
 let adminOnlyMode = false;
 
 const cooldowns = new Map(); 
@@ -46,58 +46,58 @@ cron.schedule('*/1 * * * *', fetchGbanList);
 fs.readdirSync('./gift/cmds').forEach((file) => {
     if (file.endsWith('.js')) {
         try {
-            const command = require(`./gift/cmds/${file}`);
-            if (typeof command.config.role === 'undefined') {
-                command.config.role = 0; 
+            const gifted = require(`./gift/cmds/${file}`);
+            if (typeof gifted.config.role === 'undefined') {
+                gifted.config.role = 0; 
             }
-            if (typeof command.config.cooldown === 'undefined') {
-                command.config.cooldown = 0; 
+            if (typeof gifted.config.cooldown === 'undefined') {
+                gifted.config.cooldown = 0; 
             }
-            commands.push({ ...command, config: { ...command.config, name: command.config.name.toLowerCase() } });
+            giftech.push({ ...gifted, config: { ...gifted.config, name: gifted.config.name.toLowerCase() } });
 
-            registerCommand(bot, command);
+            registerCommand(gift, gifted);
         } catch (error) {
             console.error(`Error loading command from file ${file}: ${error}`);
         }
     }
 });
 
-function registerCommand(bot, command) {
-    const prefixPattern = command.config.usePrefix ? `^${config.prefix}${command.config.name}\\b(.*)$` : `^${command.config.name}\\b(.*)$`;
+function registerCommand(gift, gifted) {
+    const prefixPattern = gifted.config.usePrefix ? `^${config.prefix}${gifted.config.name}\\b(.*)$` : `^${gifted.config.name}\\b(.*)$`;
     bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
-        executeCommand(bot, command, msg, match);
+        executeCommand(gift, gifted, msg, match);
     });
 }
 
-bot.on('callback_query', async (callbackQuery) => {
+gift.on('callback_query', async (callbackQuery) => {
     const chatId = callbackQuery.message.chat.id;
     const userId = callbackQuery.from.id;
     const data = JSON.parse(callbackQuery.data);
-    const commandName = data.command; 
+    const giftedTech = data.gifted; 
 
-    const command = commands.find(cmd => cmd.config.name === commandName);
-    if (command && command.onReply) {
-        command.onReply(bot, chatId, userId, data);
+    const gifted = giftech.find(cmd => cmd.config.name === giftedTech);
+    if (gifted && gifted.onReply) {
+        gifted.onReply(gift, chatId, userId, data);
     }
 });
 
 
 function handleInvalidCommand(bot) {
     const prefixPattern = `^${config.prefix}(\\S*)`;
-    bot.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
+    gift.onText(new RegExp(prefixPattern, 'i'), (msg, match) => {
         const inputCommand = match[1].toLowerCase();
-        const isValidCommand = commands.some(cmd => cmd.config.name === inputCommand);
+        const isValidCommand = giftech.some(cmd => cmd.config.name === inputCommand);
         
         if (!isValidCommand) {
-            bot.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}menu to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner& Developer)`);
+            gift.sendMessage(msg.chat.id, `Hi, I am Gifted-Md Telegram UserBot.\nType ${config.prefix}menu to see all available commands. \n\nRegards, \nGifted Tech, \n(Owner& Developer)`);
         }
     });
 }
 
 
-async function isUserAdmin(bot, chatId, userId) {
+async function isUserAdmin(gift, chatId, userId) {
     try {
-        const chatAdministrators = await bot.getChatAdministrators(chatId);
+        const chatAdministrators = await gift.getChatAdministrators(chatId);
         return chatAdministrators.some(admin => admin.user.id === userId);
     } catch (error) {
         return false;
@@ -107,7 +107,7 @@ async function isUserAdmin(bot, chatId, userId) {
 
 
 
-async function executeCommand(bot, command, msg, match) {
+async function executeCommand(gift, gifted, msg, match) {
     try {
         const chatId = msg.chat.id;
         const userId = msg.from.id;
@@ -121,50 +121,50 @@ async function executeCommand(bot, command, msg, match) {
         const messageReply_id = messageReply ? messageReply.from.id : null;
 
         if (gbanList.includes(userId.toString())) {
-            return bot.sendMessage(chatId, "You are globally banned and cannot use commands.");
+            return gift.sendMessage(chatId, "You are globally banned and cannot use commands.");
         }
 
-        const isAdmin = await isUserAdmin(bot, chatId, userId);
+        const isAdmin = await isUserAdmin(gift, chatId, userId);
         const isBotAdmin = userId === config.owner_id;
 
 
 
         if (adminOnlyMode && !isBotAdmin) {
-            return bot.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
+            return gift.sendMessage(chatId, "Sorry, only the bot admin can use commands right now.");
         }
 
 
         if (command.config.role === 2 && !isBotAdmin) {
-            return bot.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
+            return gift.sendMessage(chatId, "Sorry, only the bot admin can use this command.");
         }
 
 
         if (command.config.role === 1 && !isBotAdmin && !isAdmin) {
-            return bot.sendMessage(chatId, "This command is only available to groups admins");
+            return gift.sendMessage(chatId, "This command is only available to groups admins");
         }
 
-        const cooldownKey = `${command.config.name}-${userId}`;
+        const cooldownKey = `${gifted.config.name}-${userId}`;
         const now = Date.now();
         if (cooldowns.has(cooldownKey)) {
             const lastUsed = cooldowns.get(cooldownKey);
-            const cooldownAmount = command.config.cooldown * 1000;
+            const cooldownAmount = gifted.config.cooldown * 1000;
             if (now < lastUsed + cooldownAmount) {
                 const timeLeft = Math.ceil((lastUsed + cooldownAmount - now) / 1000);
-                return bot.sendMessage(chatId, `Please wait ${timeLeft} more seconds before using the ${command.config.name} command again.`);
+                return gift.sendMessage(chatId, `Please wait ${timeLeft} more seconds before using the ${gifted.config.name} command again.`);
             }
         }
 
         cooldowns.set(cooldownKey, now);
 
-        command.onStart({ bot, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg, match });
+        gifted.onStart({ gift, chatId, args, userId, username, firstName, lastName, messageReply, messageReply_username, messageReply_id, msg, match });
     } catch (error) {
-        console.error(`Error executing command ${command.config.name}: ${error}`);
-        bot.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
+        console.error(`Error executing command ${gifted.config.name}: ${error}`);
+        gift.sendMessage(msg.chat.id, 'An error occurred while executing the command.');
     }
 }
 
 
-bot.on('message', (msg) => {
+gift.on('message', (msg) => {
     const chatId = msg.chat.id;
     const userId = msg.from.id;
 
@@ -188,7 +188,7 @@ bot.on('message', (msg) => {
     }
 });
 
-bot.on('new_chat_members', (msg) => {
+gift.on('new_chat_members', (msg) => {
     if (!config.greetNewMembers || !config.greetNewMembers.enabled) return;
 
     const chatId = msg.chat.id;
@@ -202,18 +202,18 @@ bot.on('new_chat_members', (msg) => {
 
         const welcomeMessage = `Welcome, ${fullName}! We're glad to have you here.`;
 
-        bot.sendAnimation(chatId, gifUrl)
+        gift.sendAnimation(chatId, gifUrl)
             .then(() => {
-                bot.sendMessage(chatId, welcomeMessage);
+                gift.sendMessage(chatId, welcomeMessage);
             })
             .catch(error => {
             logger("Error sending GIF:", error);
-                bot.sendMessage(chatId, welcomeMessage);
+                gift.sendMessage(chatId, welcomeMessage);
             });
     });
 });
 
-bot.on('new_chat_members', (msg) => {
+gift.on('new_chat_members', (msg) => {
     const chatId = msg.chat.id;
     if (!chatGroups.includes(chatId)) {
         chatGroups.push(chatId);
@@ -221,7 +221,7 @@ bot.on('new_chat_members', (msg) => {
     }
 });
 
-bot.on('left_chat_member', (msg) => {
+gift.on('left_chat_member', (msg) => {
     const chatId = msg.chat.id;
     if (chatGroups.includes(chatId)) {
         chatGroups = chatGroups.filter(id => id !== chatId);
@@ -229,7 +229,7 @@ bot.on('left_chat_member', (msg) => {
     }
 });
 
-bot.on('message', (msg) => {
+gift.on('message', (msg) => {
     const chatId = msg.chat.id;
     if (!chatGroups.includes(chatId)) {
         chatGroups.push(chatId);
@@ -237,15 +237,15 @@ bot.on('message', (msg) => {
     }
 });
 
-bot.on('polling_error', (error) => {
+gift.on('polling_error', (error) => {
     logger('Polling error:', error);
 });
 
-bot.on('polling_started', () => {
+gift.on('polling_started', () => {
     logger('Bot polling started');
 });
 
-handleInvalidCommand(bot);
+handleInvalidCommand(gift);
 
 const gradient = require('gradient-string');
 
@@ -310,5 +310,5 @@ loadLastGiftCommit();
 cron.schedule('* * * * *', checkLatestGiftCommit);
 
 
-module.exports = bot;
+module.exports = gift;
 
