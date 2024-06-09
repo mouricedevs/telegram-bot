@@ -61,9 +61,9 @@ module.exports = {
         const helpMessage = '
           ╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷
           ┃❍  ᴏᴡɴᴇʀ: Gifted Tech
-          ┃❍ ᴜᴘᴛɪᴍᴇ: ${uptimeString}
-          ┃❍ ʀᴀᴍ: ${memoryUsageMB} MB
-          ┃❍ ᴄᴏᴍᴍᴀɴᴅs: ${jsFileCount}
+          ┃❍ ᴜᴘᴛɪᴍᴇ: process.uptime();
+          ┃❍ ʀᴀᴍ: process.memoryUsage();
+          ┃❍ ᴄᴏᴍᴍᴀɴᴅs: countJSFiles();
           ╰════════════════⊷
             
             𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:
