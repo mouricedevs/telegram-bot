@@ -20,7 +20,7 @@ module.exports = {
         let GiftedId = msg.from.id;
 
         if (msg.reply_to_message) {
-            targetUserId = msg.reply_to_message.from.id;
+            GiftedId = msg.reply_to_message.from.id;
         } else if (args.length > 0) {
             GiftedId = args[0];
         }
