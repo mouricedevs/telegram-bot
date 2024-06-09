@@ -2,7 +2,7 @@ const giftech = require('express');
 const gifted = require('path');
 const { gifte } = require('child_process');
 const axios = require('axios')
-const gift = express();
+const gift = giftech();
 
 
 gift.use(giftech.static(gifted.join(__dirname, 'gifted')));
