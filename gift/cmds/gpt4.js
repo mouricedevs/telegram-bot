@@ -1,4 +1,3 @@
-const config = require('./config.json');
 const axios = require('axios');
 
 module.exports = {
@@ -20,7 +19,7 @@ module.exports = {
         try {
             const apiUrl = `https://api.maher-zubair.tech/ai/chatgpt4?q=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
-            const gifted = response.data. `json`;
+            const gifted = response.data;
 
             bot.sendMessage(chatId, `GPT4 RESPONSE: ${gifted}`);
         } catch (error) {
