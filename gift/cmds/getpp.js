@@ -17,28 +17,28 @@ module.exports = {
         role: 0
     },
     onStart: async function ({ bot, chatId, msg, args }) {
-        let GiftedId = msg.from.id;
+        let targetUserId = msg.from.id;
 
         if (msg.reply_to_message) {
-            GiftedId = msg.reply_to_message.from.id;
+            targetUserId = msg.reply_to_message.from.id;
         } else if (args.length > 0) {
-            GiftedId = args[0];
+            targetUserId = args[0];
         }
 
         try {
-            const gift = await bot.getUserProfilePhotos(GiftedId);
-            if (gift.total_count === 0) {
+            const photos = await bot.getUserProfilePhotos(targetUserId);
+            if (photos.total_count === 0) {
                 return bot.sendMessage(chatId, "This user has no profile pictures.");
             }
 
-            const Giftech = gift.photos[0][0].file_id;
-            await bot.sendPhoto(chatId, Giftech);
+            const fileId = photos.photos[0][0].file_id;
+            await bot.sendPhoto(chatId, fileId);
         } catch (error) {
        
-        const gift = await bot.getUserProfilePhotos(msg.from.id);
+        const photos = await bot.getUserProfilePhotos(msg.from.id);
       
-        const Giftech = gift.photos[0][0].file_id;
-        await bot.sendPhoto(chatId, Giftech);  }
+        const fileId = photos.photos[0][0].file_id;
+        await bot.sendPhoto(chatId, fileId);  }
     }
 };
 
