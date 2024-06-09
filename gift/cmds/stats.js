@@ -30,10 +30,10 @@ module.exports = {
             📊 Gifted-Md Statistics 📊
 
             🕒 Uptime: ${uptimeString}
-            💾 Memory Usage: ${memoryUsageMB} MB           
-            📂 total Cmds: ${jsFileCount}
+            💾 RAM Usage: ${memoryUsageMB} MB           
+            📂 Total Cmds: ${jsFileCount}
 
-            ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
+            ᴏᴡɴᴇʀ: ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
             `;
 
             bot.sendMessage(chatId, statsMessage);
