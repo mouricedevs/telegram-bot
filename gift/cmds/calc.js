@@ -13,7 +13,7 @@ module.exports = {
         name: "calc",
         author: "Gifted Tech",
         description: "Send a link of the replied file",
-        category: "ᴀɪ",
+        category: "ᴛᴏᴏʟs",
         usage: ".ccgen bin_numbet",
         usePrefix: true
     },
