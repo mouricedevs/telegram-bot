@@ -53,8 +53,7 @@ module.exports = {
           helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
           helpMessage += "╰─────────────────◊\n\n";
         }
-        let giftedMessage = '𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗕𝗬 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛';
-        await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' }, giftedMessage);
+        await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
       }
     } catch (error) {
       console.error('Error generating menu message:', error);
