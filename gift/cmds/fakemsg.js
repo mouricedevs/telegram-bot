@@ -23,7 +23,7 @@ module.exports = {
     },
 
     onStart: async function({ bot, chatId, msg, args }) {
-        const prompt = args.join(' ');
+        const gift = args.join(' ');
 
         try {
             const userId = msg.reply_to_message ? msg.reply_to_message.from.id : msg.from.id;
@@ -33,30 +33,30 @@ module.exports = {
 
 
             
-            const photos = await bot.getUserProfilePhotos(userId);
+            const gifte = await bot.getUserProfilePhotos(userId);
 
-            if (!photos || !photos.total_count) {
+            if (!gifte || !gifte.total_count) {
                 return bot.sendMessage(chatId, "No profile photos found.");
             }
 
-            const fileId = photos.photos[0][0].file_id;
+            const fileId = gifte.photos[0][0].file_id;
             const fileLink = await bot.getFileLink(fileId);
 
             const telegraphUrl = `https://apis-samir.onrender.com/telegraph?url=${encodeURIComponent(fileLink)}&senderId=4679926`;
 
-            const response = await axios.get(telegraphUrl);
-            const link = response.data.result.link;
+            const giftech = await axios.get(telegraphUrl);
+            const linkgift = giftech.data.result.link;
 
-            const imageUrl = `https://apis-samir.onrender.com/q?text=${encodeURIComponent(prompt)}&avatar=${link}&username=${username}`;
+            const giftedUrl = `https://apis-samir.onrender.com/q?text=${encodeURIComponent(gift)}&avatar=${linkgift}&username=${username}`;
 
-            const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-            const imagePath = path.join(__dirname, 'image.png');
+            const giftResponse = await axios.get(giftedUrl, { responseType: 'arraybuffer' });
+            const giftPath = path.join(__dirname, 'image.png');
 
-            fs.writeFile(imagePath, imageResponse.data, 'binary', async (err) => {
+            fs.writeFile(giftPath, giftResponse.data, 'binary', async (err) => {
                 if (err) throw err;
 
-                await bot.sendSticker(chatId, imagePath, { caption: "Here is your image." });
-                fs.unlinkSync(imagePath); 
+                await bot.sendSticker(chatId, giftPath, { caption: "Here is your image." });
+                fs.unlinkSync(giftPath); 
             });
         } catch (error) {
             console.error('[ERROR]', error);
