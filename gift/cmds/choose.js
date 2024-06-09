@@ -20,7 +20,7 @@ module.exports = {
         usePrefix: true // true = you have to use prefix (/ * # @ ) to cmd false = you don't have to use prefix 
     },
     onStart: async function ({ bot, chatId, args }) {
-        const question = args.join(' ');
+        const gifted = args.join(' ');
         const inlineKeyboard = {
             reply_markup: {
                 inline_keyboard: [
@@ -30,14 +30,14 @@ module.exports = {
             }
         };
 
-        await bot.sendMessage(chatId, `Question: ${question}`, inlineKeyboard);
+        await bot.sendMessage(chatId, `Question: ${gifted}`, inlineKeyboard);
     },
     onReply: async function (bot, chatId, userId, data) {
-        const choice = data.choice;
+        const gift = data.choice;
 
-        if (choice === 'true') {
+        if (gift === 'true') {
             await bot.sendMessage(chatId, 'You chose: Yes');
-        } else if (choice === 'false') {
+        } else if (gift === 'false') {
             await bot.sendMessage(chatId, 'You chose: No');
         }
     }
