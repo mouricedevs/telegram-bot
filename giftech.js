@@ -301,7 +301,7 @@ async function checkGiftedLatestCommit() {
 
         }
     } catch (error) {
-        logger('Error checking latest update contract https://t.me/Samir_OE', error);
+        logger('Error checking latest update from main repository. Contact https://t.me/giftedmd incase of other issues.', error);
     }
 }
 
