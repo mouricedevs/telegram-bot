@@ -14,14 +14,14 @@ module.exports = {
         const p = '/'; 
 
         if (args.length === 0) {
-            bot.sendMessage(chatId, `Invalid input⚠️\nPlease use:\n${p}ssweb <url> \nor\n${p}ssweb -g <text>.`);
+            bot.sendMessage(chatId, `Invalid input⚠️\nPlease use:\n${p}ssweb <url> \nor\n${p}ssweb  <link>.`);
             return;
         }
 
         let url;
         if (args[0] === '-g') {
             if (args.length < 2) {
-                bot.sendMessage(chatId, `Invalid text input after -g tag⚠️\nPlease use:\n${p}ssweb -g YourText`);
+                bot.sendMessage(chatId, `Invalid text input after -g tag⚠️\nPlease use:\n${p}ssweb  YourLink`);
                 return;
             }
             const query = args.slice(1).join('+');
@@ -33,7 +33,7 @@ module.exports = {
             }
         }
 
-        const apiURL = `${url}`;
+        const apiURL = `https://image.thum.io/get/width/1920/crop/400/fullpage/noanimate/${url}`;
 
         try {
             const res = await fetch(apiURL);
