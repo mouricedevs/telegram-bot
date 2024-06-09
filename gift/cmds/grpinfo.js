@@ -19,17 +19,17 @@ module.exports = {
     },
     onStart: async function ({ bot, chatId }) {
         try {
-            const chat = await bot.getChat(chatId);
+            const gift = await bot.getChat(chatId);
 
-            let infoMessage = `─── GROUP INFO ────⭓\n`;
-            infoMessage += `» Title: ${chat.title}\n`;
-            infoMessage += `» Type: ${chat.type}\n`;
-            infoMessage += `» ID: ${chat.id}\n`;
+            let giftMessage = `─── GROUP INFO ────⭓\n`;
+            giftMessage += `» Title: ${gift.title}\n`;
+            giftMessage += `» Type: ${gift.type}\n`;
+            giftMessage += `» ID: ${gift.id}\n`;
             if (chat.description) {
-                infoMessage += `» Description: ${chat.description}\n`;
+                giftMessage += `» Description: ${gift.description}\n`;
             }
             if (chat.invite_link) {
-                infoMessage += `» Invite Link: ${chat.invite_link}\n`;
+                giftMessage += `» Invite Link: ${gift.invite_link}\n`;
             }
 
             bot.sendMessage(chatId, infoMessage);
