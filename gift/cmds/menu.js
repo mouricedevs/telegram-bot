@@ -17,22 +17,22 @@ module.exports = {
       const amGifted = gift.join(__dirname, '.');
       const Giftedam = giftek.readdirSync(amGifted).filter(file => file.endsWith('.js'));
 
-      const categories = {};
+      const giftedkenya = {};
       const tekgifted = {};
       const iamgifted = {};
 
       for (const file of Giftedam) {
-        const command = require(gift.join(amGifted, file));
-        const giftechke = command.config.category || 'categorized';
+        const giftedcode = require(gift.join(amGifted, file));
+        const giftechke = giftedcode.config.category || 'categorized';
 
-        if (!categories[giftechke]) {
-          categories[giftechke] = [];
+        if (!giftedkenya[giftechke]) {
+          giftedkenya[giftechke] = [];
           iamgifted[giftechke] = [];
         }
 
-        categories[giftechke].push(command.config.name);
-        tekgifted[command.config.name] = command.config;
-        iamgifted[giftechke].push(command.config.name);
+        giftedkenya[giftechke].push(giftedcode.config.name);
+        tekgifted[giftedcode.config.name] = giftedcode.config;
+        iamgifted[giftechke].push(giftedcode.config.name);
       }
 
       if (match && match[1] && match[1].trim()) {
