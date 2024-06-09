@@ -12,8 +12,8 @@ gift.get('/', (req, res) => {
     res.sendFile(gifted.join(__dirname, 'gifted', 'gifted.html'));
 });
 
-const PORT = process.env.PORT || 5000;
-gift.listen(PORT, () => {});
+const GIFTE = process.env.GIFTE || 5000;
+gift.listen(GIFTED, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
