@@ -12,8 +12,8 @@ gift.get('/', (req, res) => {
     res.sendFile(gifted.join(__dirname, 'gifted', 'gifted.html'));
 });
 
-const GIFTE = process.env.GIFTE || 5000;
-gift.listen(GIFTE, () => {});
+const GIFTED_EXP = process.env.GIFTED_EXP || 5000;
+gift.listen(GIFTED_EXP, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
