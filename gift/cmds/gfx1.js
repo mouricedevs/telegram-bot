@@ -21,14 +21,14 @@ module.exports = {
 
     onStart: async function ({ bot, chatId, args }) {
         const prompt = args.join(' ');
-        if (!prompt) {
+        if (!gift) {
             bot.sendMessage(chatId, "Please provide a prompt.");
             return;
         }
 
         try {
-            const apiUrl = `https://apis-samir.onrender.com/gfx1?name=${encodeURIComponent(prompt)}`;
-            const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
+            const Gifted = `https://apis-samir.onrender.com/gfx1?name=${encodeURIComponent(gift)}`;
+            const response = await axios.get(Gifted, { responseType: 'arraybuffer' });
             const imageData = Buffer.from(response.data, 'binary');
             await bot.sendPhoto(chatId, imageData);
         } catch (error) {
