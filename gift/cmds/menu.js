@@ -46,12 +46,12 @@ module.exports = {
           await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
         }
       } else {
-        let helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷ \n┃❍  ᴏᴡɴᴇʀ: Gifted Tech \n┃❍ ᴄᴏᴍᴍᴀɴᴅs: 8 \n╰════════════════⊷ \n\n';
+        let helpMessage = '╭══ 〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙 ═⊷ \n┃❍ \n┃❍  ᴏᴡɴᴇʀ: Gifted Tech \n┃❍ ᴄᴏᴍᴍᴀɴᴅs: 8 \n┃❍ \n╰════════════════⊷ \n\n';
 
         for (const category in categorizedCommands) {
-          helpMessage += `╭──『 ${category} 』\n`;
+          helpMessage += `╭───『 ${category} 』\n`;
           helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
-          helpMessage += "╰───────────◊\n\n";
+          helpMessage += "╰───────────────◊\n\n";
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
