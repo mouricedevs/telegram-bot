@@ -58,7 +58,7 @@ module.exports = {
 
         for (const giftechke in iamgifted) {
           devGifted += `╭─── **『 ${giftechke} 』** \n`;
-          devGifted += `✧ .${iamgifted[giftechke].join(' ✧ .')}\n`;
+          devGifted += `✧ .${iamgifted[giftechke] \n.join(' ✧ .')}\n`;
           devGifted += "╰─────────────────◊\n\n";
         }
         await bot.sendMessage(msg.chat.id, devGifted, { parse_mode: 'markdown' });
