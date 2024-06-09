@@ -34,8 +34,8 @@ module.exports = {
             console.log('API Response:', response.data);
 
             // Check if response and response.data are defined
-            if (response && response.data && response.data.ccbin) {
-                const giftedte= response.data.ccbin;
+            if (response && response.data && response.data.giftedte) {
+                const giftedte = response.data.giftedte;
                 await bot.sendMessage(chatId, `HERE WE GO: ${giftedte}`);
             } else {
                 await bot.sendMessage(chatId, `Failed to get response from GPT4 APi Server. Please try again.`);
