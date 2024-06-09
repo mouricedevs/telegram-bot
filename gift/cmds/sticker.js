@@ -14,11 +14,11 @@ const path = require('path');
 
 module.exports = {
     config: {
-        name: "fakemsg",
+        name: "sticker",
         author: "Gifted Tech",
         description: "create fake telegram message ",
-        category: "ᴜᴛɪʟɪᴛʏ",
-        usage: "fakemsg [prompt]",
+        category: "ғᴜɴ",
+        usage: "sticker [prompt]",
         usePrefix: true
     },
 
