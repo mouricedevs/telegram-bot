@@ -11,39 +11,39 @@ const axios = require("axios");
 
 module.exports = {
     config: {
-        name: "gen",
+        name: "gpt4",
         author: "Gifted Tech",
-        description: "Generates Heroku Credit Cards",
-        category: "ᴜᴛɪʟɪᴛʏ",
-        usage: "<bin_number>",
+        description: "Generates GPT4 Response via APi",
+        category: "ᴀɪ",
+        usage: "<prompt>",
         usePrefix: true
     },
     onStart: async function ({ bot, chatId, args }) {
-        const query = args.join(" ");
+        const prompt = args.join(" ");
 
-        if (!query) {
-            return bot.sendMessage(chatId, `Please provide a bin number. Usage: .gen [bin_number]`);
+        if (!prompt) {
+            return bot.sendMessage(chatId, `Please provide a prompt. Usage: .gpt4 [your_query]`);
         }
 
-        const searchMessage = await bot.sendMessage(chatId, `🔍 Generating Heroku CC from provided Bin: ${query}`);
+        const searchMessage = await bot.sendMessage(chatId, `🔍 Generating a Response for ypur Query: ${prompt}`);
 
         try {
-            const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
+            const response = await axios.get(`https://api.maher-zubair.tech/ai/chatgptv4?q=${encodeURIComponent(prompt)}`);
             
             // Log the entire response for debugging
             console.log('API Response:', response.data);
 
             // Check if response and response.data are defined
             if (response && response.data && response.data.ccbin) {
-                const ccbin = response.data.ccbin;
-                await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
+                const giftedte= response.data.ccbin;
+                await bot.sendMessage(chatId, `HERE WE GO: ${giftedte}`);
             } else {
-                await bot.sendMessage(chatId, `Failed to retrieve credit card data. Please try again.`);
+                await bot.sendMessage(chatId, `Failed to get response from GPT4 APi Server. Please try again.`);
                 console.error('[ERROR] Unexpected API response structure:', response.data);
             }
         } catch (error) {
             console.error('[ERROR]', error);
-            await bot.sendMessage(chatId, 'An error occurred while generating cc');
+            await bot.sendMessage(chatId, 'An error occurred while generating response');
         }
 
         await bot.deleteMessage(chatId, searchMessage.message_id);
