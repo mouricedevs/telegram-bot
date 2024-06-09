@@ -12,13 +12,13 @@ gift.get('/', (req, res) => {
     res.sendFile(gifted.join(__dirname, 'gifted', 'gifted.html'));
 });
 
-const GIFTED_EXP = process.env.GIFTED_EXP || 5000;
-gift.listen(GIFTED_EXP, () => {});
+const GIFTED_TECH = process.env.GIFTED_TECH || 3000;
+gift.listen(GIFTED_TECH, () => {});
 
 
 //startGifted function is taken from gifted-md v4.5.0
 function startGifted() {
-    const child = spawn("node", ["giftech.js"], {
+    const child = spawn("node", ["gift.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
