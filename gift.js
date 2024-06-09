@@ -268,7 +268,7 @@ const logger = createGradientLogger();
 `;
 
     logger(Giftedtech);
-    logger('[ Gifted-Md is Active and Online]');
+    logger('[ Gifted-Md is Active and Online. Enjoy Buddy!]');
 
 
 
@@ -296,12 +296,12 @@ async function checkGiftedLatestCommit() {
         if (latestCommit.sha !== lastCommitSha) {
             const previousCommitSha = lastCommitSha;
             const newCommitSha = latestCommit.sha;
-            logger(`\n [ New Update detected ]\n\n [ Current bot version: ${previousCommitSha} ]\n\n [ New version: ${newCommitSha} ]\n\n [ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
+            logger(`\n [ New Update Available]\n\n [ Current Bot Version: ${previousCommitSha} ]\n\n [ New version: ${newCommitSha} ]\n\n [ Update message: ${latestCommit.commit.message} by ${latestCommit.commit.author.name} ]`);
         } else {
 
         }
     } catch (error) {
-        logger('Error checking latest update from main repository. Contact https://t.me/giftedmd incase of other issues.', error);
+        logger('Could not load latest update from main repository. Do not worry since the bot is still running normally. Incase of other issues please contact developer on: https://t.me/giftedmd', error);
     }
 }
 
