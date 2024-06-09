@@ -18,7 +18,7 @@ gift.listen(GIFTED_EXP, () => {});
 
 //startGifted function is taken from gifted-md v4.5.0
 function startGifted() {
-    const child = spawn("node", ["gift.js"], {
+    const child = spawn("node", ["giftech.js"], {
         cwd: __dirname,
         stdio: "inherit",
         shell: true
