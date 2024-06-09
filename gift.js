@@ -275,7 +275,7 @@ const logger = createGradientLogger();
 const GIFTED_TECH = 'mouricedevs';
 const GIFTED_DEVS = 'telegram-bot';
 
-const GIFTED_UPDATE = path.join(__dirname, './gift/version.txt');
+const GIFTED_UPDATE = path.join(__dirname, 'version.txt');
 
 let lastCommitSha = null;
 
