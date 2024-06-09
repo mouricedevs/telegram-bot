@@ -21,8 +21,8 @@ module.exports = {
         if (args.length === 4) {
             bot.sendMessage(chatId, "Please provide a message to echo.");
         } else {
-            const echoMessage = args.join(' ');
-            bot.sendMessage(chatId, echoMessage);
+            const echoGifted = args.join(' ');
+            bot.sendMessage(chatId, echoGifted);
         }
     }
 };
