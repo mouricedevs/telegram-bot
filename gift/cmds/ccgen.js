@@ -29,8 +29,9 @@ module.exports = {
 
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
-
-            await bot.sendMessage(chatId, `HERE WE GO: ${response}`);
+            const ccbin = response.data;
+            
+            await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, 'An error occurred while generating cc');
