@@ -36,7 +36,8 @@ module.exports = {
             // Check if response and response.data are defined
             if (response && response.data && response.data.giftedte) {
                 const giftedte = response.data.giftedte;
-                await bot.sendMessage(chatId, `HERE WE GO: ${giftedte}`);
+                const data = await response.json();
+            return data.answer;
             } else {
                 await bot.sendMessage(chatId, `Failed to get response from GPT4 APi Server. Please try again.`);
                 console.error('[ERROR] Unexpected API response structure:', response.data);
