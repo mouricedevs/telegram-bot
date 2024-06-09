@@ -25,7 +25,7 @@ module.exports = {
             giftMessage += `» Title: ${gift.title}\n`;
             giftMessage += `» Type: ${gift.type}\n`;
             giftMessage += `» ID: ${gift.id}\n`;
-            if (chat.description) {
+            if (gift.description) {
                 giftMessage += `» Description: ${gift.description}\n`;
             }
             if (gift.invite_link) {
