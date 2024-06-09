@@ -12,7 +12,7 @@ module.exports = {
     cooldown: 0,
     usePrefix: true
   },
-  onStart: async function ({ msg, gift, match }) {
+  onStart: async function ({ msg, bot, match }) {
     try {
       const commandsDir = path.join(__dirname, '.');
       const files = fs.readdirSync(commandsDir).filter(file => file.endsWith('.js'));
@@ -41,9 +41,9 @@ module.exports = {
 
         if (commandConfig) {
           let commandInfo = `─── NAME ────⭓\n\n» ${commandConfig.name}\n\n─── INFO ────⭓\n\n» Description: ${commandConfig.description || 'Do not have'}\n» Role: ${commandConfig.role}\n» Author: ${commandConfig.author || 'Unknown'}\n» Cooldown: ${commandConfig.cooldown}\n» Use Prefix: ${commandConfig.usePrefix}\n\n─── USAGE ────⭓\n\n» ${commandConfig.usage || `/${commandConfig.name}`}\n\n───────⭔`;
-          await gift.sendMessage(msg.chat.id, commandInfo, { parse_mode: 'markdown' });
+          await bot.sendMessage(msg.chat.id, commandInfo, { parse_mode: 'markdown' });
         } else {
-          await gift.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
+          await bot.sendMessage(msg.chat.id, `Command '${commandName}' not found.`);
         }
       } else {
         let helpMessage = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃ \n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 39 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
@@ -53,11 +53,11 @@ module.exports = {
           helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
           helpMessage += "╰─────────────────◊\n\n";
         }
-        await gift.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
+        await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
       }
     } catch (error) {
       console.error('Error generating menu message:', error);
-      await gift.sendMessage(msg.chat.id, 'An error occurred while generating the menu message.');
+      await bot.sendMessage(msg.chat.id, 'An error occurred while generating the menu message.');
     }
   }
 };
