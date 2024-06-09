@@ -49,12 +49,12 @@ module.exports = {
 
         if (techGifted) {
           let giftedDevs = `─── NAME ────⭓\n\n» ${techGifted.name}\n\n─── INFO ────⭓\n\n» Description: ${techGifted.description || 'Do not have'}\n» Role: ${techGifted.role}\n» Author: ${techGifted.author || 'Unknown'}\n» Cooldown: ${techGifted.cooldown}\n» Use Prefix: ${techGifted.usePrefix}\n\n─── USAGE ────⭓\n\n» ${techGifted.usage || `/${techGifted.name}`}\n\n───────⭔`;
-          await bot.sendMessage(msg.chat.id, `${giftedDevs}`);
+          await bot.sendMessage(msg.chat.id, giftedDevs, { parse_mode: 'markdown' }`);
         } else {
           await bot.sendMessage(msg.chat.id, `Command '${giftedTech}' not found.`);
         }
       } else {
-        let devGifted = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃❍ ᴜsᴇʀ: •••\n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 40 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
+        let devGifted = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃❍ ᴜsᴇʀ: •••\n┃❍ **ᴏᴡɴᴇʀ:** GiftedTech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 40 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
 
         for (const giftechke in iamgifted) {
           devGifted += `╭─── **『 ${giftechke} 』** \n`;
