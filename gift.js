@@ -1,4 +1,3 @@
-
 const GiftedTech = require('node-telegram-bot-api');
 const config = require('./gift/cmds/config.json');
 const fs = require('fs');
@@ -262,13 +261,13 @@ function createGradientLogger() {
 
 const logger = createGradientLogger();
 
-    const botName = `  
+    const Giftedtech = `  
 𝗚𝗜𝗙𝗧𝗘𝗗 𝗩𝗘𝗥𝗦𝗜𝗢𝗡 𝟭.𝟬.𝟬
 𝗔 𝗖𝗢𝗢𝗟 𝗠𝗨𝗟𝗧𝗜-𝗗𝗘𝗩𝗜𝗖𝗘 
 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗨𝗦𝗘𝗥 𝗕𝗢𝗧 
 `;
 
-    logger(botName);
+    logger(Giftedtech);
     logger('[ Gifted-Md is Active and Online]');
 
 
