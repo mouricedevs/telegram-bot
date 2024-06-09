@@ -21,20 +21,20 @@ module.exports = {
     },
     onStart: async function ({ bot, chatId, userId, args, msg, adminId }) {
 
-        const code = args.join(' ');
+        const gift = args.join(' ');
 
-        if (!code) {
+        if (!gift) {
             return bot.sendMessage(chatId, `Please provide some code to execute. Usage: .eval <code>`);
         }
 
         try {
-            let result = await eval(code);
-            if (typeof result !== 'string') {
-                result = require('util').inspect(result);
+            let gifted = await eval(gift);
+            if (typeof gifted !== 'string') {
+                gifted = require('util').inspect(gifted);
             }
 
 
- bot.sendMessage(adminId, `Result: ${result}`);
+ bot.sendMessage(adminId, `Result: ${gifted}`);
 
 
         } catch (error) {
