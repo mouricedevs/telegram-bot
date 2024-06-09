@@ -20,16 +20,16 @@ module.exports = {
     },
 
     onStart: async function({ bot, chatId, msg }) {
-        const gifted = new Gifted(bot, {
+        const gifted = new Calendar(bot, {
             date_format: 'DD-MM-YYYY',
             language: 'en'
         });
 
-        gifted.startNavGifted(msg);
+        gifted.startNavCalendar(msg);
 
         bot.on("callback_query", (query) => {
             if (query.message.message_id == gifted.chats.get(query.message.chat.id)) {
-                const res = gifted.clickButtonGifted(query);
+                const res = gifted.clickButtonCalendar(query);
                 if (res !== -1) {
                     bot.sendMessage(query.message.chat.id, "You selected: " + res);
                 }
