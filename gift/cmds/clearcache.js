@@ -31,7 +31,7 @@ module.exports = {
             }
 
             files.forEach(file => {
-                const Gifted = path.join(cacheFolderPath, file);
+                const Gifted = path.join(Gifted, file);
                 fs.unlink(Gifted, err => {
                     if (err) {
                         console.error(err);
