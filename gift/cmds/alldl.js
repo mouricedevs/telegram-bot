@@ -8,8 +8,8 @@
 
 
 const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+const gift = require('fs');
+const gifted = require('path');
 const { Readable } = require('stream');
 
 module.exports = {
@@ -27,35 +27,35 @@ module.exports = {
             return bot.sendMessage(chatId, "Please provide a URL. Usage: .alldl <url>");
         }
 
-        const link = args.join(" ");
-        const apiUrl = `https://noobs-api2.onrender.com/dipto/alldl?url=${encodeURIComponent(link)}`;
+        const giftace = args.join(" ");
+        const Giftedte = `https://noobs-api2.onrender.com/dipto/alldl?url=${encodeURIComponent(giftace)}`;
 
         try {
-            const response = await axios.get(apiUrl);
-            const videoUrl = response.data.result; // Assuming the API returns a direct link to the video file.
+            const giftech = await axios.get(Giftedte);
+            const giftDevs = giftech.data.result; // Assuming the API returns a direct link to the video file.
 
-            if (videoUrl) {
-                const videoStream = (await axios({
-                    url: videoUrl,
+            if (giftDevs) {
+                const giftedStream = (await axios({
+                    url: giftDevs,
                     method: 'GET',
                     responseType: 'stream'
                 })).data;
 
-                const filename = path.basename(new URL(videoUrl).pathname);
-                const tempPath = path.join(__dirname, `/cache/${filename}`);
+                const giftedke = gifted.basename(new URL(giftDevs).pathname);
+                const giftPath = gifted.join(__dirname, `/cache/${giftedke}`);
                 
-                const writer = fs.createWriteStream(tempPath);
+                const amgift = gift.createWriteStream(giftPath);
 
-                videoStream.pipe(writer);
+                giftedStream.pipe(amgift);
 
                 await new Promise((resolve, reject) => {
-                    writer.on('finish', resolve);
-                    writer.on('error', reject);
+                    amgift.on('finish', resolve);
+                    amgift.on('error', reject);
                 });
 
                 // Send the video file
-                await bot.sendVideo(chatId, tempPath);
-                fs.unlinkSync(tempPath); // Clean up after sending
+                await bot.sendVideo(chatId, giftPath);
+                gift.unlinkSync(giftPath); // Clean up after sending
             } else {
                 bot.sendMessage(chatId, "Failed to download video. No video link found.");
             }
