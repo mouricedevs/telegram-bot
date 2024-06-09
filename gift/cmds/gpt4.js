@@ -29,14 +29,7 @@ module.exports = {
 
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/ai/chatgptv4?q=${prompt}`);
-            
-            // Log the entire response for debugging
-            console.log('API Response:', response.data);
-
-            // Check if response and response.data are defined
-            if (response && response.data && response.data.giftedte) {
-                const giftedte = response.data.giftedte;
-                const data = await response.json();
+            const data = await response.json();
             return data.answer;
             } else {
                 await bot.sendMessage(chatId, `Failed to get response from GPT4 APi Server. Please try again.`);
