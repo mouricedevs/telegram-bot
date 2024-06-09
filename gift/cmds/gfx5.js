@@ -20,17 +20,17 @@ module.exports = {
     },
 
     onStart: async function ({ bot, chatId, args }) {
-        const prompt = args.join(' ');
-        if (!prompt) {
+        const gift = args.join(' ');
+        if (!gift) {
             bot.sendMessage(chatId, "Please provide a prompt.");
             return;
         }
 
         try {
-            const apiUrl = `https://apis-samir.onrender.com/gfx5?name=${encodeURIComponent(prompt)}`;
-            const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
-            const imageData = Buffer.from(response.data, 'binary');
-            await bot.sendPhoto(chatId, imageData);
+            const Gifted = `https://apis-samir.onrender.com/gfx5?name=${encodeURIComponent(gift)}`;
+            const giftech = await axios.get(Gifted, { responseType: 'arraybuffer' });
+            const giftData = Buffer.from(giftech.data, 'binary');
+            await bot.sendPhoto(chatId, giftData);
         } catch (error) {
             console.error('Error sending image:', error);
             bot.sendMessage(chatId, 'Sorry, an error occurred while sending the image.');
