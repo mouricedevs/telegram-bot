@@ -33,7 +33,7 @@ module.exports = {
             }
         }
 
-        const apiURL = `https://aemt.me/sstab?url=${url}`;
+        const apiURL = `https://api.maher-zubair.tech/misc/sstab?url=${url}`;
 
         try {
             const res = await fetch(apiURL);
