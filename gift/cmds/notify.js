@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const chatGroupsFile = path.join(__dirname, '../../chatGroups.json');
+const chatGroupsFile = path.join(__dirname, './grpchats.json');
 
 if (!fs.existsSync(chatGroupsFile)) {
     fs.writeFileSync(chatGroupsFile, JSON.stringify([]), 'utf8');
