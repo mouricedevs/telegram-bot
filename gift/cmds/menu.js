@@ -51,7 +51,7 @@ module.exports = {
         for (const category in categorizedCommands) {
           helpMessage += `╭───『 ${category} 』\n`;
           helpMessage += `✧ .${categorizedCommands[category].join(' ✧ .')}\n`;
-          helpMessage += "╰───────────────◊\n\n";
+          helpMessage += "╰─────────────────◊\n\n";
         }
 
         await bot.sendMessage(msg.chat.id, helpMessage, { parse_mode: 'markdown' });
