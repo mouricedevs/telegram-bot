@@ -29,7 +29,7 @@ module.exports = {
 
         try {
             const response = await axios.get(`https://api.maher-zubair.tech/misc/bingen?query=${encodeURIComponent(query)}`);
-            const ccbin = response.data;
+            const {ccbin} = response.data;
             
             await bot.sendMessage(chatId, `HERE WE GO: ${ccbin}`);
         } catch (error) {
