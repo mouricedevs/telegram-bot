@@ -33,7 +33,7 @@ module.exports = {
             }
         }
 
-        const apiURL = `https://image.thum.io/get/width/1920/crop/400/fullpage/noanimate/${url}`;
+        const apiURL = `${url}`;
 
         try {
             const res = await fetch(apiURL);
