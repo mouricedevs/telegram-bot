@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const messageCountFile = path.join(__dirname, '../../messageCount.json');
+const messageCountFile = path.join(__dirname, './msgcount.json');
 
 
 if (!fs.existsSync(messageCountFile)) {
