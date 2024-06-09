@@ -48,7 +48,7 @@ module.exports = {
       } else {
         let devGifted = '╭══ **〘〘 ɢɪғᴛᴇᴅ-ᴍᴅ 〙〙** ═⊷ \n┃ \n┃❍ **ᴏᴡɴᴇʀ:** Gifted Tech \n┃❍ **ᴄᴏᴍᴍᴀɴᴅs:** 40 \n┃❍ **ᴠᴇʀsɪᴏɴ:** 1.0.0 \n╰════════════════⊷ \n\n **𝑮𝒊𝒇𝒕𝒆𝒅-𝑴𝒅 𝑪𝒐𝒎𝒎𝒂𝒏𝒅𝒔:** \n\n';
 
-        for (const category in categorizedCommands) {
+        for (const giftechke in categorizedCommands) {
           devGifted += `╭─── **『 ${giftechke} 』** \n`;
           devGifted += `✧ .${categorizedCommands[giftechke].join(' ✧ .')}\n`;
           devGifted += "╰─────────────────◊\n\n";
