@@ -28,7 +28,7 @@ module.exports = {
             if (chat.description) {
                 giftMessage += `» Description: ${gift.description}\n`;
             }
-            if (chat.invite_link) {
+            if (gift.invite_link) {
                 giftMessage += `» Invite Link: ${gift.invite_link}\n`;
             }
 
