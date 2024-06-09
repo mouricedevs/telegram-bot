@@ -1,52 +1,52 @@
-const simpleGit = require('simple-git');
-const path = require('path');
+const sgiftGit = require('simple-git');
+const gift = require('path');
 const fs = require('fs');
 
 
 
-const gradient = require('gradient-string');
+const giftechke = require('gradient-string');
 
-function createGradientLogger() {
-    const colors = ['blue', 'cyan'];
+function createGiftedLogin() {
+    const giftace = ['blue', 'cyan'];
     return (message) => {
-        const colorIndex = Math.floor(Math.random() * colors.length);
-        const color1 = colors[colorIndex];
-        const color2 = colors[(colorIndex + 1) % colors.length];
-        const gradientMessage = gradient(color1, color2)(message);
-        console.log(gradientMessage);
+        const colorgiftIndex = Math.floor(Math.random() * giftace.length);
+        const gifted1 = giftace[colorgiftIndex];
+        const gifted2 = giftace[(colorgiftIndex + 1) % giftace.length];
+        const giftedMessageke = giftechke(gifted1, gifted2)(message);
+        console.log(giftedMessageke);
     };
 }
 
-const logger = createGradientLogger();
+const giftedlogin = createGiftedLogin();
 
 
 
 
-const REPO_OWNER = 'mouricedevs';
-const REPO_NAME = 'telegram-bot';
+const GIFTED_TECH = 'mouricedevs';
+const GIFTED_DEVS = 'telegram-bot';
 
-const VERSION_FILE = path.join(__dirname, 'version.txt');
+const GIFTED_UPDATE = gift.join(__dirname, './gift/version.txt');
 
-async function syncRepo() {
+async function syncGifted() {
     try {
-        const git = simpleGit(path.join(__dirname));
-        const remoteUrl = `https://github.com/${REPO_OWNER}/${REPO_NAME}.git`;
+        const gifte = sgiftGit(gift.join(__dirname));
+        const remoteGiftedUrl = `https://github.com/${GIFTED_TECH}/${GIFTED_DEVS}.git`;
 
-        await git.addRemote('authenticated-origin', remoteUrl).catch(() => {});
+        await gifte.addRemote('authenticated-origin', remoteGiftedUrl).catch(() => {});
 
-        await git.fetch('authenticated-origin', 'main');
-        await git.reset(['--hard', 'authenticated-origin/main']);
+        await gifte.fetch('authenticated-origin', 'main');
+        await gifte.reset(['--hard', 'authenticated-origin/main']);
 
-        const log = await git.log();
-        const latestCommitSha = log.latest.hash;
+        const giftedevs = await gifte.log();
+        const GiftlatestGiftedCommit = giftedevs.latest.hash;
 
-        fs.writeFileSync(VERSION_FILE, latestCommitSha);
+        fs.writeFileSync(GIFTED_UPDATE, latestGiftedCommit);
 
-        logger('[ Repository synchronized to the latest version. ]');
-        logger(`Current version: ${latestCommitSha}`);
+        giftedlogin('[ Repository synchronized to the latest version. ]');
+        giftedlogin(`Current version: ${GiftlatestGiftedCommit}`);
     } catch (error) {
-    logger('Error synchronizing repository:', error);
+    giftedlogin('Error synchronizing repository:', error);
     }
 }
 
-syncRepo();
+syncGifted();
