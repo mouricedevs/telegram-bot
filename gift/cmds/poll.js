@@ -1,3 +1,6 @@
+const gifted = require('path');
+const prefix = gifted.join(__dirname, './config.json');
+
 module.exports = {
     config: {
         name: "poll",
