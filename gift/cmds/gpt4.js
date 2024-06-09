@@ -19,12 +19,15 @@ module.exports = {
         try {
             const apiUrl = `https://api.maher-zubair.tech/ai/chatgpt4?q=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
-            const giftech = response.data.result;
+            const giftech = response.data;
+            const giftke = `
+            **GPT4 RESPONSE:** ${giftech}
+            `.trim();
 
-            bot.sendMessage(chatId, `GPT4 RESPONSE: ${giftech}`);
+            await bot.sendMessage(chatId, giftke, { parse_mode: 'Markdown' });
         } catch (error) {
-            console.error('[ERROR]', error);
-            bot.sendMessage(chatId, "An error occurred while processing the command.");
+            console.error('Error fetching gpt4 response data:', error);
+            bot.sendMessage(chatId, '⚠️ Sorry, an error occurred while fetching the weather data.');
         }
     }
 };
