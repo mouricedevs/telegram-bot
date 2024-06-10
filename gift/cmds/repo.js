@@ -7,9 +7,9 @@
 
 module.exports = {
     config: {
-        name: "feature",
+        name: "repo",
         author: "Gifted Tech",
-        description: "Display bot cmds",
+        description: "Display bot repo",
         category: "ᴛᴏᴏʟs",
         usage: ".feature",
         usePrefix: true
