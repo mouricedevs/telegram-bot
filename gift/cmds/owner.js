@@ -21,7 +21,8 @@ module.exports = {
 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗕𝗼𝘁:
            
 Be free to message my owner and developer
-@giftedmd
+Tap below 👇 username to message.
+      @giftedmd
             `;
 
             bot.sendMessage(chatId, statsMessage);
