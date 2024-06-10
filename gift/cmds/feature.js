@@ -16,7 +16,7 @@ module.exports = {
         name: "feature",
         author: "Gifted Tech",
         description: "Display bot cmds",
-        category: "ᴜᴛɪʟɪᴛʏ",
+        category: "ᴛᴏᴏʟs",
         usage: ".feature",
         usePrefix: true
     },
