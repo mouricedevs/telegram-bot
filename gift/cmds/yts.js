@@ -10,7 +10,7 @@ const axios = require('axios');
 
 module.exports = {
     config: {
-        name: "bing",
+        name: "yts",
         author: "Gifted Tech",
         description: "Sends information",
         category: "ᴀɪ",
@@ -20,12 +20,12 @@ module.exports = {
     onStart: async function ({ bot, chatId, args }) {
         const gift = args.join(' ');
         if (!gift) {
-            bot.sendMessage(chatId, "Please provide your query. Usage: .bing <your_text>");
+            bot.sendMessage(chatId, "Please provide your query. Usage: .yts <your_text>");
             return;
         }
 
         try {
-            const apiUrl = `https://api.yanzbotz.my.id/api/cari/bingsearch?query=${encodeURIComponent(gift)}`;
+            const apiUrl = `https://api.yanzbotz.my.id/api/cari/yts?query=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
             const giftech = response.data.result;
 
