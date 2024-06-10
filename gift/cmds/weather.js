@@ -33,6 +33,7 @@ module.exports = {
             const weatherData = response.data;
 
             const message = `
+𝗪𝗘𝗔𝗧𝗛𝗘𝗥 𝗕𝗬 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗
 🌤️ **Weather Information for ${weatherData.city}, ${weatherData.country}:**
 
 🌡️ **Temperature:** ${weatherData.temperature.celsius}°C (${weatherData.temperature.fahrenheit}°F)
