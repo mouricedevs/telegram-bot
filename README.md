@@ -19,8 +19,8 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 - **[`HERE IS`](https://github.com/mouricedevs/telegram-bot/blob/main/setup/bot-token-and-uid.md) How to get your BOT TOKEN and BOT UID**
 
 ### Configure the Bot:
-   - There's a config.json file in gift/cmds directory.
-   - Navigate to it and Add your bot token, user ID and other settings:
+   - There's a config.json file in gift/cmds folder dir.
+   - Navigate to it and Add your bot token, bot user ID(id) and other settings:
      ```
      "id": bot user id
      ```
