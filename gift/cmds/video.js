@@ -29,7 +29,7 @@ module.exports = {
       return bot.sendMessage(chatId, `Please provide a search query. Usage: .video [title]`);
     }
 
-    const searchMessage = await bot.sendMessage(chatId, `🔍 Searching for video: ${searchTerm}`);
+    const searchMessage = await bot.sendMessage(chatId, `🔍 Searching and Downloading the Video: ${searchTerm}`);
 
     try {
       const searchResults = await yts(searchTerm);
