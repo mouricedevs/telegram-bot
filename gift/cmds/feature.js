@@ -27,7 +27,6 @@ module.exports = {
 
             const statsMessage = `
             📊 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: 📊
-           
             📂 Gifted-Md Has a Total of: ${jsFileCount} Commands
             `;
 
