@@ -1,4 +1,4 @@
-# tg-bot
+# Telegram-MultiDevice User Bot 
 
 Gifted-Md Telegram bot project is designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
 
@@ -11,37 +11,14 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 
 ## Installation and Setup
 
-### Prerequisites
+### Necessities
 
 - Telegram account
-- Telegram API key
+- Telegram Bot Token
+- Telegram Bot User ID(uid)
 
 ### Installation
 
-1. **Clone the Repository**:
-   ```sh
-   git clone https://github.com/mouricedevs/tg-bot.git
-   cd tg-bot
-   ```
-   
-2. **Install Dependencies**:
-   ```sh
-    npm install 
-   ```
-
-3. **Configure the Bot**:
-   - there's a config file in the root directory.
-   - Add your bot token and other settings:
-     ```
-     "token": "bot token "
-     ```
-
-### Running the Bot
-
-- **Locally**:
-  ```
-  node index 
-  ```
 - **Deploy to a Hosting Platform** (e.g., Heroku, AWS, lightning ai .ng ):
   - Follow the specific platform instructions to deploy your bot.
 
