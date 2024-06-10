@@ -23,7 +23,7 @@
 
 ### Configure the Bot:
    - Ensure you forked the repo first so that you be able to edit it on your forked repo.
-   - There's a config.json file in gift/cmds folder dir.
+   - There's a config.json file in gift»»cmds folder dir.
    - Navigate to it and Add your bot token, bot user ID(id) and other settings:
      ```
      "user_id": bot user id
