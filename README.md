@@ -26,7 +26,7 @@
    - There's a config.json file in gift/cmds folder dir.
    - Navigate to it and Add your bot token, bot user ID(id) and other settings:
      ```
-     "id": bot user id
+     "user_id": bot user id
      ```
      ```
      "token": "bot token "
@@ -36,9 +36,10 @@
 
 - **Deploy on [HEROKU](https://github.com/mouricedevs/telegram-bot/blob/main/setup/heroku.md)**
 
-- **Deploy on [RENDER]**(https://web.giftedtechnexus.co.ke/tg-bot/render)
+- **Deploy on [RENDER](https://web.giftedtechnexus.co.ke/tg-bot/render)**
 
 - **Run locally on VPS, PC or on [TERMUX](https://web.giftedtechnexus.co.ke/tg-bot/termux)**
+- **Download Termux apk [HERE](https://f-droid.org/repo/com.termux_118.apk) first.**
   
   - Follow other specific platform instructions to deploy your bot.
 
@@ -63,3 +64,5 @@ To interact with the bot, users can send commands and messages. The bot will res
        ©𝟮𝟬𝟮𝟰 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
 
 - **CHECK OUT MY [WHATSAPP BOT PROJECT](https://github.com/mouricedevs/gifted-md) HERE**
+
+      CAN WE COLLABORATE ON A PROJECT WITH YOU???
