@@ -36,7 +36,7 @@
 
 - **Deploy on [HEROKU](https://github.com/mouricedevs/telegram-bot/blob/main/setup/heroku.md)**
 
-- **Deploy on [RENDER](https://web.giftedtechnexus.co.ke/tg-bot/render)
+- **Deploy on [RENDER]**(https://web.giftedtechnexus.co.ke/tg-bot/render)
 
 - **Run locally on VPS, PC or on [TERMUX](https://web.giftedtechnexus.co.ke/tg-bot/termux)**
   
