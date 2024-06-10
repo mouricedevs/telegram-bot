@@ -14,7 +14,7 @@ module.exports = {
         name: "dalle",
         author: "Gifted Tech",
         description: "Generate an image using Dalle API",
-        category: "sᴇᴀʀᴄʜ",
+        category: "ᴀɪ",
         usage: "<prompt> | <resolution>",
         usePrefix: true,
         role: 0
