@@ -18,13 +18,13 @@ module.exports = {
     onStart: async function({ bot, chatId }) {
         try {
             const statsMessage = `
-            𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗕𝗼𝘁:
+𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗕𝗼𝘁:
            
-            𝗥𝗲𝗽𝗼 𝗟𝗶𝗻𝗸: https://github.com/mouricedevs/telegram-bot
-            Kindly fork and Star Repo for Courage...
-            Heppy Deployment!!!
+𝗥𝗲𝗽𝗼 𝗟𝗶𝗻𝗸: https://github.com/mouricedevs/telegram-bot
+Kindly fork and Star Repo for Courage...
+    Heppy Deployment!!!
     
-            𝗠𝗮𝗱𝗲 𝗜𝗻 𝗞𝗲𝗻𝘆𝗮 𝗕𝘆 𝗚𝗶𝗳𝘁𝗲𝗱𝗧𝗲𝗰𝗵
+𝗠𝗮𝗱𝗲 𝗜𝗻 𝗞𝗲𝗻𝘆𝗮 𝗕𝘆 𝗚𝗶𝗳𝘁𝗲𝗱𝗧𝗲𝗰𝗵
             `;
 
             bot.sendMessage(chatId, statsMessage);
