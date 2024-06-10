@@ -7,11 +7,11 @@
 
 module.exports = {
     config: {
-        name: "repo",
+        name: "owner",
         author: "Gifted Tech",
         description: "Display bot repo",
-        category: "ᴛᴏᴏʟs",
-        usage: ".feature",
+        category: "ᴀᴅᴍɪɴ",
+        usage: ".owner",
         usePrefix: true
     },
 
