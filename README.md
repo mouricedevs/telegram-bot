@@ -1,6 +1,6 @@
 # tg-bot
 
-XarV2 BOT is a versatile Telegram bot project designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
+Gifted-Md Telegram bot project is designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
 
 ## Features
 
@@ -39,7 +39,7 @@ XarV2 BOT is a versatile Telegram bot project designed to automate tasks, respon
 ### Running the Bot
 
 - **Locally**:
-  ```sh
+  ```
   node index 
   ```
 - **Deploy to a Hosting Platform** (e.g., Heroku, AWS, lightning ai .ng ):
@@ -50,6 +50,5 @@ XarV2 BOT is a versatile Telegram bot project designed to automate tasks, respon
 To interact with the bot, users can send commands and messages. The bot will respond based on its features and functionality. Here are some examples:
 
 - `/start` - Greets the user and provides information about the bot.
-- `/help` - Displays a list of available commands and their descriptions.
-- `/weather` - Retrieves weather information for a specific location.
-
+- `.menu` - Displays a list of available commands and their descriptions.
+- `And Many Other Cmds` - Use the bot to discover by yourself.
