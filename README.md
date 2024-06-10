@@ -1,6 +1,9 @@
 # Telegram-MultiDevice User Bot 
 
-Gifted-Md Telegram bot project is designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
+- **Here is a [DEMO VERSION](https://t.me/giftedmd_bot) of this bot project.**
+- **You can test it out for 🆓**
+
+- Gifted-Md Telegram bot project is designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
 
 ## Features
 
@@ -19,6 +22,7 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 - **[`HERE IS`](https://github.com/mouricedevs/telegram-bot/blob/main/setup/bot-token-and-uid.md) How to get your BOT TOKEN and BOT UID**
 
 ### Configure the Bot:
+   - Ensure you forked the repo first so that you be able to edit it on your forked repo.
    - There's a config.json file in gift/cmds folder dir.
    - Navigate to it and Add your bot token, bot user ID(id) and other settings:
      ```
@@ -30,8 +34,11 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 
 ### Deployment
 
-- **Deploy to a Hosting Platform** (e.g., Heroku, AWS, lightning ai .ng ):
-  - Follow the specific platform instructions to deploy your bot.
+- **Deploy on [HEROKU](https://github.com/mouricedevs/telegram-bot/blob/main/setup/heroku.md)**
+
+- **Run locally on VPS, PC or on [TERMUX](https://github.com/mouricedevs/telegram-bot/blob/main/setup/termux.md)**
+  
+  - Follow other specific platform instructions to deploy your bot.
 
 ## Usage
 
@@ -40,3 +47,17 @@ To interact with the bot, users can send commands and messages. The bot will res
 - `/start` - Greets the user and provides information about the bot.
 - `.menu` - Displays a list of available commands and their descriptions.
 - `And Many Other Cmds` - Use the bot to discover by yourself.
+
+### HERE'S MENU STYLE ###
+
+   ![1001287920](https://github.com/mouricedevs/telegram-bot/assets/166598671/631d51eb-2bd4-4119-ae7d-76733124ac9a)
+
+
+- Ill always be adding more commands, features and making general updates so always check✅ out and sync your forks to stay updated.
+
+### INCASE OF ISSUES ###
+ - [CONTACT OWNER](t.me/giftedmd)
+
+       ©𝟮𝟬𝟮𝟰 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
+
+- **CHECK OUT MY [WHATSAPP BOT PROJECT](https://github.com/mouricedevs/gifted-md) HERE**
