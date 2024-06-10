@@ -53,7 +53,9 @@ To interact with the bot, users can send commands and messages. The bot will res
 
 ### HERE'S MENU STYLE ###
 
-   ![1001287920](https://github.com/mouricedevs/telegram-bot/assets/166598671/631d51eb-2bd4-4119-ae7d-76733124ac9a)
+   ![GIFTED TECH](https://github.com/mouricedevs/telegram-bot/assets/166598671/6abb6447-52b0-43ae-81c5-8f11680f021d)
+
+
 
 
 - Ill always be adding more commands, features and making general updates so always check✅ out and sync your forks to stay updated.
