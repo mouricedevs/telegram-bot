@@ -30,7 +30,7 @@ module.exports = {
         }
 
         try {
-            const Gifted = `https://aemt.me/dalle?text=${encodeURIComponent(prompt)}&resolution=${encodeURIComponent(resolution)}`;
+            const Gifted = `https://aemt.me/dalle?text=${encodeURIComponent(prompt)}`;
             const response = await axios.get(Gifted, { responseType: 'arraybuffer' });
             const imageData = Buffer.from(response.data, 'binary');
             await bot.sendPhoto(chatId, imageData);
