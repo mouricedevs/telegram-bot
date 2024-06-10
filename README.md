@@ -9,7 +9,7 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 - **Integration with External Services or APIs**: Connect the bot with various external services for extended functionality.
 - **Interactive User Interface**: Provides an intuitive interface for easy user interaction.
 
-## Installation and Setup
+## Deployment and Setup
 
 ### Necessities
 
@@ -17,7 +17,7 @@ Gifted-Md Telegram bot project is designed to automate tasks, respond to command
 - Telegram Bot Token
 - Telegram Bot User ID(uid)
 
-### Installation
+### Deployment
 
 - **Deploy to a Hosting Platform** (e.g., Heroku, AWS, lightning ai .ng ):
   - Follow the specific platform instructions to deploy your bot.
