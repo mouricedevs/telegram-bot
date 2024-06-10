@@ -6,10 +6,7 @@
 // 𝗖𝗔𝗡 𝗪𝗘 𝗖𝗢𝗟𝗟𝗔𝗕𝗢𝗥𝗔𝗧𝗘 𝗢𝗡 𝗔 𝗣𝗥𝗢𝗝𝗘𝗖𝗧 𝗪𝗜𝗧𝗛 𝗬𝗢𝗨
 
 
-const os = require('os');
-const process = require('process');
 const fs = require('fs');
-const path = require('path');
 
 module.exports = {
     config: {
@@ -26,8 +23,8 @@ module.exports = {
             const jsFileCount = countJSFiles();
 
             const statsMessage = `
-            📊 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: 📊
-            📂 Gifted-Md Has a Total of: ${jsFileCount} Commands
+📊 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: 📊
+📂 Gifted-Md Has a Total of: ${jsFileCount} Commands
             `;
 
             bot.sendMessage(chatId, statsMessage);
