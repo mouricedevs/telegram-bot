@@ -4,12 +4,12 @@
 - **Click on create a new bot and give your bot a name**
 
 - **Ensure you obtain your Bot Token and your your bot uid. See tutorial below 👇**
-- **You bot uid is the first ten digits of your bot token**
+- **You bot user_id is the first ten digits of your bot token**
 - **For example if yout bot token is:**
   ```
   7020932494:AAEbZLYTsGfOVBo2i-9zR_dLou9q_jF0_jc
   ```
-- **Then your bot uid(id) is automatically:**
+- **Then your bot user_id(uid) is automatically:**
   ```
   7020932494
   ```
