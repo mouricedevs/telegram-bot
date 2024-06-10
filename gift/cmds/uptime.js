@@ -28,8 +28,7 @@ module.exports = {
             const cpuUsage = os.loadavg();
             const cpuUsageString = cpuUsage.map(avg => avg.toFixed(2)).join(', ');
 
-            const statsMessage = `
-            🕒 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗥𝘂𝗻𝗻𝗶𝗻𝗴 𝗙𝗼𝗿: ${uptimeString}
+            const statsMessage = `🕒 𝗚𝗶𝗳𝘁𝗲𝗱-𝗠𝗱 𝗥𝘂𝗻𝗻𝗶𝗻𝗴 𝗙𝗼𝗿: ${uptimeString}
             `;
 
             bot.sendMessage(chatId, statsMessage);
