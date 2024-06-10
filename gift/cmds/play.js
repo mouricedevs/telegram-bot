@@ -1,3 +1,11 @@
+// ©𝟮𝟬𝟮𝟰
+// 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
+// 𝗧.𝗠𝗘/𝗚𝗜𝗙𝗧𝗘𝗗𝗠𝗗
+// 𝗔𝗗𝗗𝗜𝗡𝗚 𝗠𝗢𝗥𝗘 𝗙𝗜𝗟𝗘𝗦 𝗦𝗢𝗢𝗡
+// 𝟮𝟬𝟮𝟱 𝗜𝗦 𝗚𝗢𝗡𝗡𝗔 𝗕𝗘 𝗕𝗘𝗧𝗧𝗘𝗥
+// 𝗖𝗔𝗡 𝗪𝗘 𝗖𝗢𝗟𝗟𝗔𝗕𝗢𝗥𝗔𝗧𝗘 𝗢𝗡 𝗔 𝗣𝗥𝗢𝗝𝗘𝗖𝗧 𝗪𝗜𝗧𝗛 𝗬𝗢𝗨
+
+
 
     const fs = require("fs-extra");
     const ytdl = require("ytdl-core");
@@ -25,7 +33,7 @@ module.exports = {
         return bot.sendMessage(chatId, `Please provide a search query. Usage: .play song name`);
       }
 
-      bot.sendMessage(chatId, `🔍 Searching for song: ${search}`);
+      bot.sendMessage(chatId, `🔍 Searching and Downloading: ${search}`);
 
       const searchResults = await yts(search);
       if (!searchResults.videos.length) {
@@ -61,5 +69,12 @@ module.exports = {
       console.error('[ERROR]', error);
       bot.sendMessage(chatId, 'An error occurred while processing the command.');
     }
+
+    // ©𝟮𝟬𝟮𝟰
+// 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
+// 𝗧.𝗠𝗘/𝗚𝗜𝗙𝗧𝗘𝗗𝗠𝗗
+// 𝗔𝗗𝗗𝗜𝗡𝗚 𝗠𝗢𝗥𝗘 𝗙𝗜𝗟𝗘𝗦 𝗦𝗢𝗢𝗡
+// 𝟮𝟬𝟮𝟱 𝗜𝗦 𝗚𝗢𝗡𝗡𝗔 𝗕𝗘 𝗕𝗘𝗧𝗧𝗘𝗥
+// 𝗖𝗔𝗡 𝗪𝗘 𝗖𝗢𝗟𝗟𝗔𝗕𝗢𝗥𝗔𝗧𝗘 𝗢𝗡 𝗔 𝗣𝗥𝗢𝗝𝗘𝗖𝗧 𝗪𝗜𝗧𝗛 𝗬𝗢𝗨
   }
 }; 
