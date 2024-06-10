@@ -5,6 +5,14 @@
 
 - **Ensure you obtain your Bot Token and your your bot uid. See tutorial below 👇**
 - **You bot uid is the first ten digits of your bot token**
+- **For example if yout bot token is:**
+  ```
+  7020932494:AAEbZLYTsGfOVBo2i-9zR_dLou9q_jF0_jc
+  ```
+- **Then your bot uid(id) is automatically:**
+  ```
+  7020932494
+  ```
 - *I compressed the video so ain't aware of it's quality*
 
 https://github.com/mouricedevs/telegram-bot/assets/166598671/8bf0cc38-2462-4dac-909c-13770a328900
