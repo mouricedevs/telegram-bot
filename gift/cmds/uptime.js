@@ -6,7 +6,7 @@
 // 𝗖𝗔𝗡 𝗪𝗘 𝗖𝗢𝗟𝗟𝗔𝗕𝗢𝗥𝗔𝗧𝗘 𝗢𝗡 𝗔 𝗣𝗥𝗢𝗝𝗘𝗖𝗧 𝗪𝗜𝗧𝗛 𝗬𝗢𝗨
 
 
-//Success
+
 const _0x4a1a25 = _0x572e;
 function _0xa8d8() {
     const _0x3bbecf = [
