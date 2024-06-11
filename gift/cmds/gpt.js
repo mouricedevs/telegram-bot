@@ -7,7 +7,6 @@
 
 
 
-//Success
 const _0x5a68e3 = _0x3366;
 function _0x472c() {
     const _0xd14ba3 = [
