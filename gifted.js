@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 gift.listen(PORT, () => {});
 
 
-//startGifted function is taken from gifted-md v4.5.0
+//startGifted function is taken from gifted-md whatsapp bot v4.0.0
 function startGifted() {
     const child = spawn("node", ["gift.js"], {
         cwd: __dirname,
