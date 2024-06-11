@@ -28,7 +28,7 @@ module.exports = {
         }
 
         try {
-            const apiUrl = `https://apis-samir.onrender.com/weather/${encodeURIComponent(city)}`;
+            const apiUrl = `https://api.maher-zubair.tech/search/weather?q=${encodeURIComponent(city)}`;
             const response = await axios.get(apiUrl);
             const weatherData = response.data;
 
