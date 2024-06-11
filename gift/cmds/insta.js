@@ -7,7 +7,6 @@
 
 
 
-//Success
 function _0x8ae6(_0x30c818, _0x3a3301) {
     const _0x501166 = _0x1dc3();
     return _0x8ae6 = function (_0x17f961, _0x348fde) {
