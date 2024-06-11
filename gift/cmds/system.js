@@ -6,69 +6,168 @@
 // 𝗖𝗔𝗡 𝗪𝗘 𝗖𝗢𝗟𝗟𝗔𝗕𝗢𝗥𝗔𝗧𝗘 𝗢𝗡 𝗔 𝗣𝗥𝗢𝗝𝗘𝗖𝗧 𝗪𝗜𝗧𝗛 𝗬𝗢𝗨
 
 
-const os = require('os');
-const process = require('process');
-const fs = require('fs');
-const path = require('path');
-
-module.exports = {
-    config: {
-        name: "sys",
-        author: "Gifted Tech",
-        description: "Display bot statistics",
-        category: "ᴜᴛɪʟɪᴛʏ",
-        usage: "stats",
-        usePrefix: true
-    },
-
-    onStart: async function({ bot, chatId }) {
+//Success
+const _0x2b57ef = _0x3159;
+function _0x553f() {
+    const _0x216133 = [
+        'loadavg',
+        '\x0a\x20💾\x20RAM\x20Us',
+        '\x20Uptime:\x20',
+        'iRGXw',
+        'path',
+        't\x20statisti',
+        'process',
+        'ile\x20fetchi',
+        'kENRx',
+        'dJvAp',
+        'An\x20error\x20o',
+        '9afoGcR',
+        '1941735Dneryn',
+        'age:\x20',
+        'exports',
+        'endsWith',
+        'ng\x20the\x20sta',
+        'ɢɪғᴛᴇᴅ\x20ᴛᴇᴄ',
+        '\x20MB\x20\x0a\x20📂\x20To',
+        'toFixed',
+        '-Md\x20Statis',
+        'uptime',
+        'error',
+        '\x0a\x20📊\x20Gifted',
+        '444OJkxDk',
+        'tics\x20📊\x0a\x0a\x20🕒',
+        '[ERROR]',
+        '234bzHynr',
+        '42009GjiGTO',
+        'length',
+        'map',
+        'floor',
+        '.js',
+        'filter',
+        '8936670DyZvEY',
+        'Display\x20bo',
+        'tal\x20Cmds:\x20',
+        'stats',
+        'ᴜᴛɪʟɪᴛʏ',
+        'WzdgS',
+        'rss',
+        '14GdytKj',
+        'ts.',
+        '1158846eOZLxI',
+        'tJxqw',
+        'memoryUsag',
+        'sys',
+        '\x0a\x0a\x20ᴏᴡɴᴇʀ:\x20',
+        '4591PsqffP',
+        'ISfqR',
+        'PFDwh',
+        '685IYlvJR',
+        'XtnoM',
+        'ccurred\x20wh',
+        'sendMessag',
+        'TWLzQ',
+        '10153344flEeWP',
+        'join',
+        'HqqJi',
+        'MIyHk',
+        'readdirSyn',
+        'ʜ\x0a\x20',
+        '2644aGPsHK',
+        'Gifted\x20Tec',
+        'PXmKU'
+    ];
+    _0x553f = function () {
+        return _0x216133;
+    };
+    return _0x553f();
+}
+(function (_0x16eddd, _0x4bbdca) {
+    const _0x546186 = _0x3159, _0x3c0c58 = _0x16eddd();
+    while (!![]) {
         try {
-            const uptime = process.uptime(); 
-            const uptimeString = formatUptime(uptime);
-
-            const memoryUsage = process.memoryUsage();
-            const memoryUsageMB = (memoryUsage.rss / (1024 * 1024)).toFixed(2);
-
-            const cpuUsage = os.loadavg();
-            const cpuUsageString = cpuUsage.map(avg => avg.toFixed(2)).join(', ');
-
-            const jsFileCount = countJSFiles();
-
-            const statsMessage = `
-            📊 Gifted-Md Statistics 📊
-
-            🕒 Uptime: ${uptimeString}
-            💾 RAM Usage: ${memoryUsageMB} MB           
-            📂 Total Cmds: ${jsFileCount}
-
-            ᴏᴡɴᴇʀ: ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
-            `;
-
-            bot.sendMessage(chatId, statsMessage);
-        } catch (error) {
-            console.error('[ERROR]', error);
-            bot.sendMessage(chatId, 'An error occurred while fetching the stats.');
+            const _0x2ef3d3 = parseInt(_0x546186(0x167)) / (0x1c1 * -0x8 + -0x33b * -0x1 + 0x3 * 0x39a) * (-parseInt(_0x546186(0x152)) / (-0x1e79 + 0x1 * -0xfa7 + 0x2e22)) + -parseInt(_0x546186(0x143)) / (0xb6f + 0x3b4 * -0x2 + -0x404) + parseInt(_0x546186(0x175)) / (-0x8 * 0xdf + -0x1720 + -0x1 * -0x1e1c) * (-parseInt(_0x546186(0x16a)) / (-0x4 * -0x502 + -0x1bd7 + -0x6 * -0x14e)) + -parseInt(_0x546186(0x162)) / (-0x12fd * 0x1 + -0x3 * -0x1ab + 0xe02) * (parseInt(_0x546186(0x160)) / (-0xbfe + -0x20ba + 0x2cbf)) + parseInt(_0x546186(0x16f)) / (0x1 * -0x8dd + 0x15 * 0xeb + -0xa62) + -parseInt(_0x546186(0x142)) / (-0x1a * 0x89 + -0x20dc + -0x17 * -0x209) * (-parseInt(_0x546186(0x159)) / (-0x1 * -0x1da3 + -0x1 * -0x179b + -0x3534)) + parseInt(_0x546186(0x153)) / (0x45c * 0x2 + -0x322 * 0x4 + 0x149 * 0x3) * (parseInt(_0x546186(0x14f)) / (0x452 + -0xd * 0x2ac + 0x1e76));
+            if (_0x2ef3d3 === _0x4bbdca)
+                break;
+            else
+                _0x3c0c58['push'](_0x3c0c58['shift']());
+        } catch (_0x2047b5) {
+            _0x3c0c58['push'](_0x3c0c58['shift']());
+        }
+    }
+}(_0x553f, 0x2 * -0x2dfad + -0x1146cb * 0x1 + 0x80 * 0x41ab));
+function _0x3159(_0x510510, _0x11d043) {
+    const _0x1dba5c = _0x553f();
+    return _0x3159 = function (_0x3c4193, _0x3444d3) {
+        _0x3c4193 = _0x3c4193 - (0x1 * 0x1171 + 0x3bc + -0x13f5);
+        let _0x274dd3 = _0x1dba5c[_0x3c4193];
+        return _0x274dd3;
+    }, _0x3159(_0x510510, _0x11d043);
+}
+const os = require('os'), process = require(_0x2b57ef(0x13d)), fs = require('fs'), path = require(_0x2b57ef(0x13b));
+module[_0x2b57ef(0x145)] = {
+    'config': {
+        'name': _0x2b57ef(0x165),
+        'author': _0x2b57ef(0x176) + 'h',
+        'description': _0x2b57ef(0x15a) + _0x2b57ef(0x13c) + 'cs',
+        'category': _0x2b57ef(0x15d),
+        'usage': _0x2b57ef(0x15c),
+        'usePrefix': !![]
+    },
+    'onStart': async function ({
+        bot: _0xdbb943,
+        chatId: _0x90d03e
+    }) {
+        const _0x3a749e = _0x2b57ef, _0x595ddc = {
+                'TWLzQ': function (_0x711fb7, _0x185be1) {
+                    return _0x711fb7(_0x185be1);
+                },
+                'HqqJi': function (_0x4a8b64, _0x2c2060) {
+                    return _0x4a8b64 / _0x2c2060;
+                },
+                'WzdgS': function (_0x3ca394, _0x2e3da1) {
+                    return _0x3ca394 * _0x2e3da1;
+                },
+                'XtnoM': function (_0xfaa35f) {
+                    return _0xfaa35f();
+                },
+                'tJxqw': _0x3a749e(0x151),
+                'PFDwh': _0x3a749e(0x141) + _0x3a749e(0x16c) + _0x3a749e(0x13e) + _0x3a749e(0x147) + _0x3a749e(0x161)
+            };
+        try {
+            const _0x57b1d9 = process[_0x3a749e(0x14c)](), _0x10c7be = _0x595ddc[_0x3a749e(0x16e)](formatUptime, _0x57b1d9), _0x539d0b = process[_0x3a749e(0x164) + 'e'](), _0x304db7 = _0x595ddc[_0x3a749e(0x171)](_0x539d0b[_0x3a749e(0x15f)], _0x595ddc[_0x3a749e(0x15e)](0x1b69 + -0x1 * -0x2595 + 0x1e7f * -0x2, -0x10a7 + -0x4 * 0x1f3 + -0x1c73 * -0x1))[_0x3a749e(0x14a)](0x1 * 0x5c1 + 0xa * 0x35b + -0x274d * 0x1), _0x59614f = os[_0x3a749e(0x178)](), _0x48a28e = _0x59614f[_0x3a749e(0x155)](_0x2f88db => _0x2f88db[_0x3a749e(0x14a)](0x119c + 0xc1 * -0x26 + 0x4 * 0x2c3))[_0x3a749e(0x170)](',\x20'), _0x5d5db3 = _0x595ddc[_0x3a749e(0x16b)](countJSFiles), _0x409204 = _0x3a749e(0x14e) + _0x3a749e(0x14b) + _0x3a749e(0x150) + _0x3a749e(0x139) + _0x10c7be + (_0x3a749e(0x138) + _0x3a749e(0x144)) + _0x304db7 + (_0x3a749e(0x149) + _0x3a749e(0x15b)) + _0x5d5db3 + (_0x3a749e(0x166) + _0x3a749e(0x148) + _0x3a749e(0x174));
+            _0xdbb943[_0x3a749e(0x16d) + 'e'](_0x90d03e, _0x409204);
+        } catch (_0x1eb957) {
+            console[_0x3a749e(0x14d)](_0x595ddc[_0x3a749e(0x163)], _0x1eb957), _0xdbb943[_0x3a749e(0x16d) + 'e'](_0x90d03e, _0x595ddc[_0x3a749e(0x169)]);
         }
     }
 };
-
-
-function formatUptime(uptime) {
-    const days = Math.floor(uptime / (3600 * 24));
-    const hours = Math.floor((uptime % (3600 * 24)) / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+function formatUptime(_0x47dba2) {
+    const _0x26f81c = _0x2b57ef, _0x548fe5 = {
+            'PXmKU': function (_0x48d4b0, _0x2ab2fa) {
+                return _0x48d4b0 / _0x2ab2fa;
+            },
+            'MIyHk': function (_0x3b49f8, _0x779898) {
+                return _0x3b49f8 * _0x779898;
+            },
+            'iRGXw': function (_0x9e23bf, _0x293fd5) {
+                return _0x9e23bf % _0x293fd5;
+            },
+            'kENRx': function (_0x18049a, _0x22310e) {
+                return _0x18049a / _0x22310e;
+            },
+            'ISfqR': function (_0x5578cd, _0x4dee83) {
+                return _0x5578cd % _0x4dee83;
+            },
+            'dJvAp': function (_0x2360a1, _0x2107de) {
+                return _0x2360a1 % _0x2107de;
+            }
+        }, _0x5a76a9 = Math[_0x26f81c(0x156)](_0x548fe5[_0x26f81c(0x177)](_0x47dba2, _0x548fe5[_0x26f81c(0x172)](-0x16b7 * -0x1 + 0x24af * 0x1 + -0x33d * 0xe, -0x10e0 + 0x909 * 0x1 + 0x3 * 0x2a5))), _0x5755e2 = Math[_0x26f81c(0x156)](_0x548fe5[_0x26f81c(0x177)](_0x548fe5[_0x26f81c(0x13a)](_0x47dba2, _0x548fe5[_0x26f81c(0x172)](0x1832 * 0x1 + -0x1906 * 0x1 + 0xee4, -0xccb + 0x1 + 0xce2)), 0x170d + 0x2122 + -0x1 * 0x2a1f)), _0x1cffc3 = Math[_0x26f81c(0x156)](_0x548fe5[_0x26f81c(0x13f)](_0x548fe5[_0x26f81c(0x168)](_0x47dba2, -0xb93 * 0x3 + 0x285 * 0x2 + 0x2bbf), -0x1f * -0xa + 0x11da + -0x12d4)), _0x32d589 = Math[_0x26f81c(0x156)](_0x548fe5[_0x26f81c(0x140)](_0x47dba2, -0x1ce1 + -0x413 * 0x9 + 0x5 * 0xd28));
+    return _0x5a76a9 + 'd\x20' + _0x5755e2 + 'h\x20' + _0x1cffc3 + 'm\x20' + _0x32d589 + 's';
 }
-
-
 function countJSFiles() {
-    const cmdDir = __dirname;
-    const files = fs.readdirSync(cmdDir);
-    const jsFiles = files.filter(file => file.endsWith('.js'));
-    return jsFiles.length;
-}
+    const _0x3453ea = _0x2b57ef, _0x4b0e98 = __dirname, _0x47c528 = fs[_0x3453ea(0x173) + 'c'](_0x4b0e98), _0x34252f = _0x47c528[_0x3453ea(0x158)](_0x30cae6 => _0x30cae6[_0x3453ea(0x146)](_0x3453ea(0x157)));
+    return _0x34252f[_0x3453ea(0x154)];
+        }
 
 
 
