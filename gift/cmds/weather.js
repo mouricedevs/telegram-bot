@@ -7,7 +7,6 @@
 
 
 
-//Success
 function _0x283c(_0x1fb540, _0x4c9918) {
     const _0xe9d7aa = _0x3360();
     return _0x283c = function (_0x542dd7, _0xf4e150) {
