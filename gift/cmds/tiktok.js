@@ -7,7 +7,7 @@
 
 
 
-//Success
+
 function _0x345b(_0x9a4f92, _0x568aef) {
     const _0x552b49 = _0x9d08();
     return _0x345b = function (_0x3e572b, _0x265bbe) {
