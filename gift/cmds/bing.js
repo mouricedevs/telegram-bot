@@ -10,22 +10,22 @@ const axios = require('axios');
 
 module.exports = {
     config: {
-        name: "fancy",
+        name: "bing",
         author: "Gifted Tech",
         description: "Send a response",
         category: "ᴜᴛɪʟɪᴛʏ",
-        usage: ".fancy",
+        usage: ".bing",
         usePrefix: true
     },
     onStart: async function ({ bot, chatId, args }) {
         const gift = args.join(' ');
         if (!gift) {
-            bot.sendMessage(chatId, "Please provide your query. Example Usage: .fancy Gifted");
+            bot.sendMessage(chatId, "Please provide your query. Example Usage: .bing Hi");
             return;
         }
 
         try {
-            const apiUrl = `https://api-smd.onrender.com/api/styletext?url=${encodeURIComponent(gift)}`;
+            const apiUrl = `https://api-smd.onrender.com/api/bingsearch?query=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
             const giftech = response.data.result;
 
