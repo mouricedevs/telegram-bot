@@ -10,26 +10,26 @@ const axios = require('axios');
 
 module.exports = {
     config: {
-        name: "bing",
+        name: "ip",
         author: "Gifted Tech",
         description: "Send a response",
-        category: "ᴜᴛɪʟɪᴛʏ",
-        usage: ".bing",
+        category: "sᴇᴀʀᴄᴊ",
+        usage: ".ip",
         usePrefix: true
     },
     onStart: async function ({ bot, chatId, args }) {
         const gift = args.join(' ');
         if (!gift) {
-            bot.sendMessage(chatId, "Please provide your query. Example Usage: .bing Hi");
+            bot.sendMessage(chatId, "Please provide your query. Example Usage: .ip 10.251.0.25");
             return;
         }
 
         try {
-            const apiUrl = `https://api-smd.onrender.com/api/bingsearch?query=${encodeURIComponent(gift)}`;
+            const apiUrl = `https://api-smd.onrender.com/api/ip?query=${encodeURIComponent(gift)}`;
             const response = await axios.get(apiUrl);
             const giftech = response.data.result;
 
-            bot.sendMessage(chatId, `${giftech}`);
+            bot.sendMessage(chatId, `𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗜𝗣 𝗦𝗘𝗔𝗥𝗖𝗛:\n\n ${giftech}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, "An error occurred while processing the command.");
