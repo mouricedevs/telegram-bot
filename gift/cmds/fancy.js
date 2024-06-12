@@ -29,7 +29,7 @@ module.exports = {
             const response = await axios.get(apiUrl);
             const giftech = response.data.result;
 
-            bot.sendMessage(chatId, `𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗙𝗔𝗡𝗖𝗬 𝗧𝗘𝗫𝗧: \n\n${giftech}`);
+            bot.sendMessage(chatId, `${giftech}`);
         } catch (error) {
             console.error('[ERROR]', error);
             bot.sendMessage(chatId, "An error occurred while processing the command.");
