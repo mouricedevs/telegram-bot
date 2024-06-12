@@ -13,7 +13,7 @@ module.exports = {
         name: "ip",
         author: "Gifted Tech",
         description: "Send a response",
-        category: "sᴇᴀʀᴄᴊ",
+        category: "sᴇᴀʀᴄʜ",
         usage: ".ip",
         usePrefix: true
     },
