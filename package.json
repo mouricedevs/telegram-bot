@@ -20,6 +20,7 @@
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
     "hercai": "^12.2.0",
+    "javascript-obfuscator": "^4.1.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
     "node-id3": "^0.2.6",
@@ -29,8 +30,7 @@
     "telegram-inline-calendar": "^1.7.0",
     "tinyurl": "^1.1.7",
     "yt-search": "^2.11.0",
-    "ytdl-core": "^4.11.5",
-    "javascript-obfuscator": "^4.1.0"
+    "ytdl-core": "^4.11.5"
   }
 }
 
