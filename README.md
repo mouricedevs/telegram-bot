@@ -2,7 +2,7 @@
 
 
    #### Note:
-- **If a file/cmd is encrypted and you wish to have a decrypted version of it feel free to request for it from the developer [HERE.](https://t.me/giftedmd) NO CHARGES!**
+- **If a file/cmd is encrypted and you wish to have a decrypted version of it feel free to request for it from the developer [HERE.](https://t.me/mouricedevs) NO CHARGES!**
 
 - **Here is a [DEMO VERSION](https://t.me/giftedmd_bot) of this bot project.**
 - **You can test it out for 🆓**
@@ -65,7 +65,7 @@ To interact with the bot, users can send commands and messages. The bot will res
 - I'll always be adding more commands, features and making general updates so always check✅ out and sync your forks to stay updated.
 
 ### INCASE OF ISSUES ###
- - [CONTACT OWNER](t.me/giftedmd)
+ - [CONTACT OWNER](t.me/mouricedevs)
 
        ©𝟮𝟬𝟮𝟰 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
 
