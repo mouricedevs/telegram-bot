@@ -40,9 +40,9 @@
 
 - **Deploy on [HEROKU](https://github.com/mouricedevs/telegram-bot/blob/main/setup/heroku.md)**
 
-- **Deploy on [RENDER](https://web.giftedtechnexus.co.ke/tg-bot/render)**
+- **Deploy on [RENDER](https://web.giftedtechnexus.co.ke/bots/tg-bot/render)**
 
-- **Run locally on VPS, PC or on [TERMUX](https://web.giftedtechnexus.co.ke/tg-bot/termux)**
+- **Run locally on VPS, PC or on [TERMUX](https://web.giftedtechnexus.co.ke/bots/tg-bot/termux)**
 - **Download Termux apk [HERE](https://f-droid.org/repo/com.termux_118.apk) first.**
   
   - Follow other specific platform instructions to deploy your bot.
