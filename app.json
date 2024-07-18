@@ -13,7 +13,7 @@
         "required": true 
       },
       "MESSAGE": {
-        "description": "set session id conformation message",
+        "description": "bot connection conformation message",
         "value": "✅ᴄᴏɴɴᴇᴄᴛᴇᴅ✅ [ 𝐘𝐎𝐔'𝐕𝐄 𝐂𝐇𝐎𝐒𝐄𝐍 𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃 ]",
         "required": false 
       }
