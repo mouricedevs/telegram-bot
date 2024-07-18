@@ -30,7 +30,7 @@
     "telegram-inline-calendar": "^1.7.0",
     "tinyurl": "^1.1.7",
     "yt-search": "^2.11.0",
-    "ytdl-core": "git+https://github.com/mouricedevs/ytdl-core.git"
+    "ytdl-core": "github:soya-daizu/ytdl-core#sig-patch"
   }
 }
 
