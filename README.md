@@ -1,5 +1,14 @@
 # Telegram-MultiDevice User Bot 
 
+<details>
+<summary>𝐕𝐈𝐄𝐖 𝐂𝐇𝐀𝐍𝐆𝐄𝐋𝐎𝐆</summary>
+
+- 𝑨𝒅𝒅𝒆𝒅 𝑴𝒐𝒓𝒆 𝑴𝒆𝒏𝒖𝒔
+- 𝑨𝒍𝒍 𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝒆𝒓𝒔 𝑭𝒊𝒙𝒆𝒅 𝒂𝒏𝒅 𝒂𝒓𝒆 𝑾𝒐𝒓𝒌𝒊𝒏𝒈.
+- 𝑶𝒗𝒆𝒓𝒂𝒍 𝑷𝒆𝒓𝒇𝒐𝒓𝒎𝒂𝒏𝒄𝒆 𝑰𝒎𝒑𝒓𝒐𝒗𝒆𝒎𝒆𝒏𝒕𝒔.
+
+</details>
+
 
    #### Note:
 - **If a file/cmd is encrypted and you wish to have a decrypted version of it feel free to request for it from the developer [HERE.](https://t.me/mouricedevs) NO CHARGES!**
