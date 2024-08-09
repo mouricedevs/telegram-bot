@@ -256,7 +256,7 @@ function _0x2d68() {
         'lsiAl',
         'from',
         'ram-bot-ap',
-        '𝗘𝗥𝗦𝗜𝗢𝗡\x20𝟭.𝟬',
+        '𝗘𝗥𝗦𝗜𝗢𝗡\x20𝟮.𝟬',
         'hhRog',
         'Please\x20wai',
         'ommand.',
