@@ -1,6 +1,6 @@
 {
   "name": "telegram-bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "gifted.js",
   "engines" : { "node": "v20.15.1", "npm": "10.8.2" },
@@ -14,25 +14,24 @@
   "author": "Gifted Tech",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.0.6",
+    "@types/node": "npm:@types/node@latest",
+    "api-dylux": "^1.6.9",
     "axios": "^1.6.8",
     "chalk": "^5.3.0",
-    "express": "^4.19.2",
+    "express": "npm:express@latest",
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
     "hercai": "^12.2.0",
     "javascript-obfuscator": "^4.1.1",
+    "mouricedevs": "npm:@distube/ytdl-core@latest",
     "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
     "node-id3": "^0.2.6",
-    "node-telegram-bot-api": "^0.65.1",
-    "path": "^0.12.7",
+    "node-telegram-bot-api": "npm:node-telegram-bot-api@laest",
+    "path": "npm:path@latest",
     "simple-git": "^3.24.0",
     "telegram-inline-calendar": "^1.7.0",
     "tinyurl": "^1.1.7",
-    "yt-search": "^2.11.0",
-    "ytdl-core": "npm:@distube/ytdl-core"
+    "yt-search": "^2.11.0"
   }
 }
-
-
