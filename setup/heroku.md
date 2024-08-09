@@ -1,7 +1,7 @@
 ### StepWise
 
 - **First [Fork Repo](https://github.com/mouricedevs/telegram-bot/fork) to obtain your editable repo.**
-- **Navigate to gift»»cmds folder and replace the user_id(uid) and bot token with your actual bot token and user id obtained from [Bot Father](https://t.me/gifted-md) for your bot.**
+- **Navigate to config.json found in gift»»cmds folder and replace the user_id(uid) and bot token with your actual bot token and user id obtained from [Bot Father](https://t.me/gifted-md) for your bot.**
 
 ### Stepwise ###
 
