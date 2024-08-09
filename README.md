@@ -11,7 +11,6 @@
 
 
    #### Note:
-- **If a file/cmd is encrypted and you wish to have a decrypted version of it feel free to request for it from the developer [HERE.](https://t.me/mouricedevs) NO CHARGES!**
 
 - **Here is a [DEMO VERSION](https://t.me/giftedmd_bot) of this bot project.**
 - **You can test it out for 🆓**
