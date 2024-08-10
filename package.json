@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "main": "gifted.js",
-  "engines" : { "node": "v20.15.1", "npm": "10.8.2" },
+  "engines" : { "node": "v20.15.1", "npm": "v10.8.2" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node gifted.js",
