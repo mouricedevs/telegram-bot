@@ -12,7 +12,7 @@
 
    #### Note:
 
-- **Here is a [DEMO VERSION](https://t.me/giftedmd_bot) of this bot project.**
+- **Here is a [DEMO VERSION](https://t.me/mouricedevs) of this bot project.**
 - **You can test it out for 🆓**
 
 - Gifted-Md Telegram bot project is designed to automate tasks, respond to commands, and integrate with external services or APIs, offering users a robust interactive experience.
@@ -48,9 +48,9 @@
 
 - **Deploy on [HEROKU](https://github.com/mouricedevs/telegram-bot/blob/main/setup/heroku.md)**
 
-- **Deploy on [RENDER](https://web.giftedtechnexus.co.ke/bots/tg-bot/render)**
+- **Deploy on [RENDER](https://giftedtechnexus.us.kg/bots/tg-bot/render)**
 
-- **Run locally on VPS, PC or on [TERMUX](https://web.giftedtechnexus.co.ke/bots/tg-bot/termux)**
+- **Run locally on VPS, PC or on [TERMUX](https://giftedtech.us.kg/bots/tg-bot/termux)**
 - **Download Termux apk [HERE](https://f-droid.org/repo/com.termux_118.apk) first.**
   
   - Follow other specific platform instructions to deploy your bot.
@@ -77,6 +77,6 @@ To interact with the bot, users can send commands and messages. The bot will res
 
        ©𝟮𝟬𝟮𝟰 𝗚𝗜𝗙𝗧𝗘𝗗 𝗧𝗘𝗖𝗛
 
-- **CHECK OUT MY [WHATSAPP BOT PROJECT](https://github.com/mouricedevs/gifted-md) HERE**
+- **CHECK OUT MY [WHATSAPP BOT PROJECT](https://github.com/mouricedevs/gifted) HERE**
 
       CAN WE COLLABORATE ON A PROJECT WITH YOU???
